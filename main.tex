@@ -1,0 +1,230 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Masters/Doctoral Thesis 
+% LaTeX Template
+% Version 2.2 (21/11/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Version 2.x major modifications by:
+% Vel (vel@latextemplates.com)
+%
+% This template is based on a template by:
+% Steve Gunn (http://users.ecs.soton.ac.uk/srg/softwaretools/document/templates/)
+% Sunil Patel (http://www.sunilpatel.co.uk/thesis-template/)
+%
+% Template license:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[
+11pt, % The default document font size, options: 10pt, 11pt, 12pt
+%oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
+spanish, % ngerman for German
+singlespacing, % Single line spacing, alternatives: onehalfspacing or doublespacing
+%draft, % Uncomment to enable draft mode (no pictures, no links, overfull hboxes indicated)
+%nolistspacing, % If the document is onehalfspacing or doublespacing, uncomment this to set spacing in lists to single
+%liststotoc, % Uncomment to add the list of figures/tables/etc to the table of contents
+%toctotoc, % Uncomment to add the main table of contents to the table of contents
+parskip, % Uncomment to add space between paragraphs
+%nohyperref, % Uncomment to not load the hyperref package
+headsepline, % Uncomment to get a line under the header
+]{MastersDoctoralThesis} % The class file specifying the document structure
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+
+\usepackage{palatino} % Use the Palatino font by default
+
+%\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % User the bibtex backend with the authoryear citation style (which resembles APA)
+%\addbibresource{example.bib} % The filename of the bibliography
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{array}
+
+\hypersetup{pdfpagemode={UseOutlines},
+	bookmarksopen=true,
+	bookmarksopenlevel=0,
+	hypertexnames=false,
+	colorlinks=true, % Set to false to disable coloring links
+	citecolor=black, % The color of citations
+	linkcolor=black, % The color of references to document elements (sections, figures, etc)
+	urlcolor=RoyalBlue, % The color of hyperlinks (URLs)
+	pdfstartview={FitV},
+	unicode,
+	breaklinks=true,
+}
+
+\pdfstringdefDisableCommands{% If there is an explicit linebreak in a section heading (or anything printed to the pdf-bookmarks), it is replaced by a space
+	\let\\\space%
+}
+
+\usepackage{xstring}
+\usepackage{todonotes}
+\usepackage{pdfpages}
+\usepackage{epigraph}
+\usepackage{framed}
+\usepackage{filecontents}
+\usepackage{glossaries}
+
+
+\let\originalbibitem\bibitem
+\def\bibitem#1#2\par{
+	\noexpandarg
+	\originalbibitem{#1}
+	\StrSubstitute{#2}{C.-F. San-Nicolas-Martinez}{\textbf{C.-F. San-Nicolas-Martinez}}\par}
+\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+
+\addto\captionsspanish{
+	\renewcommand{\tablename}{Tabla}
+	\renewcommand{\listtablename}{Índice de tablas}
+	\renewcommand{\appendixname}{Anexo}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	MARGIN SETTINGS
+%----------------------------------------------------------------------------------------
+
+\geometry{
+	paper=a4paper, % Change to letterpaper for US letter
+	inner=3cm, % Inner margin
+	outer=2.5cm, % Outer margin
+	bindingoffset=0.5cm, % Binding offset
+	top=2.5cm, % Top margin
+	bottom=2.5cm, % Bottom margin
+	%showframe,% show how the type block is set on the page
+}
+\setlength{\parindent}{8mm}
+\setcounter{secnumdepth}{3} % para que ponga 1.1.1.1 en subsubsecciones
+\setcounter{tocdepth}{3} % para que ponga subsubsecciones en el indice
+
+%----------------------------------------------------------------------------------------
+%----ACRONYMS
+%-------------------------------------------------------------------------------------
+
+\begin{document}
+
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
+
+\pagestyle{plain} % Default to the plain heading style until the thesis style is called for the body content
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+	\begin{center}
+		UNIVERSIDAD POLITÉCNICA DE CARTAGENA\\
+		\vspace*{0.2in}
+		\begin{figure}[ht!]
+			\centering
+			\includegraphics[width=0.5\linewidth]{imagenes/logoupct.jpg}
+		\end{figure}
+		ESCUELA TÉCNICA SUPERIOR DE INGENIERÍA DE TELECOMUNICACIÓN\\
+		\vspace*{0.35in}
+		\begin{large}
+			Trabajo Fin de Máster\\
+		\end{large}
+		\vspace*{0.25in}
+		\rule{80mm}{0.1mm}\\
+		\vspace*{0.3in}
+		\begin{Large}
+			\textbf{Desarrollo de APIs en escenarios SDN-NFV} \\
+		\end{Large}
+		\vspace*{0.35in}
+		\rule{80mm}{0.1mm}\\
+		\vspace*{0.55in}
+	\end{center}
+    \vfill
+	\begin{flushleft}
+		\begin{large}
+              \textit{\textbf{Autor:}} César Francisco San Nicolás Martínez\\
+			  \textit{\textbf{Director:}} Pablo Pavón Mariño\\
+			  \textit{\textbf{Codirector:}} Francisco Javier Moreno Muro\\
+		\end{large}
+	\end{flushleft}
+	\vspace*{0.7in}
+	\begin{center}
+		FECHA\\
+	\end{center}
+    \vfill
+	
+\end{titlepage}
+\restoregeometry
+\cleardoublepage
+
+
+\begin{center}
+	\vspace*{3cm}
+	\fbox{
+	\begin{minipage}[][][s]{0.6\linewidth}
+		\begin{tabbing}
+			\hspace{6.5cm}\=\kill 
+			\textbf{Autor:}\>César Francisco San Nicolás Martínez\\ 
+			\textbf{E-mail del autor:}\>cesarfsannicolasmartinez@gmail.com\\
+			\textbf{Director:} \>Pablo Pavón Mariño \\
+			\textbf{E-mail del director:} \> pablo.pavon@upct.es \\
+			\textbf{Codirector:} \>Francisco Javier Moreno Muro \\
+			\textbf{E-mail de codirector:} \> javier.moreno@upct.es \\
+			\textbf{Título del TFM:} \> Desarrollo de APIs en escenarios SDN-NFV\\
+		\end{tabbing} 
+		\textbf{Resumen:}\\
+		POR HACER  \\
+
+		\begin{tabbing}
+			\hspace{6.5cm}\=\kill 
+			\textbf{Titulación:}\>Máster en Ingeniería de Telecomunicación\\
+			\textbf{Departamento:}\> Tecnologías de la Información y las Comunicaciones \\
+			\textbf{Fecha de presentación:}\> FECHA\\
+		\end{tabbing} 
+	\end{minipage}%
+}
+\end{center}
+
+\tableofcontents % Prints the main table of contents
+\listoffigures % Print the list of figures
+
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{thesis} % Return the page headers back to the "thesis" style
+
+% Include the chapters of the thesis as separate files from the Chapters folder
+% Uncomment the lines as you write the chapters
+\include{capitulos/introduccion}
+\include{capitulos/estadodelarte}
+\include{capitulos/herramientas}
+\include{capitulos/desarrollo}
+\include{capitulos/pruebaconcepto}
+\include{capitulos/conclusiones}
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+\appendix % Cue to tell LaTeX that the following "chapters" are Appendices
+\clearpage
+\include{capitulos/anexo}
+\clearpage
+
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+%\printbibliography[heading=bibintoc]
+%\addcontentsline{toc}{chapter}{Bibliografía}
+%\bibliographystyle{IEEEtran}
+%\bibliography{referencias}
+
+%----------------------------------------------------------------------------------------
+
+\printglossary[type=\acronymtype]
+
+\end{document}  

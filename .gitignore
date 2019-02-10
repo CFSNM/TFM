@@ -1,0 +1,9 @@
+output/
+*.aux
+*.log
+*.out
+*.gz
+*.toc
+*.pdf
+*.glo
+*.lof
