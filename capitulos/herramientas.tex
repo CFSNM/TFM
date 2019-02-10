@@ -25,19 +25,13 @@ Como se ha hablado antes, ambos modos permiten utilizar Net2Plan en el entorno e
 	\label{fig:n2p_redes}
 \end{figure}
 \clearpage
-\begin{figure}[ht!]
-	\centering
-	\includegraphics[width=1\linewidth]{imagenes/n2p_matriz}
-	\caption{Ventana \textit{Traffic matrix design}}
-	\label{fig:n2p_matriz}
-\end{figure}
 
 \section{Mininet}
 \label{sec:mininet}
 
 Mininet es una herramienta de emulación de redes que permite crear redes con \textit{hosts}, \textit{switches}, controladores y enlaces. Los \textit{hosts} de Mininet corren bajo un sistema operativo Linux, mientras que los \textit{switches} soportan el protocolo OpenFlow (ver \ref{subsec:openflow}) para mayor flexibilidad respecto a la configuración del \textit{routing} y para integrarlos dentro de un escenario SDN (ver \ref{sec:sdn}).
 
-Mininet tiene una gran polivalencia, y eso permite que sea utilizado en diferentes tareas, tales como investigación, desarrollo, aprendizaje, testeo. Gracias a ello, se puede conseguir emular una red con un comportamiento similar a una real.
+Mininet tiene una gran polivalencia, y eso permite que sea utilizado en diferentes tareas, tales como investigación, desarrollo, aprendizaje o testeo. Gracias a ello, se puede conseguir emular una red con un comportamiento similar a una real.
 
 Sus principales características son:
 \begin{itemize}
@@ -65,11 +59,13 @@ Sus principales características son:
 	\item Modularidad: Las funcionalidades de ONOS están definidas en modulos localizados, lo que hace más fácil probar y mantener el software en buen estado.
 \end{itemize}
 
+
 Está escrito en Java y opera como un clúster de nodos idénticos en cuanto al software. Trabaja con modelos y protocolos estandarizados, tales como OpenFlow (ver \ref{subsec:openflow}), NETCONF, OpenConfig, OpenROADM, ...
+
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.65\linewidth]{imagenes/onos_architecture}
+	\includegraphics[width=0.6\linewidth]{imagenes/onos_architecture}
 	\caption{Arquitectura de ONOS. 
 		Fuente: http://sdnhub.org/tutorials/onos/}
 	\label{fig:onosarch}
@@ -79,7 +75,9 @@ En la figura \ref{fig:onosarch} se observa la arquitectura interna de ONOS. En e
 
 También se puede observar que, para acceder a estos controladores, las aplicaciones necesitan hacer uso de la interfaz \textit{NorthBound}, que se compone principalmente de una RestAPI.
 
-Por otro lado, para que los controladores puedan tener constancia de los dispositivos de la red, la interfaz \textit{SouthBound} incluye diferentes \textit{drivers}, genéricos o particulares, para poder comunicarse con dispositivos mediante numerosos protocolos estandarizados, como se expicó anteriormente.
+Por otro lado, para que los controladores puedan tener constancia de los dispositivos de la red, la interfaz \textit{SouthBound} incluye diferentes \textit{drivers}, genéricos o particulares, para poder comunicarse con dispositivos mediante numerosos protocolos estandarizados, como se explicó anteriormente.
+
+\clearpage
 
 Para facilitar la interacción con el usuario, ONOS ofrece una GUI (ver figura \ref{fig:onosgui}) para ver en más detalle la topología que esta siendo gestionada, así como datos más específicos de cada uno de los dispositivos de la red. 
 
@@ -129,6 +127,8 @@ OSM trabaja con una serie de componentes y conceptos que ayudan a definir su arq
 
 En la figura \ref{fig:nfvetsiarch} se puede ver un esquema de la arquitectura NFV que propone la ETSI, en la que se puede observar el papel que juega OSM en ella. 
 
+\clearpage
+
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.8\linewidth]{imagenes/osm_arch}
@@ -140,7 +140,7 @@ En la figura \ref{fig:nfvetsiarch} se puede ver un esquema de la arquitectura NF
 Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da una visión general de la interaccion entre OSM y los diferentes componentes:
 
 \begin{itemize}
-	\item \textbf{Interfaz \textit{NorthBound}:} OSM exporta una RestAPI gracias a su interfaz \textit{NorthBound}. Mediante llamadas HTTP (GET, POST, DELETE), el usuario es capaz de ejecutar órdenes en OSM, tales como crear un nuevo VIM, instancia un nuevo VNF, ... 
+	\item \textbf{Interfaz \textit{NorthBound}:} OSM exporta una RestAPI gracias a su interfaz \textit{NorthBound}. Mediante llamadas HTTP (GET, POST, DELETE), el usuario es capaz de ejecutar órdenes en OSM, tales como crear un nuevo VIM o instanciar un nuevo VNF, entre otras.
 	
 	Para ello, es necesario tener un cliente desde el cuál enviar órdenes. La ETSI ofrece una interfaz gráfica web que se instala al mismo tiempo que OSM y un cliente por línea de comando escrito en Python (\href{https://osm.etsi.org/wikipub/index.php/OsmClient}{OSMClient}).
 	
@@ -152,6 +152,8 @@ Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da 
 	
 	\item \textbf{VNF \textit{Management}:} cuando un VIM instancia un nuevo VNF, se le asigna una dirección IP para poder acceder a la propia máquina virtual y gestionarla. Por ello, es necesario que haya conectividad IP entre OSM y todos los VNFs. 
 \end{itemize}
+
+\clearpage
 
 Una vez explicadas las interacciones que realiza OSM, se pueden explicar los pasos que sigue OSM para instanciar un nuevo NS en un determinado VIM:
 
@@ -171,7 +173,7 @@ Una vez explicadas las interacciones que realiza OSM, se pueden explicar los pas
 \section{OpenStack}
 \label{sec:openstack}
 
-OpenStack es una arquitectura \textbf{Cloud Computing} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red a través de un \textbf{Datacenter}. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una RestAPI para permitir conectividad con aplicaciones externas.
+OpenStack es una arquitectura basada en el paradigma \textbf{Cloud Computing} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red a través de un \textbf{Datacenter}. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una RestAPI para permitir conectividad con aplicaciones externas.
 
 \begin{figure}[!ht]
 	\centering
@@ -180,10 +182,22 @@ OpenStack es una arquitectura \textbf{Cloud Computing} para controlar y gestiona
 	\label{fig:openstackarch}
 \end{figure}
 
-Está compuesto de diferentes bloques o módulos, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura. Los módulos principales son los siguientes:
+Está compuesto de diferentes bloques o módulos, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura. Los módulos o servicios principales son los siguientes:
 
 \begin{itemize}
-	\item \textbf{Keystone:} 
+	\item \textbf{Keystone:}  Este servicio controla la identificación de los diferentes usuarios que se conecten a la infraestructura de OpenStack, y el acceso a según que aplicaciones de los mismos.
+	
+	\item \textbf{Horizon:} Este servicio es el encargado de mostrar la gestión completa de OpenStack mediante una interfaz gráfica. Desde ella se puede observar con todo detalle que está sucediendo en el sistema y poder gestionar los posibles fallos.
+	
+	\item \textbf{Nova:} Este servicio está considerado el motor de OpenStack. Es el encargado de desplegar y administrar las diferentes máquinas virtuales instanciadas y otros servicios que se necesiten.
+	
+	\item \textbf{Neutron:} Este servicio es el encargado de que cada componente desplegado en OpenStack se comunique con los demas y estén interrelacionados.
+	
+	\item \textbf{Glance:} Este servicio se encarga de gestionar las diferentes imágenes que se usan en la infraestructura.
+	
+	\item \textbf{Cinder:} Este servicio se centra en el almacenamiento. Facilita el acceso al contenido alojado en las unidades de disco que se encuentren en la infraestructura.
+	
+	\item \textbf{Swift:} Este servicio es el encargado de almacenar los diferentes archivos del sistema, asegurar su integridad y replicarlos por los diferentes discos de la infraestructura, para hacer más dinámicas la accesibilidad y la disponibilidad.
 \end{itemize}
 
 \subsection{OpenStack4j}
@@ -193,7 +207,7 @@ OpenStack4j es un cliente \textit{open-source} programado en Java para controlar
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=1\linewidth]{imagenes/ejemplo_os4j}
+	\includegraphics[width=0.8\linewidth]{imagenes/ejemplo_os4j}
 	\caption{Ejemplo de OpenStack4j. Fuente: http://www.openstack4j.com/}
 	\label{fig:ejemploos4j}
 \end{figure}
