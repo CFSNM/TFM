@@ -1,13 +1,41 @@
 \chapter{Introducción}
 
+El paradigma SDN se ha convertido en la manera más eficiente de gestionar las redes actuales, gracias a la automatización de las funciones de operación y gestión. A su vez, el paradigma NFV se ha convertido en un recurso valioso para optimizar recursos de una infraestructura IT. 
 
+Debido a esto, han ido surgiendo herramientas para la aplicación de las técnicas SDN y NFV para automatizar y optimizar las redes de telecomunicación.
 
 \section{Motivaciones}
 
+Este proyecto viene motivado por las diferentes herramientas que existen para aplicar técnicas SDN y NFV a las redes de telecomunicación. Dichas herramientas tienen interfaces para permitir al usuario el poder comunicarse con ellas, pero son muy diferentes entre sí. 
+
+Así mismo, no existe una entidad central que permita gestionar las interacciones entre ellas de forma óptima. Por esto último surge la idea de desarrollar diferentes librerías (APIs) \textbf{open-source} para interactuar con las diferentes herramientas de una forma sencilla y transparente para el usuario, y convertir a Net2Plan en esa entidad central que se pueda comunicar con las diferentes herramientas y gestionar las interacciones entre ellas.
+
 \section{Objetivos}
+
+El objetivo principal de este trabajo es desarrollar diferentes APIs \textbf{open-source} e integrarlas en un plugin de Net2Plan para llevar a cabo una prueba de concepto. Este objetivo se puede desglosar en otros más pequeños:
+
+\begin{itemize}
+	\item Adquirir amplio conocimiento de las distintas herramientas (ONOS, Mininet, OSM y OpenStack). 
+	\item Desarrollo de APIs para entornos SDN (ONOS Client).
+	\item Desarrollo de APIs para entornos NFV (J-OSM Client, OpenStack Client).
+	\item Integración de todas las APIs en un plugin de Net2Plan para una prueba de concepto.
+\end{itemize}
+
+\section{Plan de trabajo}
+
+Para la consecución de los objetivos marcados, el plan de trabajo del proyecto consta de diferentes fases, cada una de ellas destinada a cumplir un objetivo concreto:
+
+\begin{itemize}
+	\item Estudio y familiarización con ONOS, Mininet, OSM y OpenStack.
+	\item Desarrollo de la librería para interactuar con ONOS (ONOS Client).
+	\item Desarrollo de las lubrerías para interactucar con OSM y OpenStack (J-OSM Client y OpenStack Client).
+	\item Desarrollo del plugin de Net2Plan integrando las librerías desarrolladas.
+	\item Realizar la prueba de concepto y obtener conclusiones.
+	\item Escritura de la memoria.
+\end{itemize}
 
 \section{Estructura de la memoria}
 
-
+La memoria de este Trabajo de Fin de Máster se estructura de la siguiente manera:
 \cleardoublepage
 	
