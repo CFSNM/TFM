@@ -1,6 +1,8 @@
 \chapter{Herramientas utilizadas}
 
-En este capítulo se va a hacer una descripción de cada una de las herramientas utilizadas en el proyecto.
+En este capítulo se va a hacer una descripción de cada una de las herramientas utilizadas en el proyecto, haciendo especial mención a Net2Plan, que es la herramienta open-source que ha servido como base para el desarollo de este proyecto..
+
+Por último, se hablará de las diferentes herramientas/aplicaciones que se han utilizado para llevar a cabo este proyecto, como pueden ser ONOS, ETSI-OSM y OpenStack, y de las librerías JAVA que se han empleado para poder realizar la interacción entre todos los componentes.
 
 \section{Net2Plan}
 \label{sec:net2plan}
@@ -182,7 +184,7 @@ OpenStack es una arquitectura basada en el paradigma \textbf{Cloud Computing} pa
 	\label{fig:openstackarch}
 \end{figure}
 
-Está compuesto de diferentes bloques o módulos, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura. Los módulos o servicios principales son los siguientes:
+Está compuesto de diferentes servicios o bloques, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura. Los servicios principales de OpenStack son los siguientes:
 
 \begin{itemize}
 	\item \textbf{Keystone:}  Este servicio controla la identificación de los diferentes usuarios que se conecten a la infraestructura de OpenStack, y el acceso a según que aplicaciones de los mismos.
@@ -203,12 +205,33 @@ Está compuesto de diferentes bloques o módulos, encargándose cada uno de ello
 \subsection{OpenStack4j}
 \label{subsec:openstack4j}
 
-OpenStack4j es un cliente \textit{open-source} programado en Java para controlar y gestionar un sistema basado en OpenStack.
+OpenStack4j es una librería REST \textit{open-source} programada en Java para controlar y gestionar un sistema basado en OpenStack.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.8\linewidth]{imagenes/ejemplo_os4j}
-	\caption{Ejemplo de OpenStack4j. Fuente: http://www.openstack4j.com/}
+	\caption{Ejemplo de uso de OpenStack4j. Fuente: http://www.openstack4j.com/}
 	\label{fig:ejemploos4j}
 \end{figure}
 
+Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus múltiples módulos, cada uno de ellos focalizado en gestionar un servicio concreto de OpenStack:
+
+\begin{itemize}
+	\item \textbf{Identity:} Este módulo se encarga de gestionar el servicio \textbf{Keystone}. Su principal objetivo es el de gestionar el directorio de usuarios, grupos, regiones, servicios y \textbf{endpoints}. Así mismo, se encarga de autenticar y autorizar a los diferentes usuarios para utilizar los diferentes servicios.
+	
+	\item \textbf{Compute:} Este módulo se encarga de gestionar el servicio \textbf{Nova}. Es el encargado de gestionar las diferentes máquinas virtuales que están corriendo en OpenStack.
+	
+	\item \textbf{Network:} Este módulo se encarga de gestionar el servicio \textbf{Neutron}. Provee conectividad entre diferentes componentes de OpenStack. Permite a los usuarios crear sus propias redes y añadirles interfaces.
+	
+	\item \textbf{Image:} Este módulo se encarga de gestionar el servicio \textbf{Glance}. Su principal funcionalidad es la de proveer diferentes servicios para la gestión de imágenes. Permite almacenar imágenes personalizadas por el usuario para inicializar máquinas rápidamente.
+	
+	\item \textbf{Block Storage:} Este módulo se encarga de gestionar el servicio \textbf{Cinder}. Permite al usuario crear y montar volúmenes para escalar el almacenamiento.
+	
+	\item \textbf{Object Storage:} Este módulo se encarga de gestionar el servicios \textbf{Swift}. Es el encargado de crear almacenamiento persistente para los diferentes archivos alojados en el sistema.
+\end{itemize}
+
+En la figura \ref{fig:ejemploos4j} se puede ver un breve ejemplo de como utilizar los servicios Identity, Compute, Image y Network.
+
+
+
+\cleardoublepage
