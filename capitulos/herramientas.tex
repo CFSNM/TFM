@@ -110,7 +110,7 @@ OSM trabaja con una serie de componentes y conceptos que ayudan a definir su arq
 	
 	\item \textbf{VLD (Virtual Link Descriptor):} Es el componente que se encarga de definir las conexiones entre diferentes componentes de la arquitectura. Hay principamente dos tipos de VLD: VDU-VDU y VNF-VNF.
 	
-	\item \textbf{VNFD (Virtual Network Function Descriptor):} Es el componente que se encarga de definir los recursos necesitados para instanciar un VNF. Incluye diferentes componentes: lista de VDUs, lista de VLDs, lista de conexiones,...
+	\item \textbf{VNFD (Virtual Network Function Descriptor):} Es el componente que se encarga de definir los recursos necesarios para instanciar un VNF. Incluye diferentes componentes: lista de VDUs, lista de VLDs, lista de conexiones,...
 	
 	\item \textbf{NSD (Network Service Descriptor):} Es el componente que se encarga de definir la información sobre la configuración de un NS. Incluye diferentes componentes: lista de VNFDs, lista de VLDs, parámetros de configuración iniciales, ...
 	
@@ -207,13 +207,6 @@ Está compuesto de diferentes servicios o bloques, encargándose cada uno de ell
 
 OpenStack4j es una librería REST \textit{open-source} programada en Java para controlar y gestionar un sistema basado en OpenStack.
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/ejemplo_os4j}
-	\caption{Ejemplo de uso de OpenStack4j. Fuente: http://www.openstack4j.com/}
-	\label{fig:ejemploos4j}
-\end{figure}
-
 Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus múltiples módulos, cada uno de ellos focalizado en gestionar un servicio concreto de OpenStack:
 
 \begin{itemize}
@@ -232,6 +225,12 @@ Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus m�
 
 En la figura \ref{fig:ejemploos4j} se puede ver un breve ejemplo de como utilizar los servicios Identity, Compute, Image y Network.
 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imagenes/ejemplo_os4j}
+	\caption{Ejemplo de uso de OpenStack4j. Fuente: http://www.openstack4j.com/}
+	\label{fig:ejemploos4j}
+\end{figure}
 
 
 \cleardoublepage
