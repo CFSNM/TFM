@@ -37,9 +37,19 @@ En la figura \ref{fig:esquemademo} se puede observar un esquema de la arquitectu
 	\label{fig:esquemademo}
 \end{figure}
 
+\clearpage
 
+\section{Funcionamiento}
 
-\section{Desarrollo}
+A continuación se explican los diferentes pasos que se realizan para llevar a cabo la prueba de concepto.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/nfvplugin_dashboard}
+	\caption{Interfaz gráfica del Plugin al inicio}
+	\label{fig:nfvproof_inicio}
+\end{figure}
+
 \begin{itemize}
 	\item Paso 1. Haciendo click en el botón LOAD, Net2Plan recibe la información referente a la red de transporte de ONOS, la información sobre los posibles VNFs a instanciar de ETSI-OSM y la información sobre cada VIM de OpenStack, todo mediante llamadas a sus respectivas Rest-APIs.
 	
@@ -47,18 +57,45 @@ En la figura \ref{fig:esquemademo} se puede observar un esquema de la arquitectu
 	
 	\item Paso 3. Net2Plan recibe la información introducida por el usuario y la transfiere al LA-SCCE para que ejecute el algoritmo que devolverá como resultado una ruta de enlaces para la Service Chain y una serie de VNFs instanciadas en diferentes VIMs.
 	
+		\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/nfv_service_chain}
+		\caption{Interfaz gráfica del Plugin con la ruta establecida}
+		\label{fig:nfvservicechain}
+	\end{figure}
+	
 	\item Paso 4. Net2Plan envía la orden a ETSI-OSM de instanciar las VNFs en los VIMs que el LA-SCCE obtuvo como óptimos.
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/osm_vnfs}
+		\caption{Interfaz gráfica de OSM con los VNFs instanciados}
+		\label{fig:osmvnfs}
+	\end{figure}
+	
 	
 	\item Paso 5. ETSI-OSM envia órdenes a los diferentes VIMs (OpenStack) para que alojen las diferentes máquinas virtuales correspondientes a los VNFs.
 	
 	\item Paso 6. Net2Plan envía la orden a ONOS con diferentes reglas de flujo para establecer en los diferentes switches de la red de transporte, todo según lo obtenido por el LA-SCCE.
 	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/topo_onos}
+		\caption{Interfaz gráfica de ONOS con las reglas de flujo establecidas}
+		\label{fig:topo_onos}
+	\end{figure}
+
+	\clearpage
+
 	\item Paso 7. Una vez establecidos las reglas de flujo mediante OpenFlow, se realiza una prueba de conexión para asegurar que la Service Chain está establecida.
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=0.7\linewidth]{imagenes/onos_flowrules}
+		\caption{Prueba de conectividad en la GUI de ONOS}
+		\label{fig:onosflowrules}
+	\end{figure}
+
+
 \end{itemize}
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/nfv_service_chain}
-	\caption{Estado final de la prueba de concepto}
-	\label{fig:nfvservicechain}
-\end{figure}
