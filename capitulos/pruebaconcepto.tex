@@ -41,7 +41,7 @@ En la figura \ref{fig:esquemademo} se puede observar un esquema de la arquitectu
 
 \section{Funcionamiento}
 
-A continuación se explican los diferentes pasos que se realizan para llevar a cabo la prueba de concepto.
+A continuación se explican los diferentes pasos que se realizan para llevar a cabo la prueba de concepto y que APIs intervienen en cada uno de ellos:
 
 \begin{figure}[!ht]
 	\centering
@@ -51,7 +51,7 @@ A continuación se explican los diferentes pasos que se realizan para llevar a c
 \end{figure}
 
 \begin{itemize}
-	\item Paso 1. Haciendo click en el botón LOAD, Net2Plan recibe la información referente a la red de transporte de ONOS, la información sobre los posibles VNFs a instanciar de ETSI-OSM y la información sobre cada VIM de OpenStack, todo mediante llamadas a sus respectivas Rest-APIs.
+	\item Paso 1. Haciendo click en el botón LOAD, Net2Plan recibe la información referente a la red de transporte de ONOS haciendo uso de ONOSClient, la información sobre los posibles VNFs a instanciar de ETSI-OSM haciendo uso de J-OSMClient y la información sobre cada VIM de OpenStack haciendo uso de OpenStackClient.
 	
 	\item Paso 2. El usuario define la Service Chain que quiere satisfacer (nodo origen, nodo destino, secuencia ordenada de VNFs a atravesar, latecia máxima y ancho de banda) a través de la interfaz gráfica del Plugin.
 	
@@ -64,7 +64,7 @@ A continuación se explican los diferentes pasos que se realizan para llevar a c
 		\label{fig:nfvservicechain}
 	\end{figure}
 	
-	\item Paso 4. Net2Plan envía la orden a ETSI-OSM de instanciar las VNFs en los VIMs que el LA-SCCE obtuvo como óptimos.
+	\item Paso 4. Net2Plan envía la orden a ETSI-OSM haciendo uso de J-OSMClient de instanciar las VNFs en los VIMs que el LA-SCCE obtuvo como óptimos.
 	
 	\begin{figure}[!ht]
 		\centering
@@ -74,9 +74,9 @@ A continuación se explican los diferentes pasos que se realizan para llevar a c
 	\end{figure}
 	
 	
-	\item Paso 5. ETSI-OSM envia órdenes a los diferentes VIMs (OpenStack) para que alojen las diferentes máquinas virtuales correspondientes a los VNFs.
+	\item Paso 5. ETSI-OSM envia órdenes a los diferentes VIMs (OpenStack) para que alojen las diferentes máquinas virtuales correspondientes a los VNFs. La comunicacion entre OSM y OpenStack es transparente al usuario.
 	
-	\item Paso 6. Net2Plan envía la orden a ONOS con diferentes reglas de flujo para establecer en los diferentes switches de la red de transporte, todo según lo obtenido por el LA-SCCE.
+	\item Paso 6. Net2Plan envía la orden a ONOS, haciendo uso de ONOSClient, con diferentes reglas de flujo para establecer en los diferentes switches de la red de transporte, todo según la ruta óptima obtenida por el LA-SCCE.
 	
 	\begin{figure}[!ht]
 		\centering
