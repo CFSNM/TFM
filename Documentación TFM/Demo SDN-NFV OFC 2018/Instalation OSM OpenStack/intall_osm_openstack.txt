@@ -1,0 +1,31 @@
+1. Guarantee that Openstack API endpoints are reachable from OSM (particularly from RO container) --> OK
+
+	a) En la consola de osm: acceder a RO 
+		sudo lxc exec RO -- bash
+	b) Hacemos ping para conectar los conectar los contenedores de OSM y openstack 
+		* RO -> OSM: OK (ping OSM_IP)
+		* RO -> OpenStack: OK (ping OS_IP)
+		* OpenStack -> OSM: OK
+		* OpenStack -> R0: OK (Hay que acceder através de Gateway de OSM route ad...)		
+
+2. Create a management network, with DHCP enabled, reachable from OSM (particularly from VCA container) --> ?? - Possible Fails
+
+	a) Create the authentication keystonerc_admin file to allow cli access.
+	b) Create network...neutron commands
+
+3. Create a valid tenant/user --> OK
+	
+
+4. Upload images --> OK
+
+	a) openstack image create --file="./cirros-0.3.4-x86_64-disk.img" --container-format=bare --disk-format=qcow2 --public cirros034
+
+5. Modify default security group (SSH) or create a new one: --> OK
+
+-----------------------------------------------------------------------------------------------------
+
+ IP/identity/v3
+
+SUCCESS!!!!!
+
+

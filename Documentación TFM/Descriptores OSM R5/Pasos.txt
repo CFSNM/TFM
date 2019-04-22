@@ -1,0 +1,7 @@
+1- Configurar VIMs (4comandos)
+2. Arrancar ONOS (2comandos)
+3. Configurar ONOS (fwd, openflow)
+4. Arrancar Mininet (1comando)
+5. Arrancar MV OSM
+6. Compilar N2P plugin
+7. RUN

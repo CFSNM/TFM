@@ -1,0 +1,17 @@
+#cloud-config
+password: osm4u
+chpasswd: { expire: False }
+ssh_pwauth: True
+manage_etc_hosts: localhost
+
+write_files:
+-   content: |
+        # I am the VNF3 made by Cloud-Init
+
+    owner: root:root
+    permissions: '0644'
+    path: /home/ubuntu/hello_world_cloud-init.txt
+
+bootcmd:
+ - echo "Hello, I am active"
+

@@ -1,0 +1,4 @@
+Los papers en esta carpeta me parecen relevantes por:
+1. Tratan de asuntos relevantes para nuestra demo (SDN+NFV).
+2. La estrucutra que usan (presentación) me parece buena.
+3. Quizás vale la pena referenciarlos para decir que nosotros no nos limitamos a "demostrar una interfaz" pero un framework de optimización.

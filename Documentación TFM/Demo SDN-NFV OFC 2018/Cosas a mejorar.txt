@@ -1,0 +1,7 @@
+- Tablas para ver el estado completo de los VIMs (Una pestaña por VIM)
+- No borrar nunca el estado del objeto netplan (Para asociar NS instanciados a demandas satisfechas) o intentar recuperar los NS a partir de IDs en OSM. Guardar el objeto .n2p cada vez que haya una nueva SC satisfecha.
+- Al dar al botón de LOAD, cargar el objeto .n2p con el backup y compararlo con el estado de las instancias de OSM, si hay alguna instancia en OSM que no la contempla N2P, que la borre.
+- Mejorar que pasa cuando hay que instanciar un NS en un VIM con ese mismo NS
+- Ver la conectividad de las redes provider/publicas para asociar ip flotantes de forma autmática.
+- Si no se puede satisfacer la demanda de SC que se pueda continuar y se reciba una notificacion informando de porqué y que vuelva al estado inicial.
+- Dar funcionalidad al botón de release resoruces, para ello se leen las instancias en OSM y se envía la orden de eliminarlas
