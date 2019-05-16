@@ -17,7 +17,7 @@ Antes, este concepto era puramente físico, con un conjunto de dispositivos \tex
 	\item Sacar el máximo rendimiento a su infraestructura.
 	\item Agilizar el envío y procesamiento del tráfico de la red.
 	\item Acelerar y automatizar la gestión y configuración de los dispositivos.
-	\item Reducir los costes de operación.
+	\item Reducir los costes de operación de la red.
 \end{itemize}
 
 Para conseguir los propósitos mencionados anteriormente, existen numerosas herramientas de software desarrolladas por empresas, universidades u organizaciones que están totalmente disponibles para ser usadas por cualquier usuario.
@@ -25,9 +25,15 @@ Para conseguir los propósitos mencionados anteriormente, existen numerosas herr
 Dichas herramientas forman un gran conjunto heterogéneo, siendo desarrollada cada una de ellas para uno o más propósitos:
 
 \begin{itemize}
-	\item Para sacar el máximo rendimiento a la infraestructura de una red, existen herramientas de virtualización como\textbf{OpenStack o Docker}, para proveer a las aplicaciones de una abstracción e independencia.
+	\item Para sacar el máximo rendimiento a la infraestructura de una red, existen herramientas de virtualización como \textbf{OpenStack} (ver \ref{sec:openstack}) o \textbf{Docker}, para proveer a las aplicaciones de una abstracción e independencia. Este tipo de herramientas pertenecen al paradigma \textit{NFV} (ver \ref{sec:nfv}).
 	
 	\item Para agilizar el envío y procesamiento del tráfico de una red, existen herramientas que permiten crear dispositivos hardware virtualizados como \textbf{OpenVSwitch}. Gracias a este tipo de herramientas, se puede sustituir un \textit{Switch} clásico por un pequeño software que hace las funciones de un \textit{Switch} de una manera más eficiente.
+	
+	\item La gestión de los dispositivos se ha realizado de forma manual, dispositivo a dispositivo. Gracias a herramientas software como \textbf{Cacti} o \textbf{Nagios}, la forma de gestionar las redes de telecomunicación ha dado un giro de 180 grados. Utilizando estas herramientas, el usuario puede gestionar la red desde un terminal de manera remota, gracias al protocolo SNMP (\textbf{Simple Network Management Protocol}).
+	
+	\item Para acelerar y automatizar la configuración de los dispositivos de una red de telecomunicación, existen herramientas que pertenecen al paradigma \textit{SDN} (ver \ref{sec:sdn}). Un ejemplo de estas herramientas es el controlador SDN ONOS (ver \ref{sec:onos}).
+	
+	\item Para reducir los costes de operación de una red, existen herramientas open-source que ayudan a planificar una red de telecomunicación de forma óptima. La más conocida de estas herramientas es \textbf{Net2Plan} (ver \ref{sec:net2plan}), una herramienta de planificación de redes programada en Java.
 \end{itemize}
 
 
