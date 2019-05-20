@@ -61,7 +61,9 @@ Los diferentes elementos que componen la arquitectura SDN son los siguientes:
 \begin{itemize}
 	\item \textbf{Controlador SDN:} Es el cerebro de la red SDN. Forma el núcleo de la arquitectura SDN comunicándose con los \textit{switches} a través de la \textbf{Interfaz Sur} (\textit{SouthBound Interface}) y con las distintas aplicaciones a través de la \textbf{Interfaz Norte} (\textit{NorthBound Interface}).
 	
-	\item \textbf{Interfaz Sur:} 
+	\item \textbf{Interfaz Sur:} Es la interfaz que conecta al controlador SDN con el plano de datos. Facilita la configuración de la red, transfiriendo dichas configuraciones a los dispositivos de la red. El protocolo más utilizado en esta interfaz es \textbf{OpenFlow} (ver \ref{subsec:openflow}).
+	
+	\item \textbf{Interfaz Norte:} Es la interfaz que conecta al controlador SDN con el plano de control.
 \end{itemize}
 
 
