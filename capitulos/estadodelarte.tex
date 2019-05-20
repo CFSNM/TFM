@@ -43,15 +43,26 @@ SDN (\textit{Software Defined Networking}) es un paradigma que consiste en una n
 
 Su principal premisa es la de separar el plano de control (\textit{Software}) del plano de datos (\textit{Hardware}).
 
-Pretende cambiar la manera tradicional de configuración de dispositivos usando instrucciones de bajo nivel por una manera novedosa mediante herramientas software a un alto nivel.
+SDN pretende cambiar la manera tradicional de configuración de dispositivos usando instrucciones de bajo nivel por una manera novedosa mediante herramientas software a un alto nivel.
 
 \subsection{Arquitectura SDN}
+
+Las redes definidas por \textit{software} constan de una arquitectura de red específica, como se puede ver en la figura \ref{fig:arquitecturasdn}.
+ 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_sdn}
+	\includegraphics[width=0.8\linewidth]{imagenes/arquitectura_sdn}
 	\caption{Arquitectura SDN}
 	\label{fig:arquitecturasdn}
 \end{figure}
+
+Los diferentes elementos que componen la arquitectura SDN son los siguientes:
+
+\begin{itemize}
+	\item \textbf{Controlador SDN:} Es el cerebro de la red SDN. Forma el núcleo de la arquitectura SDN comunicándose con los \textit{switches} a través de la \textbf{Interfaz Sur} (\textit{SouthBound Interface}) y con las distintas aplicaciones a través de la \textbf{Interfaz Norte} (\textit{NorthBound Interface}).
+	
+	\item \textbf{Interfaz Sur:} 
+\end{itemize}
 
 
 \subsection{OpenFlow}
