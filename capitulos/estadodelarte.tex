@@ -93,17 +93,25 @@ Los diferentes elementos que componen la arquitectura SDN son los siguientes:
 
 OpenFlow es un protocolo estándar de SDN, siendo el más utilizado para comunicar el controlador SDN con los dispositivos que se encuentran en el plano de datos. Para que esta comunicación sea posible, el controlador SDN debe tener operando un driver OpenFlow, mientras que el dispositivo debe tener corriendo un agente OpenFlow. 
 
+Un \textit{switch} tradicional utiliza su propia lógica de encaminamiento para decidir como tiene que reenviar los paquetes. Un \textit{switch} OpenFlow es únicamente un dispositivo \textit{hardware} que obedece órdenes que provienen del controlador SDN.
+
+OpenFlow introduce el concepto de flujo
+
+Un \textit{switch} OpenFlow tiene las siguientes partes:
+
+\begin{itemize}
+	\item \textbf{Agente o Cliente OpenFlow:} Es el encargado de comunicarse con el driver OpenFlow que se encuentra en el controlador SDN.
+	
+	\item \textbf{Tablas de flujo:} 
+\end{itemize}
+
+
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imagenes/flujosOpenflow}
 	\caption{Reglas de flujo en un Switch OpenFlow. Fuente: https://www.researchgate.net/figure/Figura-18-Estructura-y-componentes-de-un-conmutador-OpenFlow-Los-conmutadores-OpenFlow\_fig1\_312187600}
 	\label{fig:flujosopenflow}
 \end{figure}
-
-Como se puede ver en la figura \ref{fig:flujosopenflow}, un \textit{switch} que soporta \textit{OpenFlow}
-
-
-
 
 
 \section{NFV}
