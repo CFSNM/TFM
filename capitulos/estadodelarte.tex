@@ -57,12 +57,14 @@ Una vez identificadas las limitaciones de redes actuales, hay que identificar lo
 \begin{itemize}
 	\item \textbf{Reducción del CapEx (\textit{Capital Expenditures}):} CapEx son los costes asociados a bienes físicos. SDN reduce la necesidad de invertir en nuevos bienes físicos (\textit{hardware}), ya que, gracias a su naturaleza, mediante \textit{software} es capaz de reducir notablemente la carga de trabajo de los dispositivos.
 	
-	\item \textbf{Reducción del OpEx (\textit{Operational Expenditures}):} OpEx son los costes asociados a operaciones y servicios. 
+	\item \textbf{Reducción del OpEx (\textit{Operational Expenditures}):} OpEx son los costes asociados a operaciones y servicios. SDN reduce este tipo de costes debido a su configuración y gestión de los elementos de red mediante \textit{software}. Este control se realiza de forma más sencilla y automática, lo que permite una reducción del tiempo empleado por los administradores de la red.
+	
+	\item \textbf{Agilidad y flexibilidad:} SDN permite a las diferentes entidades desplegar aplicaciones, servicios e infraestructuras de forma rápida para alcanzar objetivos en el menor tiempo posible.
 \end{itemize}
 
 \subsection{Arquitectura SDN}
 
-Las redes definidas por \textit{software} constan de una arquitectura de red específica, como se puede ver en la figura \ref{fig:arquitecturasdn}.
+Las redes definidas por \textit{software} constan de una arquitectura de red específica, compuesta por distintos componentes \textit{hardware} y \textit{software} que interactúan entre sí, como se puede ver en la figura \ref{fig:arquitecturasdn}.
  
 \begin{figure}[!ht]
 	\centering
@@ -88,6 +90,21 @@ Los diferentes elementos que componen la arquitectura SDN son los siguientes:
 
 \subsection{OpenFlow}
 \label{subsec:openflow}
+
+OpenFlow es un protocolo estándar de SDN, siendo el más utilizado para comunicar el controlador SDN con los dispositivos que se encuentran en el plano de datos. Para que esta comunicación sea posible, el controlador SDN debe tener operando un driver OpenFlow, mientras que el dispositivo debe tener corriendo un agente OpenFlow. 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/flujosOpenflow}
+	\caption{Reglas de flujo en un Switch OpenFlow. Fuente: https://www.researchgate.net/figure/Figura-18-Estructura-y-componentes-de-un-conmutador-OpenFlow-Los-conmutadores-OpenFlow\_fig1\_312187600}
+	\label{fig:flujosopenflow}
+\end{figure}
+
+Como se puede ver en la figura \ref{fig:flujosopenflow}, un \textit{switch} que soporta \textit{OpenFlow}
+
+
+
+
 
 \section{NFV}
 \label{sec:nfv}
