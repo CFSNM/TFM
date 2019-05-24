@@ -21,7 +21,7 @@ A continuación vemos una explicación de cada elemento perteneciente a la demo 
 	
 	\item \textbf{Virtual Infrastructure Managers (VIMs):} son los encargados de instanciar y alojar las diferentes máquinas virtuales pertenecientes a los VNF. OpenStack (ver \ref{sec:openstack}) es quien realiza este papel.
 	
-	\item \textbf{Red de Transporte:} la red de transporte es emulada mediante Mininet (ver \ref{sec:mininet}) para establecer flujos de paquetes entre las diferentes VNFs de una Service Chain.
+	\item \textbf{Red de Transporte:} la red de transporte es emulada mediante Mininet (ver \ref{sec:mininet}) para establecer flujos de paquetes entre las diferentes VNFs de una Service Chain. La red se define mediante un script Python (ver \ref{sec:scriptmininet}).
 	
 	\item \textbf{Controlador SDN:} la red de transporte es controlada por una instancia de ONOS (ver \ref{sec:onos}) mediante el envio de paquetes Openflow (ver \ref{subsec:openflow}) a los diferentes switches de la red.
 	

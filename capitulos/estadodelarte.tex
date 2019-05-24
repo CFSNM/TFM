@@ -27,7 +27,7 @@ Dichas herramientas forman un gran conjunto heterogéneo, siendo desarrollada ca
 \begin{itemize}
 	\item Para sacar el máximo rendimiento a la infraestructura de una red, existen herramientas de virtualización como \textbf{OpenStack} (ver \ref{sec:openstack}) o \textbf{Docker}, para proveer a las aplicaciones de una abstracción e independencia. Este tipo de herramientas pertenecen al paradigma \textbf{NFV} (ver \ref{sec:nfv}).
 	
-	\item Para agilizar el envío y procesamiento del tráfico de una red, existen herramientas que permiten crear dispositivos hardware virtualizados como \textbf{OpenVSwitch}. Gracias a este tipo de herramientas, se puede sustituir un \textit{Switch} clásico por un pequeño software que hace las funciones de un \textit{Switch} de una manera más eficiente.
+	\item Para agilizar el envío y procesamiento del tráfico de una red, existen herramientas que permiten crear dispositivos hardware virtualizados como \textbf{OpenVSwitch} o \textbf{Mininet} (ver \ref{sec:mininet}). Gracias a este tipo de herramientas, se puede sustituir un \textit{Switch} clásico por un pequeño software que hace las funciones de un \textit{Switch} de una manera más eficiente.
 	
 	\item La gestión de los dispositivos se ha realizado de forma manual, dispositivo a dispositivo. Gracias a herramientas software como \textbf{Cacti} o \textbf{Nagios}, la forma de gestionar las redes de telecomunicación ha dado un giro de 180 grados. Utilizando estas herramientas, el usuario puede gestionar la red desde un terminal de manera remota, gracias al protocolo SNMP (\textbf{Simple Network Management Protocol}).
 	
@@ -65,9 +65,9 @@ Los diferentes elementos que componen la arquitectura SDN son los siguientes:
 	
 	\item \textbf{Interfaz Norte:} Es la interfaz que conecta al controlador SDN con el plano de control. Facilita el proceso de automatización de la red mediante la comunicación del controlador con las diferentes aplicaciones. Para permitir dicha comunicación con las aplicaciones, la interfaz norte exporta una REST-API.
 	
-	\item \textbf{Agentes y \textit{Drivers}:} Para establecer la comunicación entre el controlador y los dispositivos mediante la interfaz sur, es necesario un par agente-\textit{driver}. El \textit{driver} se encuentra en el controlador, mientras que el agente se encuentra en el dispositivo. Se encargan de realizar la comunicación en el plano de datos, realizando la conversión del lenguaje del controlador al del dispositivo, y viceversa.
+	\item \textbf{Agentes y \textit{Drivers}:} Para establecer la comunicación entre el controlador y los dispositivos mediante la interfaz sur y para la comunicación entre el controlador y las aplicaciones mediante la interfaz norte,es necesario un par agente-\textit{driver}. El \textit{driver} se encuentra en el controlador, mientras que el agente se encuentra en el dispositivo. Se encargan de realizar la comunicación en el plano de datos, realizando la conversión del lenguaje del controlador al del dispositivo, y viceversa.
 	
-	\item \textbf{Aplicaciones SDN:} 
+	\item \textbf{Aplicaciones SDN:} Son programas que se conectan al controlador SDN mediante la interfaz norte. Gracias a su lógica de aplicaciones, desarrollan un próposito concreto y transfieren datos u órdenes al controlador SDN.
 \end{itemize}
 
 
