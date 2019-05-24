@@ -39,11 +39,26 @@ Dichas herramientas forman un gran conjunto heterogéneo, siendo desarrollada ca
 \section{SDN}
 \label{sec:sdn}
 
-SDN (\textit{Software Defined Networking}) es un paradigma que consiste en una nueva forma de configurar las redes de telecomunicación. 
-
-Su principal premisa es la de separar el plano de control (\textit{Software}) del plano de datos (\textit{Hardware}).
+SDN (\textit{Software Defined Networking}) es un paradigma que consiste en una nueva forma de configurar las redes de telecomunicación. Su principal premisa es la de separar el plano de control (\textit{Software}) del plano de datos (\textit{Hardware}).
 
 SDN pretende cambiar la manera tradicional de configuración de dispositivos usando instrucciones de bajo nivel por una manera novedosa mediante herramientas software a un alto nivel.
+
+SDN surge principalmente por las limitaciones que tienen las tecnologías de redes actualmente. Las dos principales limitaciones son:
+
+\begin{itemize}
+	\item \textbf{Dificultad de escalabilidad:} A medida que el tráfico de una red aumenta, la red debe hacer lo mismo. Esto implica nuevos aparatos que deben ser configurados y gestionados. La cantidad de aparatos de una red aumenta de forma exponencial, y ello las hace que la infraestructura de una red sea difícilmente sostenible en cuanto a la configuración y gestión tradicionales.
+	
+	\item \textbf{Dependencia del fabricante:} Cada fabricante diseña sus dispositivos de red de una manera particular, con su propio sistema operativo y su propia sintaxis de configuración. En una red de telecomunicaciones es habitual que su infraestructura de red esté compuesta por dispositivos de diferentes vendedores y fabricantes, y es necesario conocer a fondo cada uno de los sistemas operativos.
+	
+\end{itemize}
+
+Una vez identificadas las limitaciones de redes actuales, hay que identificar los beneficios que SDN puede dar a las entidades que opten por esta tecnología en sus redes de telecomunicaciones. Los principales beneficios de SDN son:
+
+\begin{itemize}
+	\item \textbf{Reducción del CapEx (\textit{Capital Expenditures}):} CapEx son los costes asociados a bienes físicos. SDN reduce la necesidad de invertir en nuevos bienes físicos (\textit{hardware}), ya que, gracias a su naturaleza, mediante \textit{software} es capaz de reducir notablemente la carga de trabajo de los dispositivos.
+	
+	\item \textbf{Reducción del OpEx (\textit{Operational Expenditures}):} OpEx son los costes asociados a operaciones y servicios. 
+\end{itemize}
 
 \subsection{Arquitectura SDN}
 
@@ -51,7 +66,7 @@ Las redes definidas por \textit{software} constan de una arquitectura de red esp
  
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/arquitectura_sdn}
+	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_sdn}
 	\caption{Arquitectura SDN}
 	\label{fig:arquitecturasdn}
 \end{figure}
