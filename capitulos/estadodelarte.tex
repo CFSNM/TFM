@@ -69,7 +69,7 @@ Las redes definidas por \textit{software} constan de una arquitectura de red esp
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_sdn}
-	\caption{Arquitectura SDN}
+	\caption{Arquitectura SDN  Fuente: https://es.wikipedia.org/wiki/Redes\_definidas\_por\_software}
 	\label{fig:arquitecturasdn}
 \end{figure}
 
@@ -95,16 +95,33 @@ OpenFlow es un protocolo estándar de SDN, siendo el más utilizado para comunic
 
 Un \textit{switch} tradicional utiliza su propia lógica de encaminamiento para decidir como tiene que reenviar los paquetes. Un \textit{switch} OpenFlow es únicamente un dispositivo \textit{hardware} que obedece órdenes que provienen del controlador SDN.
 
-OpenFlow introduce el concepto de flujo
+OpenFlow introduce el concepto de flujo, que sustituye a la entrada en la tabla de encaminamiento. Un flujo establece como un \textit{switch} OpenFlow procesa un paquete determinado. Un flujo se compone de dos partes:
 
-Un \textit{switch} OpenFlow tiene las siguientes partes:
+\begin{itemize}
+	\item \textbf{Selector o regla:} El selector define el conjunto de reglas que debe seguir un determinado paquete. Por ejemplo: tener una dirección MAC origen y/o destino específicas, o una dirección IP origen y/o destino específicas. 
+	
+	\item \textbf{Tratamiento o acción:} El tratamiento define como se va a procesar un determinado paquete. Por ejemplo: ser reenvíado por un determinado puerto o ser enviado directamente al controlador SDN.
+\end{itemize}
+
+Un ejemplo completo de un flujo sería el siguiente:
+
+Todo paquete cuya dirección IP origen sea 10.20.25.45/24 y cuya dirección IP destino sea 10.20.25.46/24, debe ser reenviado por el puerto 3.
+
+\begin{itemize}
+	\item El selector es el conjunto de dos reglas que definen al paquete: su IP origen y su IP destino.
+	
+	\item 	El tratamiento es la orden de reenviar el paquete por el puerto 3.
+\end{itemize}
+	
+A continuación, se empieza ya a hablar más en detalle de un \textit{switch} OpenFlow. Dicho componente tiene las siguientes partes:
 
 \begin{itemize}
 	\item \textbf{Agente o Cliente OpenFlow:} Es el encargado de comunicarse con el driver OpenFlow que se encuentra en el controlador SDN.
 	
-	\item \textbf{Tablas de flujo:} 
+	\item \textbf{Tabla de flujos:} Es la tabla donde se almacenan los flujos del \textit{switch}. Mantiene una relación entre el selector y el tratamiento, así como diferentes estadísticas de monitorización.
+	
+	\item \textbf{Puerto:} Este concepto es similar al de un \textit{switch} tradicional.
 \end{itemize}
-
 
 \begin{figure}[!ht]
 	\centering
@@ -112,6 +129,14 @@ Un \textit{switch} OpenFlow tiene las siguientes partes:
 	\caption{Reglas de flujo en un Switch OpenFlow. Fuente: https://www.researchgate.net/figure/Figura-18-Estructura-y-componentes-de-un-conmutador-OpenFlow-Los-conmutadores-OpenFlow\_fig1\_312187600}
 	\label{fig:flujosopenflow}
 \end{figure}
+
+\clearpage
+
+En la figura \ref{fig:flujosopenflow} se puede ver la estructura de un \textit{switch} OpenFlow, así como la estructura interna de la tabla de flujos.
+
+Cada vez que un \textit{switch} OpenFlow recibe un paquete, realiza un proceso de \textit{Matching}, es decir, comprueba si el paquete que ha recibido cumple algún selector de su tabla de flujos. Si algún selector coincide con dicho paquete, se reenvía según el tratamiento asociado a dicho selector.
+
+En caso contrario, si dicho paquete no coincide con ninguna entrada de la tabla de flujos, se reenviara por un puerto por defecto, en función de la configuración del propio dispositivo.
 
 
 \section{NFV}
