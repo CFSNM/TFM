@@ -5,3 +5,6 @@ https://osm.etsi.org/
 
 http://sdnhub.org/tutorials/onos/
 https://wiki.onosproject.org
+
+
+https://www.ciena.com.mx/insights/what-is/What-is-Network-Functions-Virtualization_es_LA.html
