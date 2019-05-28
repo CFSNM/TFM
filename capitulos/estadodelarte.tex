@@ -145,7 +145,7 @@ En caso contrario, si dicho paquete no coincide con ninguna entrada de la tabla 
 NFV (\textit{Network Function Virtualization}) es un paradigma que engloba a las redes de telecomunicación, más concretamente a su infraestructura. Su principal premisa es la de desacoplar las funciones de red de dispositivos \textit{hardware} y
  trasladarlas a servidores virtuales. Con ello se consigue tener múltiples funciones virtualizadas en un único servidor.
 
-Las redes de telecomunicación actuales tienen ciertos puntos clave que NFV pretende resolver, como son:
+Las redes de telecomunicación actuales tienen ciertos problemas que NFV pretende resolver, como son:
 
 \begin{itemize}
 	\item Altos costes y restricciones físicas de fabricación.
@@ -153,7 +153,7 @@ Las redes de telecomunicación actuales tienen ciertos puntos clave que NFV pret
 	\item Ciclo de vida corto de los dispositivos \textit{hardware}.
 \end{itemize}
 
-Todos estos puntos claves han desembocado en la adopción de NFV como un estándar para agilizar, facilitar y escalar las infraestructuras de red, así como disminuir costes.
+Todos estos problemas o desventajas han desembocado en la adopción de NFV como un estándar para agilizar, facilitar y escalar las infraestructuras de red, así como disminuir costes.
 
 NFV reduce la dependencia de dispositivos \textit{hardware} dedicados. También mejora la escalabilidad y el uso de recursos, ya que una máquina de red puede ser replicada de forma más fácil que un dispositivo físico.
 
@@ -162,10 +162,20 @@ NFV tiene una serie de ventajas importantes que lo convierte en un alternativa �
 \begin{itemize}
 	\item \textbf{Simplificar la implantación de elementos de red:} Las soluciones de red NFV son flexibles, genéricas y fáciles de implantar, lo que implica que el proceso de actualización es también más rápido y sencillo.
 	
-	\item 
+	\item \textbf{Mayor escalabilidad de la red:} Gracias a la naturaleza \textit{software} de las funciones virtualizadas, es mucho más fácil escalar los componentes de la red que si se trataran de dispositivos físicos.
+	
+	\item \textbf{Independencia respecto a los fabricantes de dispositivos:} Debido a que las funciones virtualizadas son desarrolladas mediante \textit{software}, se pierde la dependencia respecto a las particularidades de cada dispositivo, como su sistema operativo o su sintáxis de configuración y gestión, entre otros.
 \end{itemize}
 
-\subsection{Cloud Computing}
-\label{subsec:cloud}
+\subsection{Arquitectura NFV}
+\label{subsec:nfvarq}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_nfv}
+	\caption{Arquitectura NFV}
+	\label{fig:arquitecturanfv}
+\end{figure}
+
 
 \cleardoublepage
