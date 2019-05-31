@@ -170,6 +170,8 @@ NFV tiene una serie de ventajas importantes que lo convierte en un alternativa �
 \subsection{Arquitectura NFV}
 \label{subsec:nfvarq}
 
+La virtualización de funciones de red consta de una arquitectura específica, compuesta por diferentes componentes \textit{hardware} y \textit{software} que interactúan entre sí, como se puede ver en la figura \ref{fig:arquitecturanfv}.
+
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_nfv}
@@ -177,5 +179,26 @@ NFV tiene una serie de ventajas importantes que lo convierte en un alternativa �
 	\label{fig:arquitecturanfv}
 \end{figure}
 
+La arquitectura NFV se compone principalmente de tres componentes, descritos a continuación:
+
+\begin{itemize}
+	\item \textbf{Infraestructura NFV:} Es el componente que constituye la base de la arquitectura. Se trata del conjunto de equipos \textit{hardware} y sus recursos (CPU, RAM, HD entre otros) que se utilizan para alojar las máquinas virtuales que componen las diferentes funciones de red virtualizadas (VNFs).
+	
+	\item \textbf{Bloque de VNFs:} Es el componente que engloba al conjunto de VNFs disponibles para instanciar. Una VNF viene descrita como un conjunto de máquinas virtuales que utilizan determinados recursos de la infraestructura.
+	
+	\item \textbf{MANO (\textit{Manager and Orchestrator}):} Es el componente que interactúa tanto con la infraestructura NFV. Se encarga de gestionar y orquestar a la propia infraestructura, controlando las acciones que sobre ella se realizan. Dichas acciones pueden ser una nueva instanciación de una VNF o un borrado de una VNF existente, entre otras.
+	
+\end{itemize}
+
+Después de haber explicado cada uno de los tres componentes de la arquitectura NFV, es necesario poner un ejemplo completo de como se instancia una nueva función de red virtualizada, explicando las interacciones entre los componentes:
+
+\begin{enumerate}
+	\item El usuario elige una VNF del bloque de VNFs para instanciar. Dicha orden es transferida al bloque MANO.
+	\item El bloque MANO solicita a la infraestructura NFV información sobre sus recursos disponible, para comprobar si la VNF podrá ser instanciada o no.
+	\item En caso afirmativo, el bloque MANO recibirá un OK de la infraestructura y procederá a mandar la orden de instanciación.
+	\item Una vez enviada la orden de instanciación, la infraestructura NFV reservará los recursos necesarios y arrancará el conjunto de máquinas virtuales pertenecientes a la VNF instanciada.
+	\item Si la instanciación ha sido correcta, el bloque MANO recibirá un OK, que será retransmitido al usuario.
+	\item El bloque MANO, gracias a su interacción con la infaestructura NFV, proveerá al usuario de datos de monitorización de la VNF instanciada.
+\end{enumerate}
 
 \cleardoublepage
