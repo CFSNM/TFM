@@ -1,21 +1,27 @@
 \chapter{Introducción}
 
-El paradigma SDN se ha convertido en la manera más eficiente de gestionar las redes actuales, gracias a la automatización de las funciones de operación y gestión. A su vez, el paradigma NFV se ha convertido en un recurso valioso para optimizar recursos de una infraestructura IT. 
+El paradigma SDN (\textit{Software Defined Networking}) se ha convertido en una de las maneras más eficientes de gestionar las redes de telecomunicación, permitiendo a los administradores de red una gestión y configuración a alto nivel. Todo esto es gracias a la naturaleza de SDN, cuya principal premisa es la de utilizar un lenguaje común para todos los dispositivos de red, sin importar de que fabricante provengan.
+
+El paradigma NFV (\textit{Network Function Virtualization}) se ha convertido en una de las tecnologías más valiosas para optimizar recursos de una infraestructura IT. Al igual que SDN, NFV permite a los administradores de red la gestión de los recursos; HD, RAM o CPU, entre otros; a alto nivel. Gracias a la naturaleza de NFV, que se basa en la idea de virtualizar cualquier función de red, como puede ser un \textit{firewall} o un dispositivo NAT (\textit{Network Address Traslation}), sustituyendo un dispositivo físico por una máquina virtual que realice su misma función de una manera más eficiente.
 
 Debido a esto, han ido surgiendo herramientas para la aplicación de las técnicas SDN y NFV para automatizar y optimizar las redes de telecomunicación.
 
 \section{Motivaciones}
 
-Este proyecto viene motivado por las diferentes herramientas que existen para aplicar técnicas SDN y NFV a las redes de telecomunicación. Dichas herramientas tienen interfaces para permitir al usuario el poder comunicarse con ellas, pero son muy diferentes entre sí. 
+Este proyecto viene motivado por la evolución de las redes de telecomunicación en los últimos años. El concepto de red de telecomunicación inició como algo puramente físico, constituido exclusivamente por dispositivos \textit{hardware}. Actualmente, una red de telecomunicación está compuesta por dispositivos físicos sustentados por aplicaciones \textit{software} que son utilizadas por los administradores de red para realizar tareas a alto nivel de forma automatizada.
 
-Así mismo, no existe una entidad central que permita gestionar las interacciones entre ellas de forma óptima. Por esto último surge la idea de desarrollar diferentes librerías (APIs) \textbf{open-source} para interactuar con las diferentes herramientas de una forma sencilla y transparente para el usuario, y convertir a Net2Plan en esa entidad central que se pueda comunicar con las diferentes herramientas y gestionar las interacciones entre ellas.
+Los paradigmas SDN y NFV han posibilitado esta evolución, permitiendo a los administradores de redes el poder configurar y gestionar una red a un gran alto nivel, así como el sustituir ciertos dispositivos físicos por máquinas virtuales que realicen su misma función dentro de un entorno de red, pero de manera más eficiente.
+
+Para realizar todas estas tareas a alto nivel, son necesarias diferentes herramientas \textit{software} destinadas a tal fin. Cada una de estas herramientas tiene su propia interfaz de comunicación para poder hacer uso de ellas. Un problema que surge es la particularidad de las interfaces de comunicación de las distintas herramientas, ya que cada una de ellas tiene su propia sintáxis.
+
+Así mismo, no existe una entidad central que permita gestionar las interacciones entre las diferentes herramientas de forma óptima. Por esto último surge la idea de desarrollar diferentes clientes \textbf{open-source} para interactuar con las distintas herramientas de una forma sencilla y transparente para el usuario, y convertir a Net2Plan en esa entidad central que se pueda comunicar con las diferentes herramientas y gestionar las interacciones entre ellas.
 
 \section{Objetivos}
 
 El objetivo principal de este trabajo es desarrollar diferentes APIs \textbf{open-source} e integrarlas en un plugin de Net2Plan para llevar a cabo una prueba de concepto. Este objetivo se puede desglosar en otros más pequeños:
 
 \begin{itemize}
-	\item Adquirir amplio conocimiento de las distintas herramientas (ONOS, Mininet, OSM y OpenStack). 
+	\item Adquisición de conocimientos de las distintas herramientas (ONOS, Mininet, OSM y OpenStack). 
 	\item Desarrollo de APIs para entornos SDN (ONOS Client).
 	\item Desarrollo de APIs para entornos NFV (J-OSM Client y OpenStack Client).
 	\item Integración de todas las APIs en un plugin de Net2Plan para una prueba de concepto.
@@ -28,21 +34,22 @@ Para la consecución de los objetivos marcados, el plan de trabajo del proyecto 
 
 \begin{itemize}
 	\item Estudio y familiarización con ONOS, Mininet, OSM y OpenStack.
-	\item Desarrollo de la librería para interactuar con ONOS (ONOS Client).
-	\item Desarrollo de las lubrerías para interactucar con OSM y OpenStack (J-OSM Client y OpenStack Client).
-	\item Desarrollo del plugin de Net2Plan integrando las librerías desarrolladas.
-	\item Realizar la prueba de concepto y obtener conclusiones.
+	\item Desarrollo del cliente para interactuar con ONOS (ONOS Client).
+	\item Desarrollo del cliente para interactuar con OSM (J-OSM Client).
+	\item Desarrollo del cliente para interactura con OpenStack (OpenStack Client);
+	\item Desarrollo del plugin de Net2Plan integrando los clientes desarrollados.
+	\item Realización la prueba de concepto y obtención de resultados.
+	\item Análisis de resultados y obtención de conclusiones.
 	\item Escritura de la memoria.
 \end{itemize}
 
+\clearpage
+
 \section{Estructura de la memoria}
 
-La memoria de este Trabajo de Fin de Máster se estructura de la siguiente manera:
+El resto de la memoria de este Trabajo de Fin de Máster se ha estructurado de la siguiente manera:
 \begin{itemize}
-	
-	\item Capítulo 1. Introducción
-	
-	En este capitulo se realiza una breve contextualización del proyecto, detallando las motivaciones, los objetivos y el plan de trabajo.
+
 	
 	\item Capítulo 2. Estado del arte
 	
