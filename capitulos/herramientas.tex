@@ -1,15 +1,18 @@
 \chapter{Herramientas utilizadas}
 
-En este capítulo se va a hacer una descripción de cada una de las herramientas utilizadas en el proyecto, haciendo especial mención a Net2Plan, que es la herramienta open-source que ha servido como base para el desarollo de este proyecto.
+En este capítulo se va a hacer una descripción de cada una de las herramientas utilizadas en el proyecto, haciendo especial mención a Net2Plan, que es una herramienta cuya funcionalidad es la de emular y planificar una red de telecomunicación. Dicha herramienta constituye la base para el desarrollo de este proyecto, más concretamente de la prueba de concepto.
 
-Por último, se hará una extensa explicación de cada una de las diferentes herramientas/aplicaciones que se han utilizado para llevar a cabo este proyecto (ONOS, ETSI-OSM y OpenStack), y de las librerías JAVA que se han empleado para poder realizar la interacción entre todos los componentes y llevar a cabo una prueba de concepto exitosa.
+Además de Net2Plan, se han utilizado otras herramientas para complementar la funcionalidad de Net2Plan y proveerle diferentes funcionalidad enmarcadas en las tecnologías SDN y NFV. Dichas herramientas son Mininet, para emular redes de telecomunicación; ONOS, un controlador SDN; ETSI-OSM, un gestor y orquestador NFV; y OpenStack, una herramienta para emular una infraestructura IT.
+
+Todas estas herramientas operan en sintonía para llevar a cabo una prueba de concepto exitosa.
+
 
 \section{Net2Plan}
 \label{sec:net2plan}
 
 Net2Plan \cite{net2plan} es una herramienta \textit{open-source} programada en Java dedicada a la planificación, optimización y simulación de redes de comunicaciones desarrollada por el grupo de investigación GIRTEL de la Universidad Politécnica de Cartagena. En sus inicios, fue concebida como una herramienta para docencia sobre redes de comunicaciones. Sin embargo, actualmente se ha convertido en una poderosa herramienta de optimización y planificación de redes, con un repositorio de recursos para la planificación de redes, tanto para el entorno académico como para el entorno de la industria y la empresa.
 
-Net2Plan está basado en una representación de redes con componentes abstractos, tales como nodos, enlaces, demandas, ... Ésto está pensado para poder planificar cualquier tipo de red, sin importar la tecnología que utilice. Para poder personalizar las redes a gusto del usuario, cada componentes permite añadir atributos. Además, hay clases que permiten modelar una tecnología en concreto (redes IP, WDM o escenarios de NFV).
+Net2Plan está basado en una representación de redes con componentes abstractos, tales como nodos, enlaces, demandas o rutas, entre otros. Ésto está pensado para poder planificar cualquier tipo de red, sin importar la tecnología que utilice. Para poder personalizar las redes a gusto del usuario, cada componentes permite añadir atributos. Además, hay clases que permiten modelar una tecnología en concreto (redes IP, WDM o escenarios de NFV).
 
 Net2Plan tiene dos modos de uso: mediante interfaz gráfica (GUI) y línea de comandos (CLI). La interfaz gráfica está pensada para utilizar en sesiones de laboratorio como un recurso formativo, o para poder ver más detalladamente la red sobre la que se está trabajando. Por otro lado, el modo línea de comandos facilita los estudios de investigación, ya que permite automatizar ejecuciones de algoritmos o simulaciones.
 Como se ha hablado antes, ambos modos permiten utilizar Net2Plan en el entorno educativo (investigación o enseñanza) y en el entorno de la industria y la empresa.
@@ -31,7 +34,7 @@ Como se ha hablado antes, ambos modos permiten utilizar Net2Plan en el entorno e
 \section{Mininet}
 \label{sec:mininet}
 
-Mininet es una herramienta de emulación de redes que permite crear redes con \textit{hosts}, \textit{switches}, controladores y enlaces. Los \textit{hosts} de Mininet corren bajo un sistema operativo Linux, mientras que los \textit{switches} soportan el protocolo OpenFlow (ver \ref{subsec:openflow}) para mayor flexibilidad respecto a la configuración del \textit{routing} y para integrarlos dentro de un escenario SDN (ver \ref{sec:sdn}).
+Mininet es una herramienta programada en Python cuyo objetivo es el de emular redes de telecomunicación. Permite crear redes con \textit{hosts}, \textit{switches}, controladores y enlaces a un alto nivel. Los \textit{hosts} de Mininet corren bajo un sistema operativo Linux, mientras que los \textit{switches} soportan el protocolo OpenFlow (ver \ref{subsec:openflow}) para mayor flexibilidad respecto a la configuración del \textit{routing} y para integrarlos dentro de un escenario SDN (ver \ref{sec:sdn}).
 
 Mininet tiene una gran polivalencia, y eso permite que sea utilizado en diferentes tareas, tales como investigación, desarrollo, aprendizaje o testeo. Gracias a ello, se puede conseguir emular una red con un comportamiento similar a una real.
 
@@ -49,7 +52,7 @@ Las redes emuladas por Mininet ejecutan aplicaciones estandarizadas de Linux, co
 \section{ONOS}
 \label{sec:onos}
 
-ONOS (Open Network Operative System) es un proyecto Open-Source perteneciente a The Linux Foundation. Su principal objetivo es el de crear un controlador SDN para proveedores de servicios de comunicaciones.
+ONOS (\textit{Open Network Operative System}) es un proyecto Open-Source perteneciente a The Linux Foundation. Su principal objetivo es el de crear un controlador SDN para proveedores de servicios de comunicaciones.
 
 Sus principales características son:
 \begin{itemize}
@@ -223,7 +226,6 @@ Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus m�
 	\item \textbf{Object Storage:} Este módulo se encarga de gestionar el servicios \textbf{Swift}. Es el encargado de crear almacenamiento persistente para los diferentes archivos alojados en el sistema.
 \end{itemize}
 
-En la figura \ref{fig:ejemploos4j} se puede ver un breve ejemplo de como utilizar los servicios Identity, Compute, Image y Network.
 
 \begin{figure}[!ht]
 	\centering
@@ -231,6 +233,10 @@ En la figura \ref{fig:ejemploos4j} se puede ver un breve ejemplo de como utiliza
 	\caption{Ejemplo de uso de OpenStack4j. Fuente: http://www.openstack4j.com/}
 	\label{fig:ejemploos4j}
 \end{figure}
+
+En la figura \ref{fig:ejemploos4j} se puede ver un breve ejemplo de como utilizar los servicios Identity, Compute, Image y Network.
+
+
 
 
 \cleardoublepage
