@@ -15,7 +15,7 @@ SDN pretende cambiar la manera tradicional de configuración de dispositivos usa
 Dicho paradigma surge principalmente por las limitaciones que tienen las tecnologías de redes actualmente. Las dos principales limitaciones son:
 
 \begin{itemize}
-	\item \textbf{Dificultad de escalabilidad:} A medida que el tráfico de una red aumenta, la red debe hacer lo mismo. Esto implica nuevos aparatos que deben ser configurados y gestionados. La cantidad de aparatos de una red aumenta de forma exponencial, y ello las hace que la infraestructura de una red sea difícilmente sostenible en cuanto a la configuración y gestión tradicionales.
+	\item \textbf{Dificultad de escalabilidad:} A medida que el tráfico de una red aumenta, la red debe hacer lo mismo. Esto implica nuevos dispositivos que deben ser configurados y gestionados. La cantidad de dispositivos de una red aumenta de forma exponencial, y debido a ello, la configuración y gestión tradicionales se convierte en un mecanismo tedioso y poco sostenible a largo plazo.
 	
 	\item \textbf{Dependencia del fabricante:} Cada fabricante diseña sus dispositivos de red de una manera particular, con su propio sistema operativo y su propia sintaxis de configuración. En una red de telecomunicaciones es habitual que su infraestructura de red esté compuesta por dispositivos de diferentes vendedores y fabricantes, y es necesario conocer a fondo cada uno de los sistemas operativos.
 	
@@ -24,7 +24,7 @@ Dicho paradigma surge principalmente por las limitaciones que tienen las tecnolo
 Una vez identificadas las limitaciones de redes actuales, hay que identificar los beneficios que SDN puede dar a las entidades que opten por esta tecnología en sus redes de telecomunicaciones. Los principales beneficios de SDN son:
 
 \begin{itemize}
-	\item \textbf{Reducción del CapEx (\textit{Capital Expenditures}):} CapEx son los costes asociados a bienes físicos. SDN reduce la necesidad de invertir en nuevos bienes físicos (\textit{hardware}), ya que, gracias a su naturaleza, mediante \textit{software} es capaz de reducir notablemente la carga de trabajo de los dispositivos.
+	\item \textbf{Reducción del CapEx (\textit{Capital Expenditures}):} CapEx son los costes asociados a bienes físicos. SDN reduce la necesidad de invertir en nuevos bienes físicos (\textit{hardware}), ya que se lleva a cabo una mejor gestión que induce a planificaciones más eficientes, con menor equipamiento se obtiene igual o menor rendimiento que de foirma tradicional.
 	
 	\item \textbf{Reducción del OpEx (\textit{Operational Expenditures}):} OpEx son los costes asociados a operaciones y servicios. SDN reduce este tipo de costes debido a su configuración y gestión de los elementos de red mediante \textit{software}. Este control se realiza de forma más sencilla y automática, lo que permite una reducción del tiempo empleado por los administradores de la red.
 	
@@ -38,7 +38,7 @@ Las redes definidas por \textit{software} constan de una arquitectura de red esp
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_sdn}
-	\caption{Arquitectura SDN  Fuente: https://es.wikipedia.org/wiki/Redes\_definidas\_por\_software}
+	\caption{Arquitectura SDN. Fuente:\cite{sdnbib}}
 	\label{fig:arquitecturasdn}
 \end{figure}
 
@@ -60,7 +60,7 @@ Los diferentes elementos que componen la arquitectura SDN son los siguientes:
 \subsection{OpenFlow}
 \label{subsec:openflow}
 
-OpenFlow es un protocolo estándar de SDN, siendo el más utilizado para comunicar el controlador SDN con los dispositivos que se encuentran en el plano de datos. Para que esta comunicación sea posible, el controlador SDN debe tener operando un driver OpenFlow, mientras que el dispositivo debe tener corriendo un agente OpenFlow. 
+OpenFlow\cite{openflowbib} es un protocolo estándar de SDN, siendo el más utilizado para comunicar el controlador SDN con los dispositivos que se encuentran en el plano de datos. Para que esta comunicación sea posible, el controlador SDN debe tener operando un driver OpenFlow, mientras que el dispositivo debe tener corriendo un agente OpenFlow. 
 
 Un \textit{switch} tradicional utiliza su propia lógica de encaminamiento para decidir como tiene que reenviar los paquetes. Un \textit{switch} OpenFlow es únicamente un dispositivo \textit{hardware} que obedece órdenes que provienen del controlador SDN.
 
@@ -70,16 +70,6 @@ OpenFlow introduce el concepto de flujo, que sustituye a la entrada en la tabla 
 	\item \textbf{Selector o regla:} El selector define el conjunto de reglas que debe seguir un determinado paquete. Por ejemplo: tener una dirección MAC origen y/o destino específicas, o una dirección IP origen y/o destino específicas. 
 	
 	\item \textbf{Tratamiento o acción:} El tratamiento define como se va a procesar un determinado paquete. Por ejemplo: ser reenvíado por un determinado puerto o ser enviado directamente al controlador SDN.
-\end{itemize}
-
-Un ejemplo completo de un flujo sería el siguiente:
-
-Todo paquete cuya dirección IP origen sea 10.20.25.45/24 y cuya dirección IP destino sea 10.20.25.46/24, debe ser reenviado por el puerto 3.
-
-\begin{itemize}
-	\item El selector es el conjunto de dos reglas que definen al paquete: su IP origen y su IP destino.
-	
-	\item 	El tratamiento es la orden de reenviar el paquete por el puerto 3.
 \end{itemize}
 	
 A continuación, se empieza ya a hablar más en detalle de un \textit{switch} OpenFlow. Dicho componente tiene las siguientes partes:
@@ -91,22 +81,6 @@ A continuación, se empieza ya a hablar más en detalle de un \textit{switch} Op
 	
 	\item \textbf{Puerto:} Este concepto es similar al de un \textit{switch} tradicional.
 \end{itemize}
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/flujosOpenflow}
-	\caption{Reglas de flujo en un Switch OpenFlow. Fuente: https://www.researchgate.net/figure/Figura-18-Estructura-y-componentes-de-un-conmutador-OpenFlow-Los-conmutadores-OpenFlow\_fig1\_312187600}
-	\label{fig:flujosopenflow}
-\end{figure}
-
-\clearpage
-
-En la figura \ref{fig:flujosopenflow} se puede ver la estructura de un \textit{switch} OpenFlow, así como la estructura interna de la tabla de flujos.
-
-Cada vez que un \textit{switch} OpenFlow recibe un paquete, realiza un proceso de \textit{Matching}, es decir, comprueba si el paquete que ha recibido cumple algún selector de su tabla de flujos. Si algún selector coincide con dicho paquete, se reenvía según el tratamiento asociado a dicho selector.
-
-En caso contrario, si dicho paquete no coincide con ninguna entrada de la tabla de flujos, se reenviara por un puerto por defecto, en función de la configuración del propio dispositivo.
-
 
 \section{NFV}
 \label{sec:nfv}
@@ -123,8 +97,6 @@ Las redes de telecomunicación actuales tienen ciertos problemas que NFV pretend
 \end{itemize}
 
 Todos estos problemas o desventajas han desembocado en la adopción de NFV como un estándar para agilizar, facilitar y escalar las infraestructuras de red, así como disminuir costes.
-
-NFV reduce la dependencia de dispositivos \textit{hardware} dedicados. También mejora la escalabilidad y el uso de recursos, ya que una máquina de red puede ser replicada de forma más fácil que un dispositivo físico.
 
 NFV tiene una serie de ventajas importantes que lo convierte en un alternativa óptima:
 
@@ -144,7 +116,7 @@ La virtualización de funciones de red consta de una arquitectura específica, c
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_nfv}
-	\caption{Arquitectura NFV Fuente: https://es.wikipedia.org/wiki/Virtualización\_de\_funciones\_de\_red}
+	\caption{Arquitectura NFV}
 	\label{fig:arquitecturanfv}
 \end{figure}
 
@@ -163,7 +135,7 @@ Después de haber explicado cada uno de los tres componentes de la arquitectura 
 
 \begin{enumerate}
 	\item El usuario elige una VNF del bloque de VNFs para instanciar. Dicha orden es transferida al bloque MANO.
-	\item El bloque MANO solicita a la infraestructura NFV información sobre sus recursos disponible, para comprobar si la VNF podrá ser instanciada o no.
+	\item El bloque MANO solicita a la infraestructura NFV información sobre sus recursos disponibles, para comprobar si la VNF podrá ser instanciada o no.
 	\item En caso afirmativo, el bloque MANO recibirá un OK de la infraestructura y procederá a mandar la orden de instanciación.
 	\item Una vez enviada la orden de instanciación, la infraestructura NFV reservará los recursos necesarios y arrancará el conjunto de máquinas virtuales pertenecientes a la VNF instanciada.
 	\item Si la instanciación ha sido correcta, el bloque MANO recibirá un OK, que será retransmitido al usuario.
