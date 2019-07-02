@@ -8,7 +8,9 @@ Una vez explicados SDN y NFV, se lleva a cabo una explicación de como han evolu
 \section{SDN}
 \label{sec:sdn}
 
-SDN (\textit{Software Defined Networking})\cite{sdnbib} es un paradigma que consiste en una nueva forma de configurar y gestionar las redes de telecomunicación. Su principal premisa es la de separar el plano de control (\textit{Software}) del plano de datos (\textit{Hardware}).
+SDN (\textit{Software Defined Networking})\cite{sdnbib} es un paradigma que consiste en una nueva forma de configurar y gestionar las redes de telecomunicación. Su principal premisa es la de desacoplar el plano de control y el plano de datos.
+
+El plano de control define como se configura y gestiona la red de telecomunicación, mientras que el plano de datos es el encargado de transferir las órdenes de configuración y gestión a la infraestructura de la red.
 
 SDN pretende cambiar la manera tradicional de configuración de dispositivos usando instrucciones de bajo nivel por una manera novedosa mediante herramientas \textit{software} a un alto nivel.
 
@@ -127,7 +129,7 @@ La arquitectura NFV se compone principalmente de tres componentes, descritos a c
 	
 	\item \textbf{Bloque de VNFs:} Es el componente que engloba al conjunto de VNFs disponibles para instanciar. Una VNF viene descrita como un conjunto de máquinas virtuales que utilizan determinados recursos de la infraestructura.
 	
-	\item \textbf{MANO (\textit{Manager and Orchestrator}):} Es el componente que interactúa tanto con la infraestructura NFV. Se encarga de gestionar y orquestar a la propia infraestructura, controlando las acciones que sobre ella se realizan. Dichas acciones pueden ser una nueva instanciación de una VNF o un borrado de una VNF existente, entre otras.
+	\item \textbf{MANO (\textit{Manager and Orchestrator}):} Es el componente que interactúa tanto con la infraestructura NFV como con el bloque de VNFs. Se encarga de gestionar y orquestar a la propia infraestructura, controlando las acciones que sobre ella se realizan. Dichas acciones pueden ser una nueva instanciación de una VNF o un borrado de una VNF existente, entre otras.
 	
 \end{itemize}
 
@@ -142,6 +144,9 @@ Después de haber explicado cada uno de los tres componentes de la arquitectura 
 	\item El bloque MANO, gracias a su interacción con la infaestructura NFV, proveerá al usuario de datos de monitorización de la VNF instanciada.
 \end{enumerate}
 
+\section{Relación entre SDN y NFV}
+\label{sec:sdnnfv}
+
 
 \section{Herramientas Open-Source en redes de telecomunicación}
 \label{sec:opensourcenets}
@@ -150,7 +155,7 @@ Una red de telecomunicación es un conjunto de medios, tecnologías y protocolos
 
 Así mismo, se está produciendo una enorme evolución en el concepto de una red de telecomunicación. 
 
-En los orígenes, este concepto era puramente físico, con un conjunto de dispositivos \textit{Hardware}, como pueden ser \textit{routers}, \textit{switches} u ordenadores, interactuando entre sí. Actualmente, la gran yoría de las redes de telecomunicación utilizan software open-source para diferentes propósitos:
+En los orígenes, este concepto era puramente físico, con un conjunto de dispositivos \textit{Hardware}, como pueden ser \textit{routers}, \textit{switches} u ordenadores, interactuando entre sí. Actualmente, la gran mayoría de las redes de telecomunicación utilizan software open-source para diferentes propósitos:
 
 \begin{itemize}
 	\item Sacar el máximo rendimiento a su infraestructura.
