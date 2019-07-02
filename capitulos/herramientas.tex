@@ -58,12 +58,14 @@ Sus principales características son:
 \end{itemize}
 
 
-ONOS está programado en Java y opera como un clúster de nodos idénticos en cuanto al software. Trabaja con modelos y protocolos estandarizados, tales como OpenFlow (ver \ref{subsec:openflow}), NETCONF, OpenConfig, OpenROADM, ...
+ONOS está programado en Java y opera como un clúster de nodos idénticos en cuanto al software. Trabaja con modelos y protocolos estandarizados, tales como OpenFlow (ver \ref{subsec:openflow}), NETCONF, OpenConfig, OpenROADM, entre otros.
+
+\clearpage
 
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.6\linewidth]{imagenes/onos_architecture}
+	\includegraphics[width=0.7\linewidth]{imagenes/onos_architecture}
 	\caption{Arquitectura de ONOS. 
 		Fuente: \cite{arqonosbib}}
 	\label{fig:onosarch}
@@ -71,28 +73,29 @@ ONOS está programado en Java y opera como un clúster de nodos idénticos en cu
 
 En la figura \ref{fig:onosarch} se observa la arquitectura interna de ONOS. En el \textit{Core} se encuentran los controladores de los diferentes servicios que ofrece (TopologyService, DeviceService, HostService, ...), cada uno de ellos destinado a controlar un tipo de componente.
 
-También se puede observar que, para acceder a estos controladores, las aplicaciones necesitan hacer uso de la interfaz \textit{NorthBound}, que se compone principalmente de una RestAPI.
+También se puede observar que, para acceder a estos controladores, las aplicaciones necesitan hacer uso de la interfaz \textit{NorthBound}, que se compone de varias subinterfaces que exportan diferentes APIs, como una API REST o una TAPI (\textit{Transport API}).
 
 Por otro lado, para que los controladores puedan tener constancia de los dispositivos de la red, la interfaz \textit{SouthBound} incluye diferentes \textit{drivers}, genéricos o particulares, para poder comunicarse con dispositivos mediante numerosos protocolos estandarizados, como se explicó anteriormente.
-
-\clearpage
-
-Para facilitar la interacción con el usuario, ONOS ofrece una GUI, como se puede ver en la figura \ref{fig:onosgui}, para ver en más detalle la topología que esta siendo gestionada, así como datos más específicos de cada uno de los dispositivos de la red. 
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.8\linewidth]{imagenes/onos_gui}
 	\caption{Interfaz Gráfica de ONOS. 
-		Fuente: https://wiki.onosproject.org}
+		Fuente: \cite{wikionosbib}}
 	\label{fig:onosgui}
 \end{figure}
 
-\subsection{OpenAPI}
+Para facilitar la interacción con el usuario, ONOS ofrece una GUI, como se puede ver en la figura \ref{fig:onosgui}, para ver en más detalle la topología que esta siendo gestionada, así como datos más específicos de cada uno de los dispositivos de la red. 
+
+
+\subsection{OpenAPI y Swagger}
 \label{subsec:openapi}
 
-OpenAPI es una iniciativa creada por varios expertos de la industria y la investigación para estandarizar las descripciones de las RestAPIs. Su principal objetivo es crear y promover un formato de descripción genérico.
+OpenAPI\cite{openapibib} es una iniciativa creada por varios expertos de la industria y la investigación para estandarizar las descripciones de las RestAPIs. Su principal objetivo es crear y promover un formato de descripción genérico.
 
-Actualmente, prácticamente todas las aplicaciones utilizar APIs para conectarse con bases de datos, servicios y aplicaciones de terceros,... Gracias a la iniciativa de OpenAPI, las aplicaciones podrán conectarse entre sí de forma más rápida y sencilla, ayudando a tener un mundo realmente comunicado.
+Swagger\cite{swaggerbib} es un conjunto de herramientas open-source para definir y documentar REST APIs.
+
+Mediante la colaboración entre OpenAPI, que establece un modelo de APIs común, y Swagger, que permite diseñar una REST API de forma simple, las aplicaciones podrán conectarse entre sí de forma sencilla, y ayudará a tener un mundo más comunicado.
 
 \section{OSM}
 \label{sec:osm}
