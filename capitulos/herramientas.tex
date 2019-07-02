@@ -67,7 +67,7 @@ ONOS está programado en Java y opera como un clúster de nodos idénticos en cu
 	\centering
 	\includegraphics[width=0.7\linewidth]{imagenes/onos_architecture}
 	\caption{Arquitectura de ONOS. 
-		Fuente: \cite{arqonosbib}}
+		Fuente: \cite{onostutbib}}
 	\label{fig:onosarch}
 \end{figure}
 
@@ -100,33 +100,23 @@ Mediante la colaboración entre OpenAPI, que establece un modelo de APIs común,
 \section{OSM}
 \label{sec:osm}
 
-OSM (\textit{Open Source MANO}) es un software \textit{open-source} cuya función principal es la orquestación de servicios de red avanzados en infraestructuras NFV heterogéneas. Surge como iniciativa de la ETSI para crear una arquitectura NFV común para los operadores de red.
+OSM (\textit{Open Source MANO})\cite{osmbib} es un software \textit{open-source} cuya función principal es la orquestación de servicios de red avanzados en infraestructuras NFV heterogéneas. Surge como iniciativa de la ETSI para crear una arquitectura NFV común para los operadores de red.
 
-OSM trabaja con una serie de componentes y conceptos que ayudan a definir su arquitectura:
+OSM trabaja con una serie de componentes que ayudan a definir su arquitectura:
 
 \begin{itemize}
 	\item \textbf{VDU (Virtual Deployment Unit):} Es el componente más básico de la arquitectura OSM. Se encarga de definir una máquina virtual. 
 	
-	\item \textbf{VLD (Virtual Link Descriptor):} Es el componente que se encarga de definir las conexiones entre diferentes componentes de la arquitectura. Hay principlamente dos tipos de VLD: VDU-VDU y VNF-VNF.
+	\item \textbf{VLD (Virtual Link Descriptor):} Define las conexiones directas entre diferentes componentes de la arquitectura. Hay principalmente dos tipos de VLD: VDU-VDU y VNF-VNF.
 	
-	\item \textbf{VNFD (Virtual Network Function Descriptor):} Es el componente que se encarga de definir los recursos necesarios para instanciar un VNF. Incluye diferentes componentes: lista de VDUs, lista de VLDs, lista de conexiones,...
+	\item \textbf{VNFD (Virtual Network Function Descriptor):} Se encarga de definir los recursos necesarios para instanciar un VNF. Incluye diferentes componentes: lista de VDUs que lo definen, lista de VLDs, entre otros.
 	
-	\item \textbf{NSD (Network Service Descriptor):} Es el componente que se encarga de definir la información sobre la configuración de un NS. Incluye diferentes componentes: lista de VNFDs, lista de VLDs, parámetros de configuración iniciales, ...
+	\item \textbf{NSD (Network Service Descriptor):} Este componente se encarga de definir la configuración de un NS. Incluye diferentes componentes: lista de VNFDs que lo componen, lista de VLDs, parámetros de configuración iniciales, entre otros.
 	
-	\item \textbf{VNF (Virtual Network Function):} Es el componente que define una función de red virtualizada. Ésta puede ser completa, cuando es una función realizada únicamente por él, o parcial, cuando es una función mas compleja que requiere de otros VNFs.
+	\item \textbf{VNF (Virtual Network Function):} Es el componente que define una función de red virtualizada. Puede estar compuesto de un único VDU o por más de uno.
 	
-	\item \textbf{NS (Network Service):} Es el componente que se encarga de agrupar diferentes VNFs que realizan una función de red conjunta.
+	\item \textbf{NS (Network Service):} Se compone de uno o más VNFs que realizan una función de red más avanzada conjuntamente.
 \end{itemize}
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/nfv_etsi_Arch}
-	\caption{Arquitectura NFV de la ETSI. 
-		Fuente: https://sdn.ieee.org/newsletter/july-2016/opensource-mano}
-	\label{fig:nfvetsiarch}
-\end{figure}
-
-En la figura \ref{fig:nfvetsiarch} se puede ver un esquema de la arquitectura NFV que propone la ETSI, en la que se puede observar el papel que juega OSM en ella. 
 
 \clearpage
 
@@ -134,7 +124,7 @@ En la figura \ref{fig:nfvetsiarch} se puede ver un esquema de la arquitectura NF
 	\centering
 	\includegraphics[width=0.8\linewidth]{imagenes/osm_arch}
 	\caption{Arquitectura de OSM. 
-		Fuente: https://osm.etsi.org/wikipub}
+		Fuente: \cite{osmwikibib}}
 	\label{fig:osmarch}
 \end{figure}
 
@@ -143,7 +133,7 @@ Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da 
 \begin{itemize}
 	\item \textbf{Interfaz \textit{NorthBound}:} OSM exporta una RestAPI gracias a su interfaz \textit{NorthBound}. Mediante llamadas HTTP (GET, POST, DELETE), el usuario es capaz de ejecutar órdenes en OSM, tales como crear un nuevo VIM o instanciar un nuevo VNF, entre otras.
 	
-	Para ello, es necesario tener un cliente desde el cuál enviar órdenes. La ETSI ofrece una interfaz gráfica web que se instala al mismo tiempo que OSM y un cliente por línea de comando escrito en Python (\href{https://osm.etsi.org/wikipub/index.php/OsmClient}{OSMClient}).
+	Para ello, es necesario tener un cliente desde el cuál enviar órdenes. La ETSI ofrece una interfaz gráfica web que se instala al mismo tiempo que OSM y un cliente por línea de comando escrito en Python (ver \ref{subsec:osmclientpython}).
 	
 	\item \textbf{Conexión con VIM:} OSM permite la comunicación con múltiples tipos de VIM (OpenStack, OpenVIM, VMWare y Amazon Web Services). Para ello, es necesaria conectividad IP entre OSM y el propio VIM, ya que las órdenes enviadas por OSM al VIM para realizar operaciones son hechas mediante una RestAPI.
 	
@@ -154,22 +144,8 @@ Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da 
 	\item \textbf{VNF \textit{Management}:} cuando un VIM instancia un nuevo VNF, se le asigna una dirección IP para poder acceder a la propia máquina virtual y gestionarla. Por ello, es necesario que haya conectividad IP entre OSM y todos los VNFs. 
 \end{itemize}
 
-\clearpage
-
-Una vez explicadas las interacciones que realiza OSM, se pueden explicar los pasos que sigue OSM para instanciar un nuevo NS en un determinado VIM:
-
-\begin{itemize}
-	\item \textbf{Paso 1.} Mediante la interfaz gráfica de OSM u otro cliente, el usuario escoge el NSD que quiere instanciar y en que VIM quiere hacerlo.
-	
-	\item \textbf{Paso 2.} OSM se pone en contacto con el VIM para ver si tiene todos los recursos necesarios para poder instanciar el NS.
-	
-	\item \textbf{Paso 3.} El VIM se pone en contacto con su NFVI para verificar si tiene todos los recursos necesarios. En caso afirmativo, todo continua de forma normal. En caso contrario, el VIM avisará a OSM de que no es posible llevar a cabo la instanciación.
-	
-	\item \textbf{Paso 4.} Una vez reservados los recursos necesarios, el VIM empieza a instanciar el NS. Esto toma un tiempo, ya que el VIM crea una instancia por VNF y tiene que aplicar todos los parámetros de configuración definidos en los descriptores.
-	
-	\item \textbf{Paso 5.} Cuando el NS ha sido instanciado satisfactoriamente, el VIM envía a OSM un mensaje de OK y desde OSM ya se pueden gestionar los diferentes VNFs pertenecientes al NS.
-\end{itemize}
-
+\subsection{OSMClient}
+\label{subsec:osmclientpython}
 
 \section{OpenStack}
 \label{sec:openstack}
