@@ -10,31 +10,25 @@ Todas estas herramientas operan en sintonía para llevar a cabo una prueba de co
 \section{Net2Plan}
 \label{sec:net2plan}
 
-Net2Plan \cite{net2plan} es una herramienta \textit{open-source} programada en Java dedicada a la planificación, optimización y simulación de redes de comunicaciones desarrollada por el grupo de investigación GIRTEL de la Universidad Politécnica de Cartagena. En sus inicios, fue concebida como una herramienta para docencia sobre redes de comunicaciones. Sin embargo, actualmente se ha convertido en una poderosa herramienta de optimización y planificación de redes, con un repositorio de recursos para la planificación de redes, tanto para el entorno académico como para el entorno de la industria y la empresa.
+Net2Plan\cite{net2planbib} es una herramienta \textit{open-source} programada en Java dedicada a la planificación, optimización y simulación de redes de comunicaciones desarrollada por el grupo de investigación GIRTEL de la Universidad Politécnica de Cartagena. En sus inicios, fue concebida como una herramienta para docencia sobre redes de comunicaciones. Sin embargo, actualmente se ha convertido en una poderosa herramienta de optimización y planificación de redes, con un repositorio de recursos para la planificación de redes, tanto para el entorno académico como para el entorno de la industria y la empresa.
 
-Net2Plan está basado en una representación de redes con componentes abstractos, tales como nodos, enlaces, demandas o rutas, entre otros. Ésto está pensado para poder planificar cualquier tipo de red, sin importar la tecnología que utilice. Para poder personalizar las redes a gusto del usuario, cada componentes permite añadir atributos. Además, hay clases que permiten modelar una tecnología en concreto (redes IP, WDM o escenarios de NFV).
+Net2Plan está basado en una representación de redes con componentes abstractos, tales como nodos, enlaces, demandas o rutas, entre otros. Esto está pensado para poder planificar cualquier tipo de red, sin importar la tecnología que utilice. Para poder personalizar las redes a gusto del usuario, cada componentes permite añadir atributos. Además, hay clases que permiten modelar una tecnología en concreto (redes IP, WDM o escenarios de NFV).
 
-Net2Plan tiene dos modos de uso: mediante interfaz gráfica (GUI) y línea de comandos (CLI). La interfaz gráfica está pensada para utilizar en sesiones de laboratorio como un recurso formativo, o para poder ver más detalladamente la red sobre la que se está trabajando. Por otro lado, el modo línea de comandos facilita los estudios de investigación, ya que permite automatizar ejecuciones de algoritmos o simulaciones.
-Como se ha hablado antes, ambos modos permiten utilizar Net2Plan en el entorno educativo (investigación o enseñanza) y en el entorno de la industria y la empresa.
+Una ventaja de esta herramienta es que tiene dos modos de uso: mediante interfaz gráfica (GUI) y línea de comandos (CLI). La interfaz gráfica está pensada para utilizar en sesiones de laboratorio como un recurso formativo, o para poder ver más detalladamente la red sobre la que se está trabajando. Por otro lado, el modo línea de comandos facilita los estudios de investigación, ya que permite automatizar ejecuciones de algoritmos o simulaciones mediante scripts. Como se ha hablado antes, ambos modos permiten utilizar Net2Plan en el entorno académico (investigación o enseñanza) y en el entorno de la industria y la empresa.
 
-\begin{figure}[ht!]
-	\centering
-	\includegraphics[width=1\linewidth]{imagenes/n2p_inicio}
-	\caption{Ventana de inicio de Net2Plan}
-	\label{fig:n2p_inicio}
-\end{figure}
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=1\linewidth]{imagenes/n2p_redes}
 	\caption{Ventana \textit{Offline network desing and online network simulation}}
 	\label{fig:n2p_redes}
 \end{figure}
-\clearpage
+
+En la figura \ref{fig:n2p_redes} se puede ver el aspecto de la interfaz gráfica de Net2Plan, donde se muestra una topología de España con sus respectivas tablas que aportan información detallada de cada uno de los componentes.
 
 \section{Mininet}
 \label{sec:mininet}
 
-Mininet es una herramienta programada en Python cuyo objetivo es el de emular redes de telecomunicación. Permite crear redes con \textit{hosts}, \textit{switches}, controladores y enlaces a un alto nivel. Los \textit{hosts} de Mininet corren bajo un sistema operativo Linux, mientras que los \textit{switches} soportan el protocolo OpenFlow (ver \ref{subsec:openflow}) para mayor flexibilidad respecto a la configuración del \textit{routing} y para integrarlos dentro de un escenario SDN (ver \ref{sec:sdn}).
+Mininet\cite{mininetbib} es una herramienta programada en Python cuyo objetivo es el de emular redes de telecomunicación. Permite crear redes con \textit{hosts}, \textit{switches}, controladores y enlaces a un alto nivel. Los \textit{hosts} de Mininet corren bajo un sistema operativo Linux, mientras que los \textit{switches} soportan el protocolo OpenFlow (ver \ref{subsec:openflow}) para mayor flexibilidad respecto a la configuración del \textit{routing} y para integrarlos dentro de un escenario SDN (ver \ref{sec:sdn}).
 
 Mininet tiene una gran polivalencia, y eso permite que sea utilizado en diferentes tareas, tales como investigación, desarrollo, aprendizaje o testeo. Gracias a ello, se puede conseguir emular una red con un comportamiento similar a una real.
 
@@ -44,7 +38,7 @@ Sus principales características son:
 	\item Permite que varios desarrolladores trabajen de forma concurrente sobre la misma topología de red.
 	\item Permite realizar tests exhaustivos de topologías sin necesidad de tener una real.
 	\item Incluye una Interfaz de Línea de Comandos que es independiente de la topología emulada y del protocolo que ésta utilice.
-	\item Permite crear desde topologías mas sencillas con un único comando hasta topologías realmente complejas haciendo uso de una API de Python para definir los componentes con total detalle.
+	\item Permite crear desde topologías mas sencillas con un único comando hasta topologías realmente complejas haciendo uso de una API programada en Python para definir los componentes con total detalle.
 \end{itemize}
 
 Las redes emuladas por Mininet ejecutan aplicaciones estandarizadas de Linux, como el kernel del propio sistema Linux. Esto permite que cualquier desarrollo llevado a cabo y testeado en Mininet pueda ser movido a un sistema real realizando las mínimas modificaciones posibles.
@@ -52,27 +46,26 @@ Las redes emuladas por Mininet ejecutan aplicaciones estandarizadas de Linux, co
 \section{ONOS}
 \label{sec:onos}
 
-ONOS (\textit{Open Network Operative System}) es un proyecto Open-Source perteneciente a The Linux Foundation. Su principal objetivo es el de crear un controlador SDN para proveedores de servicios de comunicaciones.
+ONOS (\textit{Open Network Operative System})\cite{onosbib} es un proyecto Open-Source perteneciente a The Linux Foundation. Su principal objetivo es el de crear un controlador SDN para proveedores de servicios de comunicaciones.
 
 Sus principales características son:
 \begin{itemize}
-	\item Escalabilidad: Ofrece replicación ilimitada mediante virtualización para poder añadir y quitar capacidad al plano de control según sea necesario.
-	\item Alto rendimiento: Se ajusta perfectamente a las especificaciones de los operadores de red.
-	\item Resistencia: Provee la disponibilidad requerida por los operadores de red.
-	\item Retrocompatibilidad: Permite añadir o configurar dispositivos y servicios con configuración basada en modelos.
-	\item Soporte a dispositivos de nueva generación: Ofrece control en real-time para dispositivos OpenFlow y, ahora también para dispositivos P4.
-	\item Modularidad: Las funcionalidades de ONOS están definidas en modulos localizados, lo que hace más fácil probar y mantener el software en buen estado.
+	\item \textbf{Escalabilidad:} Ofrece replicación ilimitada mediante virtualización para poder añadir y quitar capacidad al plano de control según sea necesario.
+	\item \textbf{Resiliencia:} Provee la disponibilidad requerida por los operadores de red en momentos críticos.
+	\item \textbf{Retrocompatibilidad:} Permite añadir o configurar dispositivos y servicios con configuración basada en modelos.
+	\item \textbf{Soporte a dispositivos de nueva generación:} Ofrece control en \textit{real-time} para dispositivos OpenFlow.
+	\item \textbf{Modularidad:} Las funcionalidades de ONOS están definidas en modulos localizados, lo que hace más fácil probar y mantener el software en buen estado.
 \end{itemize}
 
 
-Está escrito en Java y opera como un clúster de nodos idénticos en cuanto al software. Trabaja con modelos y protocolos estandarizados, tales como OpenFlow (ver \ref{subsec:openflow}), NETCONF, OpenConfig, OpenROADM, ...
+ONOS está programado en Java y opera como un clúster de nodos idénticos en cuanto al software. Trabaja con modelos y protocolos estandarizados, tales como OpenFlow (ver \ref{subsec:openflow}), NETCONF, OpenConfig, OpenROADM, ...
 
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.6\linewidth]{imagenes/onos_architecture}
 	\caption{Arquitectura de ONOS. 
-		Fuente: http://sdnhub.org/tutorials/onos/}
+		Fuente: \cite{arqonosbib}}
 	\label{fig:onosarch}
 \end{figure}
 
