@@ -87,8 +87,7 @@ A continuación, se empieza ya a hablar más en detalle de un \textit{switch} Op
 \section{NFV}
 \label{sec:nfv}
 
-NFV (\textit{Network Function Virtualization})\cite{nfvbib} es un paradigma que engloba a las redes de telecomunicación, más concretamente a su infraestructura. Su principal premisa es la de desacoplar las funciones de red de dispositivos \textit{hardware} y
- trasladarlas a servidores virtuales. Con ello se consigue tener múltiples funciones virtualizadas en un único servidor.
+NFV (\textit{Network Function Virtualization})\cite{nfvbib} es un paradigma que engloba a las redes de telecomunicación, más concretamente a su infraestructura. Su principal premisa es la de desacoplar las funciones de red de dispositivos \textit{hardware} y trasladarlas a servidores virtuales. Con ello se consigue tener múltiples funciones virtualizadas en un único servidor.
 
 Las redes de telecomunicación actuales tienen ciertos problemas que NFV pretende resolver, como son:
 
@@ -146,6 +145,21 @@ Después de haber explicado cada uno de los tres componentes de la arquitectura 
 
 \section{Relación entre SDN y NFV}
 \label{sec:sdnnfv}
+
+SDN es un conjunto de técnicas para agilizar la gestión y configuración de redes de telecomunicación gracias a herramientas \textit{software}. En cambio, NFV es un paradigma que persigue un cambio total en la infraestructura de una red de telecomunicación mediante el uso de funciones de red virtualizadas que sustituyan a los dispositivos físicos.
+
+Puede parecer que ambas tecnologías tienen objetivos totalmente diferentes, pero gracias a su uso conjunto, ambos objetivos han convergido a uno solo, el de crear el concepto de NSC (\textit{Network Service Chaining}).
+
+NSC utiliza técnicas SDN y NFV para definir el concepto de \textit{Service Chain}, una cadena de servicio. Ésta viene definida por un origen y un destino, y por un conjunto de servicios de red que deben ser atravesados en un orden específico.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imagenes/servicechaining}
+	\caption{Ejemplo de \textit{Service Chaining}}
+	\label{fig:servicechaining}
+\end{figure}
+
+En la figura \ref{fig:servicechaining} se puede observar como está constituida una \textit{Service Chain}. Existen un origen y un destino, y un conjunto de servicios de red (Firewall, Antivirus, Optimizador de vídeo y Control Parental)
 
 
 \section{Herramientas Open-Source en redes de telecomunicación}

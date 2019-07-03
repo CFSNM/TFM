@@ -152,7 +152,7 @@ Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da 
 \section{OpenStack}
 \label{sec:openstack}
 
-OpenStack\cite{openstackbib} es una arquitectura basada en el paradigma \textbf{Cloud Computing} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red a través de un \textbf{Datacenter}. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una RestAPI para permitir conectividad con aplicaciones externas.
+OpenStack\cite{openstackbib} es un proyecto que sigue el paradigma \textbf{Cloud Computing} para proporcionar un \textit{datacenter} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una RestAPI para permitir conectividad con aplicaciones externas.
 
 \begin{figure}[!ht]
 	\centering
@@ -161,7 +161,7 @@ OpenStack\cite{openstackbib} es una arquitectura basada en el paradigma \textbf{
 	\label{fig:openstackarch}
 \end{figure}
 
-Está compuesto de diferentes servicios o bloques, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura. Los servicios principales de OpenStack son los siguientes:
+Está compuesto de diferentes servicios o bloques, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura. La principal característica de estos servicios es que son accesibles de forma independiente sin dependen los unos de los otros. Los servicios principales de OpenStack son los siguientes:
 
 \begin{itemize}
 	\item \textbf{Keystone:}  Este servicio controla la identificación de los diferentes usuarios que se conecten a la infraestructura de OpenStack, y el acceso a según que aplicaciones de los mismos.
