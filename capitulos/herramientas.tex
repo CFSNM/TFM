@@ -102,7 +102,7 @@ Mediante la colaboración entre OpenAPI, que establece un modelo de APIs común,
 
 OSM (\textit{Open Source MANO})\cite{osmbib} es un software \textit{open-source} cuya función principal es la orquestación de servicios de red avanzados en infraestructuras NFV heterogéneas. Surge como iniciativa de la ETSI para crear una arquitectura NFV común para los operadores de red.
 
-OSM trabaja con una serie de componentes que ayudan a definir su arquitectura:
+OSM trabaja con una serie de componentes/elementos que ayudan a definir su arquitectura:
 
 \begin{itemize}
 	\item \textbf{VDU (Virtual Deployment Unit):} Es el componente más básico de la arquitectura OSM. Se encarga de definir una máquina virtual. 
@@ -116,6 +116,8 @@ OSM trabaja con una serie de componentes que ayudan a definir su arquitectura:
 	\item \textbf{VNF (Virtual Network Function):} Es el componente que define una función de red virtualizada. Puede estar compuesto de un único VDU o por más de uno.
 	
 	\item \textbf{NS (Network Service):} Se compone de uno o más VNFs que realizan una función de red más avanzada conjuntamente.
+	
+	\item \textbf{VIM (Virtual Infrastructure Manager):} Este elemento define un controlador de una o más infraestructuras donde se alojaran las diferentes máquinas virtuales. Es el encargado de comunicar a OSM con las diferentes infraestructuras NFV.
 \end{itemize}
 
 \clearpage
@@ -137,9 +139,9 @@ Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da 
 	
 	\item \textbf{Conexión con VIM:} OSM permite la comunicación con múltiples tipos de VIM (OpenStack, OpenVIM, VMWare y Amazon Web Services). Para ello, es necesaria conectividad IP entre OSM y el propio VIM, ya que las órdenes enviadas por OSM al VIM para realizar operaciones son hechas mediante una RestAPI.
 	
-	\item \textbf{Conexión VIM-NFVI:} NFV (NFV Infrastructure) es el conjunto de recursos (Memoria RAM, número de CPUs, Memoria de almacenamiento, ...) que son utilizados por un VIM para poder instanciar diferentes máquinas virtuales (VNFs). 
+	\item \textbf{Conexión VIM-NFVI:} NFVI (NFV Infrastructure) es el conjunto de recursos (RAM, CPU, HD, entre otros) que son utilizados para instanciar las diferentes máquinas virtuales. El VIM actúa como un controlador de las diferentes NFVIs y gestiona las interacciones entre OSM y ellas.
 	
-	En estructuras de trabajo pequeñas, es habitual que un VIM y su NFVI estén en la misma máquina física, aunque para estructuras reales de trabajo, la NFVI de un VIM puede estar distribuida en diferentes máquinas físicas.
+	En estructuras de trabajo pequeñas, es habitual que un VIM y su NFVI estén en la misma máquina física, aunque para estructuras reales de trabajo, la NFVI de un VIM puede estar distribuida en diferentes máquinas físicas, e incluso tener más de una infraestructura.
 	
 	\item \textbf{VNF \textit{Management}:} cuando un VIM instancia un nuevo VNF, se le asigna una dirección IP para poder acceder a la propia máquina virtual y gestionarla. Por ello, es necesario que haya conectividad IP entre OSM y todos los VNFs. 
 \end{itemize}
@@ -150,12 +152,12 @@ Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da 
 \section{OpenStack}
 \label{sec:openstack}
 
-OpenStack es una arquitectura basada en el paradigma \textbf{Cloud Computing} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red a través de un \textbf{Datacenter}. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una RestAPI para permitir conectividad con aplicaciones externas.
+OpenStack\cite{openstackbib} es una arquitectura basada en el paradigma \textbf{Cloud Computing} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red a través de un \textbf{Datacenter}. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una RestAPI para permitir conectividad con aplicaciones externas.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.9\linewidth]{imagenes/openstack_arch}
-	\caption{Arquitectura de OpenStack. Fuente: https://www.openstack.org/software/}
+	\caption{Arquitectura de OpenStack. Fuente:\cite{openstackbib}}
 	\label{fig:openstackarch}
 \end{figure}
 
@@ -177,10 +179,10 @@ Está compuesto de diferentes servicios o bloques, encargándose cada uno de ell
 	\item \textbf{Swift:} Este servicio es el encargado de almacenar los diferentes archivos del sistema, asegurar su integridad y replicarlos por los diferentes discos de la infraestructura, para hacer más dinámicas la accesibilidad y la disponibilidad.
 \end{itemize}
 
-\subsection{OpenStack4j}
+\subsection{OpenStack4Java}
 \label{subsec:openstack4j}
 
-OpenStack4j es una librería REST \textit{open-source} programada en Java para controlar y gestionar un sistema basado en OpenStack.
+OpenStack4Java\cite{openstack4jbib} es una librería REST \textit{open-source} programada en Java para controlar y gestionar un sistema basado en OpenStack.
 
 Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus múltiples módulos, cada uno de ellos focalizado en gestionar un servicio concreto de OpenStack:
 
@@ -202,7 +204,7 @@ Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus m�
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.8\linewidth]{imagenes/ejemplo_os4j}
-	\caption{Ejemplo de uso de OpenStack4j. Fuente: http://www.openstack4j.com/}
+	\caption{Ejemplo de uso de OpenStack4j. Fuente:\cite{openstack4jbib}}
 	\label{fig:ejemploos4j}
 \end{figure}
 
