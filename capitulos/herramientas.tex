@@ -151,7 +151,10 @@ Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da 
 
 OSMClient\cite{osmclientbib} es una cliente REST programado en Python por la ETSI para interactuar con OSM. Fue introducido en la \textit{release} 2 y permite al usuario ejecutar numerosas acciones, como subir un nuevo descriptor, instanciar un nuevo NS, eliminar un NS, entre otras.
 
-En el anexo \ref{sec:anexoosmclient} se puede ver detalladamente los diferentes comandos que permite ejecutar OSMClient.
+En sus orígenes, cuando la \textit{release} 2 de OSM fue dispuesta al público, dicho cliente tenía una funcionalidad limitada y únicamente podía ser instalado junto a la versión completa de OSM.
+
+Cuando la ETSI publicó la \textit{release} 5 de OSM, el cliente sufrió un gran lavado de cara, al igual que OSM, el cual tuvo un gran cambio interno y externo. Se añadió una nueva versión del cliente que seguía el estándar sol005\cite{sol005item}, el cual define un nuevo formato de REST APIs para aplicaciones propias de la ETSI.
+
 
 \section{OpenStack}
 \label{sec:openstack}
@@ -207,7 +210,7 @@ Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus m�
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/ejemplo_os4j}
+	\includegraphics[width=1\linewidth]{imagenes/ejemplo_os4j}
 	\caption{Ejemplo de uso de OpenStack4j. Fuente:\cite{openstack4jbib}}
 	\label{fig:ejemploos4j}
 \end{figure}
