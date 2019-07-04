@@ -149,17 +149,25 @@ Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da 
 \subsection{OSMClient}
 \label{subsec:osmclientpython}
 
-OSMClient\cite{osmclientbib} es una cliente REST programado en Python por la ETSI para interactuar con OSM. Fue introducido en la \textit{release} 2 y permite al usuario ejecutar numerosas acciones, como subir un nuevo descriptor, instanciar un nuevo NS, eliminar un NS, entre otras.
+OSMClient\cite{osmclientbib} es un cliente REST programado en Python por la ETSI que proveé una CLI (\textit{Command Line Interface}) para interactuar con OSM. Fue introducido en la \textit{release} 2 y permite al usuario ejecutar numerosas acciones, como subir un nuevo descriptor, crear un nuevo VIM, instanciar un nuevo NS o eliminar un NS, entre otras. 
 
 En sus orígenes, cuando la \textit{release} 2 de OSM fue dispuesta al público, dicho cliente tenía una funcionalidad limitada y únicamente podía ser instalado junto a la versión completa de OSM.
 
-Cuando la ETSI publicó la \textit{release} 5 de OSM, el cliente sufrió un gran lavado de cara, al igual que OSM, el cual tuvo un gran cambio interno y externo. Se añadió una nueva versión del cliente que seguía el estándar sol005\cite{sol005item}, el cual define un nuevo formato de REST APIs para aplicaciones propias de la ETSI.
+Cuando la ETSI publicó la \textit{release} 5 de OSM, el cliente sufrió un gran lavado de cara. Se permitió una instalación única de OSMClient sin necesidad de instalar la versión completa de OSM, y se añadió una nueva versión del cliente que seguía el estándar sol005\cite{sol005item}, el cual define un nuevo formato de REST APIs para aplicaciones propias de la ETSI. También se mantuvo el formato correspodiente a las \textit{releases} 2, 3 y 4 para tener retrocompatibilidad con ellas.
 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imagenes/osmclientpython_example}
+	\caption{Ejemplo de uso de OSMClient. Fuente:\cite{osmrel5bib}}
+	\label{fig:osmclientpythonexample}
+\end{figure}
+
+En la figura \ref{fig:osmclientpythonexample} se puede ver un pequeño ejemplo de uso de OSMClient para crear un nuevo VIM. Se deben introducir diferentes parámetros, como el tipo de VIM, en este caso OpenStack, usuario y contraseña del VIM, y la URL donde se encuentra el controlador del VIM.
 
 \section{OpenStack}
 \label{sec:openstack}
 
-OpenStack\cite{openstackbib} es un proyecto que sigue el paradigma \textbf{Cloud Computing} para proporcionar un \textit{datacenter} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una RestAPI para permitir conectividad con aplicaciones externas.
+OpenStack\cite{openstackbib} es un proyecto basado en la nube que proporciona un \textit{datacenter} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una RestAPI para permitir conectividad con aplicaciones externas.
 
 \begin{figure}[!ht]
 	\centering
@@ -168,7 +176,7 @@ OpenStack\cite{openstackbib} es un proyecto que sigue el paradigma \textbf{Cloud
 	\label{fig:openstackarch}
 \end{figure}
 
-Está compuesto de diferentes servicios o bloques, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura. La principal característica de estos servicios es que son accesibles de forma independiente. Los servicios principales de OpenStack son los siguientes:
+Está compuesto de diferentes servicios o bloques, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura, como se puede apreciar en la figura \ref{fig:openstackarch}. La principal característica de estos servicios es que son accesibles de forma independiente. Los servicios principales de OpenStack son los siguientes:
 
 \begin{itemize}
 	\item \textbf{Keystone:}  Este servicio controla la identificación de los diferentes usuarios que se conecten a la infraestructura de OpenStack, y el acceso a según que aplicaciones de los mismos.
@@ -211,7 +219,7 @@ Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus m�
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=1\linewidth]{imagenes/ejemplo_os4j}
-	\caption{Ejemplo de uso de OpenStack4j. Fuente:\cite{openstack4jbib}}
+	\caption{Ejemplo de uso de OpenStack4Java. Fuente:\cite{openstack4jbib}}
 	\label{fig:ejemploos4j}
 \end{figure}
 
