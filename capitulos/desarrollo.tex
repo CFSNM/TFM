@@ -14,6 +14,33 @@ Por último, se hará especial énfasis en el plugin de Net2Plan desarrollado, e
 
 J-OSMClient es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente REST para interactuar con OSM (ver \ref{sec:osm}). Está basado en el cliente programado en Python por la ETSI (ver \ref{subsec:osmclientpython}).
 
+Se compone principalmente de tres clases que realizan la comunicación con OSM y devuelven los resultados de las interacciones al usuario:
+
+\begin{itemize}
+	\item \textbf{OSMControllerRelease3:} Es la entidad que se encarga de realizar la comunicación con la \textit{release} 3 de OSM. Mediante llamadas HTTP (GET, POST, PUT, DELETE), dicha clase envía peticiones y procesa internamente las respuestas recibidas.
+	
+	\item \textbf{OSMControllerSOL005:} Esta entidad se encarga de realizar la comunicación con la \textit{release} 4 en adelante, utilizando el estándar sol005. Al igual que el \textit{controller} de la \textit{release} 3, establece la comunicación con llamadas HTTP enviando peticiones y procesando las diferentes respuestas recibidas.
+	
+	\item \textbf{OSMClient:} Es la clase principal de la aplicación. Actúa como interfaz entre el usuario final y los \textit{controllers}, permitiendo que el usuario obtenga directamente en formato más amigable las respuestas dadas por el servidor de OSM.
+\end{itemize}
+
+OSM envía las respuestas HTTP con un formato JSON, que no es el formato óptimo para que el usuario final las reciba. Por ello, se han desarrollado una serie de clases auxiliares que definen los diferentes componentes internos de OSM:
+
+\begin{itemize}
+	\item \textbf{OSMComponent:} 
+	
+	\item \textbf{VirtualInfraestructureManager:} 
+	
+	\item \textbf{NetworkService:} 
+	
+	\item \textbf{VirtualNetworkFunction:} 
+	
+	\item \textbf{VirtualNetworkFunctionDescriptor:} 
+	
+	\item \textbf{VirtualDeploymentUnit:} 
+	
+\end{itemize}
+
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.8\linewidth]{imagenes/OSMClient}
@@ -21,15 +48,7 @@ J-OSMClient es una librería programada en Java cuya funcionalidad es la de prop
 	\label{fig:osmclient}
 \end{figure}
 
-En la figura \ref{fig:osmclient} se puede ver un esquema detallado de la jerarquía de clases y como dichas clases interactúan entre sí.
-
-Se compone principalmente de tres clases que realizan la comunicación con OSM y devuelven los resultados de las interacciones al usuario:
-
-\begin{itemize}
-	\item \textbf{OSMControllerRelease3:} Es la clase que se encarga de realizar la comunicación con la \textit{release} 3 de OSM. Mediante llamadas HTTP (GET, POST, PUT, DELETE), dicha clase envía peticiones y procesa internamente las respuestas recibidas.
-	\item \textbf{OSMControllerSOL005:} 
-	\item \textbf{OSMClient:} Es la clase principal de la aplicación. Actúa como interfaz entre el usuario 
-\end{itemize}
+En la figura \ref{fig:osmclient} se puede ver un esquema detallado de la jerarquía de clases. Se aprecia como OSMClient interactúa directamente con ambos \textit{controllers} para establecer la comunicación con ambas versiones de OSM.
 
 
 \section{J-ONOS Client}
