@@ -149,6 +149,10 @@ Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da 
 \subsection{OSMClient}
 \label{subsec:osmclientpython}
 
+OSMClient\cite{osmclientbib} es una cliente REST programado en Python por la ETSI para interactuar con OSM. Fue introducido en la \textit{release} 2 y permite al usuario ejecutar numerosas acciones, como subir un nuevo descriptor, instanciar un nuevo NS, eliminar un NS, entre otras.
+
+En el anexo \ref{sec:anexoosmclient} se puede ver detalladamente los diferentes comandos que permite ejecutar OSMClient.
+
 \section{OpenStack}
 \label{sec:openstack}
 
@@ -161,7 +165,7 @@ OpenStack\cite{openstackbib} es un proyecto que sigue el paradigma \textbf{Cloud
 	\label{fig:openstackarch}
 \end{figure}
 
-Está compuesto de diferentes servicios o bloques, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura. La principal característica de estos servicios es que son accesibles de forma independiente sin dependen los unos de los otros. Los servicios principales de OpenStack son los siguientes:
+Está compuesto de diferentes servicios o bloques, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura. La principal característica de estos servicios es que son accesibles de forma independiente. Los servicios principales de OpenStack son los siguientes:
 
 \begin{itemize}
 	\item \textbf{Keystone:}  Este servicio controla la identificación de los diferentes usuarios que se conecten a la infraestructura de OpenStack, y el acceso a según que aplicaciones de los mismos.
