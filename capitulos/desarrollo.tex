@@ -2,26 +2,26 @@
 
 En este capítulo se hablará sobre las diferentes librerías que se han realizado en este proyecto, explicando detalladamente la estructura de cada una de ellas.
 
-Primeramente se explicará J-OSMClient, que es el cliente programado en Java para comunicarse con la REST API que exporta OSM.
+Primeramente se explicará J-OSMClient, que es el cliente programado en Java para comunicarse con la REST-\ac{API} que exporta \ac{OSM}.
 
-Seguidamente se hablará de J-ONOSClient, que es el cliente encargado de comunicarse con la REST API de ONOS, y de J-OpenStack Client, que se encarga de comunicarse con la REST API de OpenStack.
+Seguidamente se hablará de J-ONOSClient, que es el cliente encargado de comunicarse con la REST-\ac{API} de \ac{ONOS}, y de J-OpenStack Client, que se encarga de comunicarse con la REST-\ac{API} de OpenStack.
 
-Por último, se hará especial énfasis en el plugin de Net2Plan desarrollado, en el cual se han integrado las diferentes APIs mencionadas anteriormente.
+Por último, se hará especial énfasis en el plugin de Net2Plan desarrollado, en el cual se han integrado las diferentes \acp{API} mencionadas anteriormente.
 
 
 \section{J-OSM Client}
 \label{sec:osmclient}
 
-J-OSMClient\cite{josmclientbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente REST para interactuar con OSM (ver \ref{sec:osm}). Está basado en el cliente programado en Python por la ETSI (ver \ref{subsec:osmclientpython}).
+J-OSMClient\cite{josmclientbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente REST para interactuar con \ac{OSM} (ver \ref{sec:osm}). Está basado en el cliente programado en Python por la \ac{ETSI} (ver \ref{subsec:osmclientpython}).
 
-Se compone principalmente de tres clases que realizan la comunicación con OSM y devuelven los resultados de las interacciones al usuario:
+Se compone principalmente de tres clases que realizan la comunicación con \ac{OSM} y devuelven los resultados de las interacciones al usuario:
 
 \begin{itemize}
-	\item \textbf{OSMControllerRelease3:} Es la entidad que se encarga de realizar la comunicación con la \textit{release} 3 de OSM. Mediante llamadas HTTP (GET, POST, PUT, DELETE), dicha clase envía peticiones y procesa internamente las respuestas recibidas.
+	\item \textbf{OSMControllerRelease3:} Es la entidad que se encarga de realizar la comunicación con la \textit{release} 3 de \ac{OSM}. Mediante llamadas \ac{HTTP} (GET, POST, PUT, DELETE), dicha clase envía peticiones y procesa internamente las respuestas recibidas.
 	
-	\item \textbf{OSMControllerSOL005:} Esta entidad se encarga de realizar la comunicación con la \textit{release} 4 en adelante, utilizando el estándar sol005. Al igual que el \textit{controller} de la \textit{release} 3, establece la comunicación con llamadas HTTP enviando peticiones y procesando las diferentes respuestas recibidas.
+	\item \textbf{OSMControllerSOL005:} Esta entidad se encarga de realizar la comunicación con la \textit{release} 4 en adelante, utilizando el estándar sol005. Al igual que el \textit{controller} de la \textit{release} 3, establece la comunicación con llamadas \ac{HTTP} enviando peticiones y procesando las diferentes respuestas recibidas.
 	
-	\item \textbf{OSMClient:} Es la clase principal de la aplicación. Actúa como interfaz entre el usuario final y los \textit{controllers}, permitiendo que el usuario obtenga directamente en formato más amigable las respuestas dadas por el servidor de OSM.
+	\item \textbf{OSMClient:} Es la clase principal de la aplicación. Actúa como interfaz entre el usuario final y los \textit{controllers}, permitiendo que el usuario obtenga directamente en formato más amigable las respuestas dadas por el servidor de \ac{OSM}.
 \end{itemize}
 
 \clearpage
@@ -33,24 +33,28 @@ Se compone principalmente de tres clases que realizan la comunicación con OSM y
 	\label{fig:osmclient}
 \end{figure}
 
-En la figura \ref{fig:osmclient} se puede ver un esquema detallado de la jerarquía de clases. Se aprecia como OSMClient interactúa directamente con ambos \textit{controllers} para establecer la comunicación con ambas versiones de OSM.
+En la figura \ref{fig:osmclient} se puede ver un esquema detallado de la jerarquía de clases. Se aprecia como OSMClient interactúa directamente con ambos \textit{controllers} para establecer la comunicación con ambas versiones de \ac{OSM}.
 
-Así mismo, se pueden observar las clases auxiliares que definen los diferentes componentes internos de OSM. Estas clases existen debido a que OSM envía las respuestas HTTP con un formato JSON, que no es el formato óptimo para que el usuario final las reciba y las trate.
+Así mismo, se pueden observar las clases auxiliares que definen los diferentes componentes internos de \ac{OSM}. Estas clases existen debido a que \ac{OSM} envía las respuestas \ac{HTTP} con un formato \ac{JSON}, que no es el formato óptimo para que el usuario final las reciba y las trate.
 
 Estas clases auxiliares se explican a continuación:
 
 \begin{itemize}
-	\item \textbf{OSMComponent:} Es la clase genérica que define un componente de OSM. Todas las demás clases heredan de ella, lo que permite un mejor procesamiento interno de las respuestas recibidas de OSM, ya que proveé atributos comunes a todos los componentes, como nombre o identificador interno.
+	\item \textbf{OSMComponent:} Es la clase genérica que define un componente de \ac{OSM}. Todas las demás clases heredan de ella, lo que permite un mejor procesamiento interno de las respuestas recibidas de \ac{OSM}, ya que proveé atributos comunes a todos los componentes, como nombre o identificador interno.
 	
-	\item \textbf{VirtualInfraestructureManager:} Esta clase es la que modela el componente VIM. Proveé atributos como su URL y su tipo (OpenStack, OpenVim, VMWare o AWS).
+	\item \textbf{VirtualInfraestructureManager:} Esta clase es la que modela el componente \ac{VIM}. Proveé atributos como su \ac{URL} y su tipo (OpenStack, OpenVim, VMWare o \ac{AWS}).
 	
-	\item \textbf{NetworkService:} 
+	\item \textbf{VirtualLinkDescriptor:} Esta clase es la que define el componente \ac{VLD}. Proporciona un único atributo, que es una lista de conexiones en las que se indica los dos puertos que se conectan gracias a él.
 	
-	\item \textbf{VirtualNetworkFunction:} 
+	\item \textbf{VirtualDeploymentUnit:} Esta clase define el componente \ac{VDU}. Proveé diferentes atributos como la imagen que lo define y los recursos necesarios para su creación (Almacenamiento HD, número de CPUs y Memoria RAM).
 	
-	\item \textbf{VirtualNetworkFunctionDescriptor:} 
+	\item \textbf{VirtualNetworkFunctionDescriptor:} Esta clase es la que modela el componente \ac{VNFD}. Proporciona únicamente un atributo, que es la lista de \acp{VDU} que lo componen.
+		
+	\item \textbf{VirtualNetworkFunction:} Esta clase define el componente \ac{VNF}. Proveé diferentes atributos, como el \ac{NS} al que pertenece, el \ac{VIM} donde está instanciado o el \ac{VNFD} que lo define, entre otros.
 	
-	\item \textbf{VirtualDeploymentUnit:} 
+	\item \textbf{NetworkServiceDescriptor:} Esta clase es la que modela el componente \ac{NSD}. Proporciona diferentes atributos, como la lista de \acp{VNFD} que lo componen o la lista de \acp{VLD}.
+	
+	\item \textbf{NetworkService:} Esta clase modela el componente \ac{NS}. Está compuesto de diferentes atributos, como los \acp{VIM} donde está instanciados sus \acp{VNF}, el \ac{NSD} que lo define, la lista de \acp{VNF} que lo forman o su estado actual.
 	
 \end{itemize}
 
