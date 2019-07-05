@@ -12,7 +12,7 @@ Por último, se hará especial énfasis en el plugin de Net2Plan desarrollado, e
 \section{J-OSM Client}
 \label{sec:osmclient}
 
-J-OSMClient es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente REST para interactuar con OSM (ver \ref{sec:osm}). Está basado en el cliente programado en Python por la ETSI (ver \ref{subsec:osmclientpython}).
+J-OSMClient\cite{josmclientbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente REST para interactuar con OSM (ver \ref{sec:osm}). Está basado en el cliente programado en Python por la ETSI (ver \ref{subsec:osmclientpython}).
 
 Se compone principalmente de tres clases que realizan la comunicación con OSM y devuelven los resultados de las interacciones al usuario:
 
@@ -24,12 +24,25 @@ Se compone principalmente de tres clases que realizan la comunicación con OSM y
 	\item \textbf{OSMClient:} Es la clase principal de la aplicación. Actúa como interfaz entre el usuario final y los \textit{controllers}, permitiendo que el usuario obtenga directamente en formato más amigable las respuestas dadas por el servidor de OSM.
 \end{itemize}
 
-OSM envía las respuestas HTTP con un formato JSON, que no es el formato óptimo para que el usuario final las reciba. Por ello, se han desarrollado una serie de clases auxiliares que definen los diferentes componentes internos de OSM:
+\clearpage
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imagenes/OSMClient}
+	\caption{Estructura de clases de J-OSMClient}
+	\label{fig:osmclient}
+\end{figure}
+
+En la figura \ref{fig:osmclient} se puede ver un esquema detallado de la jerarquía de clases. Se aprecia como OSMClient interactúa directamente con ambos \textit{controllers} para establecer la comunicación con ambas versiones de OSM.
+
+Así mismo, se pueden observar las clases auxiliares que definen los diferentes componentes internos de OSM. Estas clases existen debido a que OSM envía las respuestas HTTP con un formato JSON, que no es el formato óptimo para que el usuario final las reciba y las trate.
+
+Estas clases auxiliares se explican a continuación:
 
 \begin{itemize}
-	\item \textbf{OSMComponent:} 
+	\item \textbf{OSMComponent:} Es la clase genérica que define un componente de OSM. Todas las demás clases heredan de ella, lo que permite un mejor procesamiento interno de las respuestas recibidas de OSM, ya que proveé atributos comunes a todos los componentes, como nombre o identificador interno.
 	
-	\item \textbf{VirtualInfraestructureManager:} 
+	\item \textbf{VirtualInfraestructureManager:} Esta clase es la que modela el componente VIM. Proveé atributos como su URL y su tipo (OpenStack, OpenVim, VMWare o AWS).
 	
 	\item \textbf{NetworkService:} 
 	
@@ -41,14 +54,7 @@ OSM envía las respuestas HTTP con un formato JSON, que no es el formato óptimo
 	
 \end{itemize}
 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/OSMClient}
-	\caption{Estructura de clases de J-OSMClient}
-	\label{fig:osmclient}
-\end{figure}
 
-En la figura \ref{fig:osmclient} se puede ver un esquema detallado de la jerarquía de clases. Se aprecia como OSMClient interactúa directamente con ambos \textit{controllers} para establecer la comunicación con ambas versiones de OSM.
 
 
 \section{J-ONOS Client}
@@ -56,7 +62,7 @@ En la figura \ref{fig:osmclient} se puede ver un esquema detallado de la jerarqu
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/ONOSClient}
+	\includegraphics[width=0.9\linewidth]{imagenes/ONOSClient}
 	\caption{Estructura de clases de ONOSClient}
 	\label{fig:onosclient}
 \end{figure}
@@ -67,7 +73,7 @@ En la figura \ref{fig:osmclient} se puede ver un esquema detallado de la jerarqu
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/OpenStackClient}
+	\includegraphics[width=0.9\linewidth]{imagenes/OpenStackClient}
 	\caption{Estructura de clases de OpenStackClient}
 	\label{fig:openstackclient}
 \end{figure}
@@ -80,7 +86,7 @@ Para llevar a cabo este proyecto, era necesario integrar las APIs mencionadas an
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/nfvplugin_dashboard}
+	\includegraphics[width=0.9\linewidth]{imagenes/nfvplugin_dashboard}
 	\caption{Interfaz gráfica del Plugin NFV-Management}
 	\label{fig:nfvplugindash}
 \end{figure}

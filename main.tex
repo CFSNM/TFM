@@ -69,6 +69,7 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{pdfpages}
 \usepackage{epigraph}
 \usepackage{framed}
+\usepackage{acronym}
 
 
 \let\originalbibitem\bibitem
@@ -186,7 +187,9 @@ headsepline, % Uncomment to get a line under the header
 \end{center}
 
 \tableofcontents % Prints the main table of contents
-%\listoffigures % Print the list of figures
+\listoffigures % Print the list of figures
+
+\include{capitulos/acronimos}
 
 
 \mainmatter % Begin numeric (1,2,3...) page numbering
@@ -287,6 +290,9 @@ OpenStack
 OpenStack4Java - Fluent OpenStack client for Java
 \\\texttt{http://www.openstack4j.com/}
 
+\bibitem{josmclientbib}
+J-OSM Client
+\\\texttt{https://github.com/girtel/J-OSMClient}
 
 \end{thebibliography}
 
