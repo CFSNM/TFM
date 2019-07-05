@@ -2,7 +2,7 @@
 
 En este capítulo se va a hacer una descripción de cada una de las herramientas utilizadas en el proyecto, haciendo especial mención a Net2Plan, que es una herramienta cuya funcionalidad es la de emular y planificar una red de telecomunicación. Dicha herramienta constituye la base para el desarrollo de este proyecto, más concretamente de la prueba de concepto.
 
-Además de Net2Plan, se han utilizado otras herramientas para complementar la funcionalidad de Net2Plan y proveerle diferentes funcionalidad enmarcadas en las tecnologías SDN y NFV. Dichas herramientas son Mininet, para emular redes de telecomunicación; ONOS, un controlador SDN; ETSI-OSM, un gestor y orquestador NFV; y OpenStack, una herramienta para emular una infraestructura IT.
+Además de Net2Plan, se han utilizado otras herramientas para complementar la funcionalidad de Net2Plan y proveerle diferentes funcionalidad enmarcadas en las tecnologías \ac{SDN} y \ac{NFV}. Dichas herramientas son Mininet, para emular redes de telecomunicación; ONOS, un controlador \ac{SDN}; \ac{OSM}, un gestor y orquestador \ac{NFV}; y OpenStack, una herramienta para emular una infraestructura IT.
 
 Todas estas herramientas operan en sintonía para llevar a cabo una prueba de concepto exitosa.
 
@@ -12,9 +12,9 @@ Todas estas herramientas operan en sintonía para llevar a cabo una prueba de co
 
 Net2Plan\cite{net2planbib} es una herramienta \textit{open-source} programada en Java dedicada a la planificación, optimización y simulación de redes de comunicaciones desarrollada por el grupo de investigación GIRTEL de la Universidad Politécnica de Cartagena. En sus inicios, fue concebida como una herramienta para docencia sobre redes de comunicaciones. Sin embargo, actualmente se ha convertido en una poderosa herramienta de optimización y planificación de redes, con un repositorio de recursos para la planificación de redes, tanto para el entorno académico como para el entorno de la industria y la empresa.
 
-Net2Plan está basado en una representación de redes con componentes abstractos, tales como nodos, enlaces, demandas o rutas, entre otros. Esto está pensado para poder planificar cualquier tipo de red, sin importar la tecnología que utilice. Para poder personalizar las redes a gusto del usuario, cada componentes permite añadir atributos. Además, hay clases que permiten modelar una tecnología en concreto (redes IP, WDM o escenarios de NFV).
+Net2Plan está basado en una representación de redes con componentes abstractos, tales como nodos, enlaces, demandas o rutas, entre otros. Esto está pensado para poder planificar cualquier tipo de red, sin importar la tecnología que utilice. Para poder personalizar las redes a gusto del usuario, cada componentes permite añadir atributos. Además, hay clases que permiten modelar una tecnología en concreto (redes \ac{IP}, \ac{WDM} o escenarios de \ac{NFV}).
 
-Una ventaja de esta herramienta es que tiene dos modos de uso: mediante interfaz gráfica (GUI) y línea de comandos (CLI). La interfaz gráfica está pensada para utilizar en sesiones de laboratorio como un recurso formativo, o para poder ver más detalladamente la red sobre la que se está trabajando. Por otro lado, el modo línea de comandos facilita los estudios de investigación, ya que permite automatizar ejecuciones de algoritmos o simulaciones mediante scripts. Como se ha hablado antes, ambos modos permiten utilizar Net2Plan en el entorno académico (investigación o enseñanza) y en el entorno de la industria y la empresa.
+Una ventaja de esta herramienta es que tiene dos modos de uso: mediante interfaz gráfica (\ac{GUI}) y línea de comandos (\ac{CLI}). La interfaz gráfica está pensada para utilizar en sesiones de laboratorio como un recurso formativo, o para poder ver más detalladamente la red sobre la que se está trabajando. Por otro lado, el modo línea de comandos facilita los estudios de investigación, ya que permite automatizar ejecuciones de algoritmos o simulaciones mediante \textit{scripts}. Como se ha hablado antes, ambos modos permiten utilizar Net2Plan en el entorno académico (investigación o enseñanza) y en el entorno de la industria y la empresa.
 
 \begin{figure}[ht!]
 	\centering
@@ -28,17 +28,21 @@ En la figura \ref{fig:n2p_redes} se puede ver el aspecto de la interfaz gráfica
 \section{Mininet}
 \label{sec:mininet}
 
-Mininet\cite{mininetbib} es una herramienta programada en Python cuyo objetivo es el de emular redes de telecomunicación. Permite crear redes con \textit{hosts}, \textit{switches}, controladores y enlaces a un alto nivel. Los \textit{hosts} de Mininet corren bajo un sistema operativo Linux, mientras que los \textit{switches} soportan el protocolo OpenFlow (ver \ref{subsec:openflow}) para mayor flexibilidad respecto a la configuración del \textit{routing} y para integrarlos dentro de un escenario SDN (ver \ref{sec:sdn}).
+Mininet\cite{mininetbib} es una herramienta programada en Python cuyo objetivo es el de emular redes de telecomunicación. Permite crear redes con \textit{hosts}, \textit{switches}, controladores y enlaces a un alto nivel. Los \textit{hosts} de Mininet corren bajo un sistema operativo Linux, mientras que los \textit{switches} soportan el protocolo OpenFlow (ver \ref{subsec:openflow}) para mayor flexibilidad respecto a la configuración del \textit{routing} y para integrarlos dentro de un escenario \ac{SDN} (ver \ref{sec:sdn}).
 
 Mininet tiene una gran polivalencia, y eso permite que sea utilizado en diferentes tareas, tales como investigación, desarrollo, aprendizaje o testeo. Gracias a ello, se puede conseguir emular una red con un comportamiento similar a una real.
 
 Sus principales características son:
 \begin{itemize}
 	\item Provee un amplio banco de pruebas para desarrollar aplicaciones basadas en OpenFlow.
+	
 	\item Permite que varios desarrolladores trabajen de forma concurrente sobre la misma topología de red.
+	
 	\item Permite realizar tests exhaustivos de topologías sin necesidad de tener una real.
+	
 	\item Incluye una Interfaz de Línea de Comandos que es independiente de la topología emulada y del protocolo que ésta utilice.
-	\item Permite crear desde topologías mas sencillas con un único comando hasta topologías realmente complejas haciendo uso de una API programada en Python para definir los componentes con total detalle.
+	
+	\item Permite crear desde topologías mas sencillas con un único comando hasta topologías realmente complejas haciendo uso de una \ac{API} programada en Python para definir los componentes con total detalle.
 \end{itemize}
 
 Las redes emuladas por Mininet ejecutan aplicaciones estandarizadas de Linux, como el kernel del propio sistema Linux. Esto permite que cualquier desarrollo llevado a cabo y testeado en Mininet pueda ser movido a un sistema real realizando las mínimas modificaciones posibles.
@@ -46,19 +50,23 @@ Las redes emuladas por Mininet ejecutan aplicaciones estandarizadas de Linux, co
 \section{ONOS}
 \label{sec:onos}
 
-ONOS (\textit{Open Network Operative System})\cite{onosbib} es un proyecto Open-Source perteneciente a The Linux Foundation. Su principal objetivo es el de crear un controlador SDN para proveedores de servicios de comunicaciones.
+\ac{ONOS}\cite{onosbib} es un proyecto Open-Source perteneciente a The Linux Foundation. Su principal objetivo es el de crear un controlador \ac{SDN} para proveedores de servicios de comunicaciones.
 
 Sus principales características son:
 \begin{itemize}
 	\item \textbf{Escalabilidad:} Ofrece replicación ilimitada mediante virtualización para poder añadir y quitar capacidad al plano de control según sea necesario.
+	
 	\item \textbf{Resiliencia:} Provee la disponibilidad requerida por los operadores de red en momentos críticos.
+	
 	\item \textbf{Retrocompatibilidad:} Permite añadir o configurar dispositivos y servicios con configuración basada en modelos.
+	
 	\item \textbf{Soporte a dispositivos de nueva generación:} Ofrece control en \textit{real-time} para dispositivos OpenFlow.
-	\item \textbf{Modularidad:} Las funcionalidades de ONOS están definidas en modulos localizados, lo que hace más fácil probar y mantener el software en buen estado.
+	
+	\item \textbf{Modularidad:} Las funcionalidades de \ac{ONOS} están definidas en modulos localizados, lo que hace más fácil probar y mantener el software en buen estado.
 \end{itemize}
 
 
-ONOS está programado en Java y opera como un clúster de nodos idénticos en cuanto al software. Trabaja con modelos y protocolos estandarizados, tales como OpenFlow (ver \ref{subsec:openflow}), NETCONF, OpenConfig, OpenROADM, entre otros.
+\ac{ONOS} está programado en Java y opera como un clúster de nodos idénticos en cuanto al software. Trabaja con modelos y protocolos estandarizados, tales como OpenFlow (ver \ref{subsec:openflow}), NETCONF, OpenConfig, OpenROADM, entre otros.
 
 \clearpage
 
@@ -71,11 +79,11 @@ ONOS está programado en Java y opera como un clúster de nodos idénticos en cu
 	\label{fig:onosarch}
 \end{figure}
 
-En la figura \ref{fig:onosarch} se observa la arquitectura interna de ONOS. En el \textit{Core} se encuentran los controladores de los diferentes servicios que ofrece (TopologyService, DeviceService, HostService, ...), cada uno de ellos destinado a controlar un tipo de componente.
+En la figura \ref{fig:onosarch} se observa la arquitectura interna de \ac{ONOS}. En el \textit{Core} se encuentran los controladores de los diferentes servicios que ofrece (TopologyService, DeviceService, HostService, entre otros), cada uno de ellos destinado a controlar un tipo de componente.
 
-También se puede observar que, para acceder a estos controladores, las aplicaciones necesitan hacer uso de la interfaz \textit{NorthBound}, que se compone de varias subinterfaces que exportan diferentes APIs, como una API REST o una TAPI (\textit{Transport API}).
+También se puede observar que, para acceder a estos controladores, las aplicaciones necesitan hacer uso de la interfaz \textit{NorthBound}, que se compone de varias subinterfaces que exportan diferentes \acp{API}, como una REST-\ac{API} o una \ac{TAPI}.
 
-Por otro lado, para que los controladores puedan tener constancia de los dispositivos de la red, la interfaz \textit{SouthBound} incluye diferentes \textit{drivers}, genéricos o particulares, para poder comunicarse con dispositivos mediante numerosos protocolos estandarizados, como se explicó anteriormente.
+Por otro lado, para que los controladores puedan tener constancia de los dispositivos de la red, la interfaz \textit{SouthBound} (\ac{SBI}) incluye diferentes \textit{drivers}, genéricos o particulares, para poder comunicarse con dispositivos mediante numerosos protocolos estandarizados, como se explicó anteriormente.
 
 \begin{figure}[!ht]
 	\centering
@@ -85,39 +93,39 @@ Por otro lado, para que los controladores puedan tener constancia de los disposi
 	\label{fig:onosgui}
 \end{figure}
 
-Para facilitar la interacción con el usuario, ONOS ofrece una GUI, como se puede ver en la figura \ref{fig:onosgui}, para ver en más detalle la topología que esta siendo gestionada, así como datos más específicos de cada uno de los dispositivos de la red. 
+Para facilitar la interacción con el usuario, \ac{ONOS} ofrece una \ac{GUI}, como se puede ver en la figura \ref{fig:onosgui}, para ver en más detalle la topología que esta siendo gestionada, así como datos más específicos de cada uno de los dispositivos de la red. 
 
 
 \subsection{OpenAPI y Swagger}
 \label{subsec:openapi}
 
-OpenAPI\cite{openapibib} es una iniciativa creada por varios expertos de la industria y la investigación para estandarizar las descripciones de las RestAPIs. Su principal objetivo es crear y promover un formato de descripción genérico.
+OpenAPI\cite{openapibib} es una iniciativa creada por varios expertos de la industria y la investigación para estandarizar las descripciones de las REST-\acp{API}. Su principal objetivo es crear y promover un formato de descripción genérico.
 
-Swagger\cite{swaggerbib} es un conjunto de herramientas open-source para definir y documentar REST APIs.
+Swagger\cite{swaggerbib} es un conjunto de herramientas open-source para definir y documentar REST-\acp{API}.
 
-Mediante la colaboración entre OpenAPI, que establece un modelo de APIs común, y Swagger, que permite diseñar una REST API de forma simple, las aplicaciones podrán conectarse entre sí de forma sencilla, y ayudará a tener un mundo más comunicado.
+Mediante la colaboración entre OpenAPI, que establece un modelo de \acp{API} común, y Swagger, que permite diseñar una REST-\ac{API} de forma simple, las aplicaciones podrán conectarse entre sí de forma sencilla, y ayudará a tener un mundo más comunicado.
 
 \section{OSM}
 \label{sec:osm}
 
-OSM (\textit{Open Source MANO})\cite{osmbib} es un software \textit{open-source} cuya función principal es la orquestación de servicios de red avanzados en infraestructuras NFV heterogéneas. Surge como iniciativa de la ETSI para crear una arquitectura NFV común para los operadores de red.
+\ac{OSM}\cite{osmbib} es un software \textit{open-source} cuya función principal es la orquestación de servicios de red avanzados en infraestructuras \ac{NFV} heterogéneas. Surge como iniciativa del \ac{ETSI} para crear una arquitectura \ac{NFV} común para los operadores de red.
 
-OSM trabaja con una serie de componentes/elementos que ayudan a definir su arquitectura:
+\ac{OSM} trabaja con una serie de componentes/elementos que ayudan a definir su arquitectura:
 
 \begin{itemize}
-	\item \textbf{VDU (Virtual Deployment Unit):} Es el componente más básico de la arquitectura OSM. Se encarga de definir una máquina virtual. 
+	\item \textbf{\ac{VDU}:} Es el componente más básico de la arquitectura \ac{OSM}. Se encarga de definir una máquina virtual. 
+
+	\item \textbf{\ac{VNF}:} Es el componente que define una función de red virtualizada. Puede estar compuesto de un único \ac{VDU} o por más de uno.
 	
-	\item \textbf{VLD (Virtual Link Descriptor):} Define las conexiones directas entre diferentes componentes de la arquitectura. Hay principalmente dos tipos de VLD: VDU-VDU y VNF-VNF.
+	\item \textbf{\ac{NS}:} Se compone de uno o más \acp{VNF} que realizan una función de red conjuntamente.
 	
-	\item \textbf{VNFD (Virtual Network Function Descriptor):} Se encarga de definir los recursos necesarios para instanciar un VNF. Incluye diferentes componentes: lista de VDUs que lo definen, lista de VLDs, entre otros.
+	\item \textbf{\ac{VLD}:} Define las conexiones directas entre diferentes componentes de la arquitectura. Hay principalmente dos tipos de \ac{VLD}: \ac{VDU}-\ac{VDU} y \ac{VNF}-\ac{VNF}.
 	
-	\item \textbf{NSD (Network Service Descriptor):} Este componente se encarga de definir la configuración de un NS. Incluye diferentes componentes: lista de VNFDs que lo componen, lista de VLDs, parámetros de configuración iniciales, entre otros.
+	\item \textbf{\ac{VNFD}:} Se encarga de definir los recursos necesarios para instanciar un \ac{VNF}. Incluye diferentes componentes: lista de \acp{VDU} que lo definen, lista de \acp{VLD}, entre otros.
 	
-	\item \textbf{VNF (Virtual Network Function):} Es el componente que define una función de red virtualizada. Puede estar compuesto de un único VDU o por más de uno.
+	\item \textbf{\ac{NSD}:} Este componente se encarga de definir la configuración de un \ac{NS}. Incluye diferentes componentes: lista de \acp{VNFD} que lo componen, lista de \acp{VLD}, parámetros de configuración iniciales, entre otros.
 	
-	\item \textbf{NS (Network Service):} Se compone de uno o más VNFs que realizan una función de red más avanzada conjuntamente.
-	
-	\item \textbf{VIM (Virtual Infrastructure Manager):} Este elemento define un controlador de una o más infraestructuras donde se alojaran las diferentes máquinas virtuales. Es el encargado de comunicar a OSM con las diferentes infraestructuras NFV.
+	\item \textbf{\ac{VIM}:} Este elemento define un controlador de una o más infraestructuras donde se alojaran las diferentes máquinas virtuales. Es el encargado de comunicar a \ac{OSM} con las diferentes infraestructuras \ac{NFV}.
 \end{itemize}
 
 \clearpage
@@ -130,30 +138,30 @@ OSM trabaja con una serie de componentes/elementos que ayudan a definir su arqui
 	\label{fig:osmarch}
 \end{figure}
 
-Para ayudar a explicar el funcionamiento de OSM, la figura \ref{fig:osmarch} da una visión general de la interaccion entre OSM y los diferentes componentes:
+Para ayudar a explicar el funcionamiento de \ac{OSM}, la figura \ref{fig:osmarch} da una visión general de la interaccion entre \ac{OSM} y los diferentes componentes:
 
 \begin{itemize}
-	\item \textbf{Interfaz \textit{NorthBound}:} OSM exporta una RestAPI gracias a su interfaz \textit{NorthBound}. Mediante llamadas HTTP (GET, POST, DELETE), el usuario es capaz de ejecutar órdenes en OSM, tales como crear un nuevo VIM o instanciar un nuevo VNF, entre otras.
+	\item \textbf{Interfaz \textit{NorthBound}:} \ac{OSM} exporta una REST-\ac{API} gracias a su interfaz \textit{NorthBound}. Mediante peticiones \ac{HTTP}, como GET, POST o DELETE, el usuario es capaz de ejecutar órdenes en \ac{OSM}, tales como crear un nuevo \ac{VIM} o instanciar un nuevo \ac{VNF}, entre otras.
 	
-	Para ello, es necesario tener un cliente desde el cuál enviar órdenes. La ETSI ofrece una interfaz gráfica web que se instala al mismo tiempo que OSM y un cliente por línea de comando escrito en Python (ver \ref{subsec:osmclientpython}).
+	Para ello, es necesario tener un cliente desde el cuál enviar órdenes. La \ac{ETSI} ofrece una interfaz gráfica web que se instala al mismo tiempo que \ac{OSM} y un cliente por línea de comando escrito en Python (ver \ref{subsec:osmclientpython}).
 	
-	\item \textbf{Conexión con VIM:} OSM permite la comunicación con múltiples tipos de VIM (OpenStack, OpenVIM, VMWare y Amazon Web Services). Para ello, es necesaria conectividad IP entre OSM y el propio VIM, ya que las órdenes enviadas por OSM al VIM para realizar operaciones son hechas mediante una RestAPI.
+	\item \textbf{Conexión con \ac{VIM}:} \ac{OSM} permite la comunicación con múltiples tipos de \acp{VIM} (OpenStack, OpenVIM, VMWare y Amazon Web Services). Para ello, es necesaria conectividad \ac{IP} entre \ac{OSM} y el propio \ac{VIM}, ya que las órdenes enviadas por \ac{OSM} al \ac{VIM} para realizar operaciones son hechas mediante una REST-\ac{API}.
 	
-	\item \textbf{Conexión VIM-NFVI:} NFVI (NFV Infrastructure) es el conjunto de recursos (RAM, CPU, HD, entre otros) que son utilizados para instanciar las diferentes máquinas virtuales. El VIM actúa como un controlador de las diferentes NFVIs y gestiona las interacciones entre OSM y ellas.
+	\item \textbf{Conexión \ac{VIM}-\ac{NFVI}:} \ac{NFVI} es el conjunto de recursos (RAM, CPU, HD, entre otros) que son utilizados para instanciar las diferentes máquinas virtuales. El \ac{VIM} actúa como un controlador de las diferentes \acp{NFVI} y gestiona las interacciones entre \ac{OSM} y ellas.
 	
-	En estructuras de trabajo pequeñas, es habitual que un VIM y su NFVI estén en la misma máquina física, aunque para estructuras reales de trabajo, la NFVI de un VIM puede estar distribuida en diferentes máquinas físicas, e incluso tener más de una infraestructura.
+	En estructuras de trabajo pequeñas, es habitual que un \ac{VIM} y su \ac{NFVI} estén en la misma máquina física, aunque para estructuras reales de trabajo, la \ac{NFVI} de un \ac{VIM} puede estar distribuida en diferentes máquinas físicas.
 	
-	\item \textbf{VNF \textit{Management}:} cuando un VIM instancia un nuevo VNF, se le asigna una dirección IP para poder acceder a la propia máquina virtual y gestionarla. Por ello, es necesario que haya conectividad IP entre OSM y todos los VNFs. 
+	\item \textbf{\ac{VNF} \textit{Management}:} cuando un \ac{VIM} instancia un nuevo \ac{VNF}, se le asigna una dirección \ac{IP} para poder acceder a la propia máquina virtual y gestionarla. Por ello, es necesario que haya conectividad \ac{IP} entre \ac{OSM} y todos los \acp{VNF}. 
 \end{itemize}
 
 \subsection{OSMClient}
 \label{subsec:osmclientpython}
 
-OSMClient\cite{osmclientbib} es un cliente REST programado en Python por la ETSI que proveé una CLI (\textit{Command Line Interface}) para interactuar con OSM. Fue introducido en la \textit{release} 2 y permite al usuario ejecutar numerosas acciones, como subir un nuevo descriptor, crear un nuevo VIM, instanciar un nuevo NS o eliminar un NS, entre otras. 
+OSMClient\cite{osmclientbib} es un cliente REST programado en Python por la \ac{ETSI} que proveé una \ac{CLI} para interactuar con \ac{OSM}. Fue introducido en la \textit{release} 2 y permite al usuario ejecutar numerosas acciones, como subir un nuevo descriptor, crear un nuevo \ac{VIM}, instanciar un nuevo \ac{NS} o eliminar un \ac{NS}, entre otras. 
 
-En sus orígenes, cuando la \textit{release} 2 de OSM fue dispuesta al público, dicho cliente tenía una funcionalidad limitada y únicamente podía ser instalado junto a la versión completa de OSM.
+En sus orígenes, cuando la \textit{release} 2 de \ac{OSM} fue dispuesta al público, dicho cliente tenía una funcionalidad limitada y únicamente podía ser instalado junto a la versión completa de \ac{OSM}.
 
-Cuando la ETSI publicó la \textit{release} 4 de OSM, el cliente sufrió un gran lavado de cara. Se permitió una instalación única de OSMClient sin necesidad de instalar la versión completa de OSM, y se añadió una nueva versión del cliente que seguía el estándar sol005\cite{sol005item}, el cual define un nuevo formato de REST APIs para aplicaciones propias de la ETSI. También se mantuvo el formato correspodiente a las \textit{releases} 2, 3 para tener retrocompatibilidad con ellas.
+Cuando la \ac{ETSI} publicó la \textit{release} 4 de \ac{OSM}, el cliente sufrió un gran lavado de cara. Se permitió una instalación única de OSMClient sin necesidad de instalar la versión completa de \ac{OSM}, y se añadió una nueva versión del cliente que seguía el estándar sol005\cite{sol005item}, el cual define un nuevo formato de REST-\acp{API} para aplicaciones propias de la \ac{ETSI}. También se mantuvo el formato correspondiente a las \textit{releases} 2, 3 para tener retrocompatibilidad con ellas.
 
 \begin{figure}[!ht]
 	\centering
@@ -162,12 +170,12 @@ Cuando la ETSI publicó la \textit{release} 4 de OSM, el cliente sufrió un gran
 	\label{fig:osmclientpythonexample}
 \end{figure}
 
-En la figura \ref{fig:osmclientpythonexample} se puede ver un pequeño ejemplo de uso de OSMClient para crear un nuevo VIM. Se deben introducir diferentes parámetros, como el tipo de VIM, en este caso OpenStack, usuario y contraseña del VIM, y la URL donde se encuentra el controlador del VIM.
+En la figura \ref{fig:osmclientpythonexample} se puede ver un pequeño ejemplo de uso de OSMClient para crear un nuevo \ac{VIM}. Se deben introducir diferentes parámetros, como el tipo de \ac{VIM}, en este caso OpenStack, usuario y contraseña del \ac{VIM}, y la \ac{URL} donde se encuentra el controlador del \ac{VIM}.
 
 \section{OpenStack}
 \label{sec:openstack}
 
-OpenStack\cite{openstackbib} es un proyecto basado en la nube que proporciona un \textit{datacenter} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una RestAPI para permitir conectividad con aplicaciones externas.
+OpenStack\cite{openstackbib} es un proyecto basado en la nube que proporciona un \textit{datacenter} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una REST-\ac{API} para permitir conectividad con aplicaciones externas.
 
 \begin{figure}[!ht]
 	\centering
@@ -224,8 +232,6 @@ Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus m�
 \end{figure}
 
 En la figura \ref{fig:ejemploos4j} se puede ver un breve ejemplo de como utilizar los servicios Identity, Compute, Image y Network.
-
-
 
 
 \cleardoublepage
