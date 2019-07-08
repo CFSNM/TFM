@@ -102,8 +102,6 @@ Como ejemplo, si el cliente quiere obtener información sobre un \textit{device}
 
 J-OpenStackClient\cite{openstack4jjavadocbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con OpenStack (ver \ref{sec:openstack}). Esta librería está basada en la librería \textit{open-source} OpenStack4Java (ver \ref{subsec:openstack4j}).
 
-Cada uno de los servicios de OpenStack tiene una representación en este cliente
-
 
 \begin{figure}[!ht]
 	\centering
@@ -111,6 +109,56 @@ Cada uno de los servicios de OpenStack tiene una representación en este cliente
 	\caption{Estructura de clases de J-OpenStackClient}
 	\label{fig:openstackclient}
 \end{figure}
+
+Cada uno de los servicios de OpenStack tiene una representación en este cliente, como se puede apreciar en la jerarquía de clases mostrada en la figura \ref{fig:openstackclient}. A su vez, cada servicio gobierna una serie de clases que modelan los diferentes componentes internos de OpenStack. 
+
+A continuación se realiza una explicación de la jerarquía de clases perteneciente a J-OpenStackClient:
+
+\begin{itemize}
+	
+	\item \textbf{Identity:} Esta clase abstracta es la que modela el servicio KeyStone de OpenStack. Proporciona acceso al resto de servicios de OpenStack mediante autenticación por usuario-contraseña, gracias a la clase OSClientV3.
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=1\linewidth]{imagenes/authOSClientV3}
+		\caption{Autenticación mediante OSClientV3. Fuente:\cite{openstack4jbib}}
+		\label{fig:authosclientv3}
+	\end{figure}
+	
+	En la figura \ref{fig:authosclientv3} se puede apreciar un ejemplo de autenticación mediante la clase mencionada anteriormente. 
+	
+	\item \textbf{Compute:} Esta clase abstracta es la que modela el servicio Nova de OpenStack. Proporciona funcionalidad de gestión sobre las diferentes máquinas virtuales y su configuración. Para ello, se apoya en diferentes clases, entre las que destacan:
+	
+	\begin{itemize}
+		
+		\item \textbf{Server:} Esta clase modela una máquina virtual que está corriendo en OpenStack. 
+		
+		\item \textbf{FloatingIP:} Esta clase modela una dirección \ac{IP} flotante, que se utiliza para que una máquina virtual sea accesible desde el exterior (su uso es similar a \ac{NAT}).
+		
+		\item \textbf{KeyPair:} Esta clase modela un par de claves pública-privada para acceder a una máquina virtual mediante \ac{SSH}.
+		
+		\item \textbf{QuotaSet:} Esta clase modela los recursos perteneciente a una máquina virtual, tales como número de CPU, memoria RAM, almacenamiento HD, \ac{IP}s flotantes, entre otros.
+		
+		
+	\end{itemize}
+		
+	\item \textbf{Network:} Esta clase abstracta modela el servicio Neutron de OpenStack. Proporciona un control sobre los componentes perteneciente a la infraestructura de red. Para ello, se apoya en las siguientes clases:
+	
+		\begin{itemize}
+		
+		\item \textbf{Network:} Esta clase modela una red, que está compuesta por diferentes subredes y por \textit{routers} para encaminar el tráfico entre diferentes subredes.
+		
+		\item \textbf{Subnet:} Esta clase modela una subred, que es una subdivisión de una red. Una subred tiene su propia dirección \ac{IP} y su máscara de red.
+		
+		\item \textbf{Router:} Esta clase es la que modela un \textit{router}, que se encarga de encaminar el tráfico entre diferentes subredes.
+		
+		\end{itemize}
+	
+\end{itemize}
+
+Después de explicar los diferentes servicios, hay que mencionar la clase OpenStackClient, que es la clase principal del cliente que actúa como interfaz entre el usuario final y OpenStack, y OpenStackUtils, que proporciona métodos auxiliares al cliente para trabajar con los componentes internos.
+
+\clearpage
 
 \section{Net2Plan: NFV Management Plugin}
 \label{sec:nfvplugin}
@@ -125,7 +173,7 @@ Para llevar a cabo este proyecto, era necesario integrar las APIs mencionadas an
 	\label{fig:nfvplugindash}
 \end{figure}
 
-Así mismo, en la figura \ref{fig:nfvplugindash} se puede observar la interfaz gráfica del Plugin NFV-Management, la cual está dividida en diferentes secciones:
+En la figura \ref{fig:nfvplugindash} se puede observar la interfaz gráfica del Plugin NFV-Management, la cual está dividida en diferentes secciones:
 
 \begin{itemize}
 	\item Arriba a la izquierda se encuentra el \textit{TopologyPanel}, que se encarga de dibujar la topología deseada. Esta funcionalidad es heredada del \textit{Plugin Network Design} de Net2Plan.
