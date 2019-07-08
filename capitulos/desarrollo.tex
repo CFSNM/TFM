@@ -62,21 +62,21 @@ Estas clases auxiliares se explican a continuación:
 \section{J-ONOS Client}
 \label{sec:onosclient}
 
-J-ONOSClient es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con \ac{ONOS} (ver \ref{sec:onos}). Esta librería está basada en la representación de objetos que proveé Swagger (ver \ref{subsec:openapi}). Gracias a Swagger, se puede generar automáticamente un cliente que interactúe con \ac{ONOS} en cualquier lenguaje de programación.
+J-ONOSClient\cite{onosjavadocbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con \ac{ONOS} (ver \ref{sec:onos}). Esta librería está basada en la representación de objetos que proveé Swagger (ver \ref{subsec:openapi}). Gracias a Swagger, se puede generar automáticamente un cliente que interactúe con \ac{ONOS} en cualquier lenguaje de programación.
 
-Este cliente generado proveé una representación de diferentes componentes, cada uno de ellos con una clase asociada que actúa como interfaz con \ac{ONOS} para controlar las interacciones que involucran a dicho componente. A continuación se explica cada uno de los componentes de \ac{ONOS}:
+Este cliente generado proveé una representación de diferentes componentes, cada uno de ellos con una clase asociada que actúa como interfaz con \ac{ONOS} para controlar las interacciones que involucran a dicho componente. A continuación se explica cada uno de los componentes mencionados anteriormente:
 
 \begin{itemize}
 	
-	\item \textbf{Host:} 
+	\item \textbf{Host:} Este componente representa un usuario final en una red, más concretamente una \ac{NIC}. Proporciona diferentes atributos como su identificador interno, su dirección \ac{IP}, su dirección \ac{MAC} o el identificador de la \ac{VLAN} a la que pertenece.
 	
-	\item \textbf{Device:}
+	\item \textbf{Device:} Este componente es una representación de un dispositivo perteneciente a la infraestructura de red. Proporciona los siguientes atributos: un identificador interno, un identificador de \textit{chassis}, un número de serie único, el identificador del fabricante, un número de versión de \textit{hardware}, un número de versión de \textit{software} y el tipo de dispositivo. 
 	
-	\item \textbf{Link:}
+	\item \textbf{Port:} Este componente representa un puerto físico de red. Proveé al usuario de distintos atributos, entre los que destacan el dispositivo al que pertenece, el número de puerto, la velocidad que soporta y el tipo de puerto.
 	
-	\item \textbf{Port:}
+	\item \textbf{Link:} Este componente es una representación de un enlace entre dos dispositivos de la infraestructura de red. Proporciona los siguiente atributos: el dispositivo origen y el dispositivo destino, el estado del enlace y el tipo de enlace.
 	
-	\item \textbf{Flow:}
+	\item \textbf{Flow:} Este componente representa una regla de flujo que se aplica en un dispositivo concreto. Proveé al usuario de distintos atributos, como un identificador interno, el selector y el tratamiento que lo componen y si es permanente o no, entre otros.
 	
 	\item \textbf{Intent:}
 	
@@ -86,7 +86,7 @@ Este cliente generado proveé una representación de diferentes componentes, cad
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=1\linewidth]{imagenes/ONOSClient}
-	\caption{Estructura de clases de ONOSClient}
+	\caption{Estructura de clases de J-ONOSClient}
 	\label{fig:onosclient}
 \end{figure}
 
@@ -99,7 +99,7 @@ En la figura \ref{fig:onosclient} se puede apreciar un esquema de la jerarquía 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=1\linewidth]{imagenes/OpenStackClient}
-	\caption{Estructura de clases de OpenStackClient}
+	\caption{Estructura de clases de J-OpenStackClient}
 	\label{fig:openstackclient}
 \end{figure}
 
