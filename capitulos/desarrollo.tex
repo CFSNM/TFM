@@ -70,15 +70,15 @@ Este cliente generado proveé una representación de diferentes componentes, cad
 	
 	\item \textbf{Host:} Este componente representa un usuario final en una red, más concretamente una \ac{NIC}. Proporciona diferentes atributos como su identificador interno, su dirección \ac{IP}, su dirección \ac{MAC} o el identificador de la \ac{VLAN} a la que pertenece.
 	
-	\item \textbf{Device:} Este componente es una representación de un dispositivo perteneciente a la infraestructura de red. Proporciona los siguientes atributos: un identificador interno, un identificador de \textit{chassis}, un número de serie único, el identificador del fabricante, un número de versión de \textit{hardware}, un número de versión de \textit{software} y el tipo de dispositivo. 
+	\item \textbf{Device:} Este componente es una representación de un dispositivo perteneciente a la infraestructura de red. Proporciona los siguientes atributos: su identificador interno, un identificador de \textit{chassis}, un número de serie único, el identificador del fabricante, un número de versión de \textit{hardware}, un número de versión de \textit{software} y el tipo de dispositivo. 
 	
 	\item \textbf{Port:} Este componente representa un puerto físico de red. Proveé al usuario de distintos atributos, entre los que destacan el dispositivo al que pertenece, el número de puerto, la velocidad que soporta y el tipo de puerto.
 	
 	\item \textbf{Link:} Este componente es una representación de un enlace entre dos dispositivos de la infraestructura de red. Proporciona los siguiente atributos: el dispositivo origen y el dispositivo destino, el estado del enlace y el tipo de enlace.
 	
-	\item \textbf{Flow:} Este componente representa una regla de flujo que se aplica en un dispositivo concreto. Proveé al usuario de distintos atributos, como un identificador interno, el selector y el tratamiento que lo componen y si es permanente o no, entre otros.
+	\item \textbf{Flow:} Este componente representa una regla de flujo que se aplica en un dispositivo concreto. Proveé al usuario de distintos atributos, como su identificador interno, el selector y el tratamiento que lo componen y si es permanente o no, entre otros.
 	
-	\item \textbf{Intent:}
+	\item \textbf{Intent:} Este componente es una representación de una combinación origen-destino. Gracias a él, el usuario puede definir un nodo origen y un nodo destino entre los cuales se cursará una demanda de tráfico, y \ac{ONOS} traduce dicho \textit{intent} a un conjunto de reglas de flujo totalmente transparentes al usuario, sin necesidad de crearlas automáticamente. Proporciona diversos atributos, entre los que destacan su identifcador interno, su prioridad y si ha sido posible llevarlo a cabo (si no existe un camino entre el origen y el destino, la instalación del \textit{intent} fallará).
 	
 \end{itemize}
 
@@ -90,11 +90,20 @@ Este cliente generado proveé una representación de diferentes componentes, cad
 	\label{fig:onosclient}
 \end{figure}
 
-En la figura \ref{fig:onosclient} se puede apreciar un esquema de la jerarquía de clases. 
+En la figura \ref{fig:onosclient} se puede apreciar un esquema de la jerarquía de clases. Se puede observar como cada componente tiene su propia \ac{API}.
+
+La clase ONOSClient es la clase principal del cliente que actúa como interfaz entre el usuario y \ac{ONOS}. Dicha clase interactúa con la \ac{REST}-\ac{API} de \ac{ONOS} mediante las \acp{API} de los diferentes componentes.
+
+Como ejemplo, si el cliente quiere obtener información sobre un \textit{device} en concreto, realizará una llamada a la clase DevicesApi, que internamente realizara una petición \ac{HTTP} GET a una \ac{URL} determinada para obtener la información buscada. La propia clase realizará una conversión de \ac{JSON} al objeto \textit{device} para proporcionar un mejor manejo de datos al usuario.
 
 
 \section{J-OpenStack Client}
 \label{sec:openstackclient}
+
+J-OpenStackClient\cite{openstack4jjavadocbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con OpenStack (ver \ref{sec:openstack}). Esta librería está basada en la librería \textit{open-source} OpenStack4Java (ver \ref{subsec:openstack4j}).
+
+Cada uno de los servicios de OpenStack tiene una representación en este cliente
+
 
 \begin{figure}[!ht]
 	\centering
@@ -127,8 +136,6 @@ Así mismo, en la figura \ref{fig:nfvplugindash} se puede observar la interfaz g
 	
 	\item Abajo a la derecha se encuentra el \textit{ServiceChainPanel}.
 \end{itemize}
-
-
 
 
 \cleardoublepage
