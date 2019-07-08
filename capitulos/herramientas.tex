@@ -81,7 +81,7 @@ Sus principales características son:
 
 En la figura \ref{fig:onosarch} se observa la arquitectura interna de \ac{ONOS}. En el \textit{Core} se encuentran los controladores de los diferentes servicios que ofrece (TopologyService, DeviceService, HostService, entre otros), cada uno de ellos destinado a controlar un tipo de componente.
 
-También se puede observar que, para acceder a estos controladores, las aplicaciones necesitan hacer uso de la interfaz \textit{NorthBound}, que se compone de varias subinterfaces que exportan diferentes \acp{API}, como una REST-\ac{API} o una \ac{TAPI}.
+También se puede observar que, para acceder a estos controladores, las aplicaciones necesitan hacer uso de la interfaz \textit{NorthBound}, que se compone de varias subinterfaces que exportan diferentes \acp{API}.
 
 Por otro lado, para que los controladores puedan tener constancia de los dispositivos de la red, la interfaz \textit{SouthBound} (\ac{SBI}) incluye diferentes \textit{drivers}, genéricos o particulares, para poder comunicarse con dispositivos mediante numerosos protocolos estandarizados, como se explicó anteriormente.
 
@@ -99,11 +99,11 @@ Para facilitar la interacción con el usuario, \ac{ONOS} ofrece una \ac{GUI}, co
 \subsection{OpenAPI y Swagger}
 \label{subsec:openapi}
 
-OpenAPI\cite{openapibib} es una iniciativa creada por varios expertos de la industria y la investigación para estandarizar las descripciones de las REST-\acp{API}. Su principal objetivo es crear y promover un formato de descripción genérico.
+OpenAPI\cite{openapibib} es una iniciativa creada por varios expertos de la industria y la investigación para estandarizar las descripciones de las \ac{REST}-\acp{API}. Su principal objetivo es crear y promover un formato de descripción genérico.
 
-Swagger\cite{swaggerbib} es un conjunto de herramientas open-source para definir y documentar REST-\acp{API}.
+Swagger\cite{swaggerbib} es un conjunto de herramientas open-source para definir y documentar \ac{REST}-\acp{API}.
 
-Mediante la colaboración entre OpenAPI, que establece un modelo de \acp{API} común, y Swagger, que permite diseñar una REST-\ac{API} de forma simple, las aplicaciones podrán conectarse entre sí de forma sencilla, y ayudará a tener un mundo más comunicado.
+Mediante la colaboración entre OpenAPI, que establece un modelo de \acp{API} común, y Swagger, que permite diseñar una \ac{REST}-\ac{API} de forma simple, las aplicaciones podrán conectarse entre sí de forma sencilla, y ayudará a tener un mundo más comunicado.
 
 \section{OSM}
 \label{sec:osm}
@@ -141,11 +141,11 @@ Mediante la colaboración entre OpenAPI, que establece un modelo de \acp{API} co
 Para ayudar a explicar el funcionamiento de \ac{OSM}, la figura \ref{fig:osmarch} da una visión general de la interaccion entre \ac{OSM} y los diferentes componentes:
 
 \begin{itemize}
-	\item \textbf{Interfaz \textit{NorthBound}:} \ac{OSM} exporta una REST-\ac{API} gracias a su interfaz \textit{NorthBound}. Mediante peticiones \ac{HTTP}, como GET, POST o DELETE, el usuario es capaz de ejecutar órdenes en \ac{OSM}, tales como crear un nuevo \ac{VIM} o instanciar un nuevo \ac{VNF}, entre otras.
+	\item \textbf{Interfaz \textit{NorthBound}:} \ac{OSM} exporta una \ac{REST}-\ac{API} accesible por su interfaz \textit{NorthBound}. Mediante peticiones \ac{HTTP}, como GET, POST o DELETE, el usuario es capaz de ejecutar órdenes en \ac{OSM}, tales como crear un nuevo \ac{VIM} o instanciar un nuevo \ac{VNF}, entre otras.
 	
 	Para ello, es necesario tener un cliente desde el cuál enviar órdenes. La \ac{ETSI} ofrece una interfaz gráfica web que se instala al mismo tiempo que \ac{OSM} y un cliente por línea de comando escrito en Python (ver \ref{subsec:osmclientpython}).
 	
-	\item \textbf{Conexión con \ac{VIM}:} \ac{OSM} permite la comunicación con múltiples tipos de \acp{VIM} (OpenStack, OpenVIM, VMWare y Amazon Web Services). Para ello, es necesaria conectividad \ac{IP} entre \ac{OSM} y el propio \ac{VIM}, ya que las órdenes enviadas por \ac{OSM} al \ac{VIM} para realizar operaciones son hechas mediante una REST-\ac{API}.
+	\item \textbf{Conexión con \ac{VIM}:} \ac{OSM} permite la comunicación con múltiples tipos de \acp{VIM} (OpenStack, OpenVIM, VMWare y Amazon Web Services). Para ello, es necesaria conectividad \ac{IP} entre \ac{OSM} y el propio \ac{VIM}, ya que las órdenes enviadas por \ac{OSM} al \ac{VIM} para realizar operaciones son hechas mediante una \ac{REST}-\ac{API}.
 	
 	\item \textbf{Conexión \ac{VIM}-\ac{NFVI}:} \ac{NFVI} es el conjunto de recursos (RAM, CPU, HD, entre otros) que son utilizados para instanciar las diferentes máquinas virtuales. El \ac{VIM} actúa como un controlador de las diferentes \acp{NFVI} y gestiona las interacciones entre \ac{OSM} y ellas.
 	
@@ -157,7 +157,7 @@ Para ayudar a explicar el funcionamiento de \ac{OSM}, la figura \ref{fig:osmarch
 \subsection{OSMClient}
 \label{subsec:osmclientpython}
 
-OSMClient\cite{osmclientbib} es un cliente REST programado en Python por la \ac{ETSI} que proveé una \ac{CLI} para interactuar con \ac{OSM}. Fue introducido en la \textit{release} 2 y permite al usuario ejecutar numerosas acciones, como subir un nuevo descriptor, crear un nuevo \ac{VIM}, instanciar un nuevo \ac{NS} o eliminar un \ac{NS}, entre otras. 
+OSMClient\cite{osmclientbib} es un cliente \ac{REST} programado en Python por la \ac{ETSI} que proveé una \ac{CLI} para interactuar con \ac{OSM}. Fue introducido en la \textit{release} 2 y permite al usuario ejecutar numerosas acciones, como subir un nuevo descriptor, crear un nuevo \ac{VIM}, instanciar un nuevo \ac{NS} o eliminar un \ac{NS}, entre otras. 
 
 En sus orígenes, cuando la \textit{release} 2 de \ac{OSM} fue dispuesta al público, dicho cliente tenía una funcionalidad limitada y únicamente podía ser instalado junto a la versión completa de \ac{OSM}.
 
@@ -175,7 +175,7 @@ En la figura \ref{fig:osmclientpythonexample} se puede ver un pequeño ejemplo d
 \section{OpenStack}
 \label{sec:openstack}
 
-OpenStack\cite{openstackbib} es un proyecto basado en la nube que proporciona un \textit{datacenter} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una REST-\ac{API} para permitir conectividad con aplicaciones externas.
+OpenStack\cite{openstackbib} es un proyecto basado en la nube que proporciona un \textit{datacenter} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una \ac{REST}-\ac{API} para permitir conectividad con aplicaciones externas.
 
 \begin{figure}[!ht]
 	\centering
@@ -205,7 +205,7 @@ Está compuesto de diferentes servicios o bloques, encargándose cada uno de ell
 \subsection{OpenStack4Java}
 \label{subsec:openstack4j}
 
-OpenStack4Java\cite{openstack4jbib} es una librería REST \textit{open-source} programada en Java para controlar y gestionar un sistema basado en OpenStack.
+OpenStack4Java\cite{openstack4jbib} es una librería \ac{REST} \textit{open-source} programada en Java para controlar y gestionar un sistema basado en OpenStack.
 
 Permite al usuario realizar una gestión de OpenStack eficiente gracias a sus múltiples módulos, cada uno de ellos focalizado en gestionar un servicio concreto de OpenStack:
 

@@ -2,9 +2,9 @@
 
 En este capítulo se hablará sobre las diferentes librerías que se han realizado en este proyecto, explicando detalladamente la estructura de cada una de ellas.
 
-Primeramente se explicará J-OSMClient, que es el cliente programado en Java para comunicarse con la REST-\ac{API} que exporta \ac{OSM}.
+Primeramente se explicará J-OSMClient, que es el cliente programado en Java para comunicarse con la \ac{REST}-\ac{API} que exporta \ac{OSM}.
 
-Seguidamente se hablará de J-ONOSClient, que es el cliente encargado de comunicarse con la REST-\ac{API} de \ac{ONOS}, y de J-OpenStack Client, que se encarga de comunicarse con la REST-\ac{API} de OpenStack.
+Seguidamente se hablará de J-ONOSClient, que es el cliente encargado de comunicarse con la \ac{REST}-\ac{API} de \ac{ONOS}, y de J-OpenStack Client, que se encarga de comunicarse con la \ac{REST}-\ac{API} de OpenStack.
 
 Por último, se hará especial énfasis en el plugin de Net2Plan desarrollado, en el cual se han integrado las diferentes \acp{API} mencionadas anteriormente.
 
@@ -12,7 +12,7 @@ Por último, se hará especial énfasis en el plugin de Net2Plan desarrollado, e
 \section{J-OSM Client}
 \label{sec:osmclient}
 
-J-OSMClient\cite{josmclientbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente REST para interactuar con \ac{OSM} (ver \ref{sec:osm}). Está basado en el cliente programado en Python por la \ac{ETSI} (ver \ref{subsec:osmclientpython}).
+J-OSMClient\cite{josmclientbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con \ac{OSM} (ver \ref{sec:osm}). Está basado en el cliente programado en Python por la \ac{ETSI} (ver \ref{subsec:osmclientpython}).
 
 Se compone principalmente de tres clases que realizan la comunicación con \ac{OSM} y devuelven los resultados de las interacciones al usuario:
 
@@ -28,7 +28,7 @@ Se compone principalmente de tres clases que realizan la comunicación con \ac{O
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/OSMClient}
+	\includegraphics[width=1\linewidth]{imagenes/OSMClient}
 	\caption{Estructura de clases de J-OSMClient}
 	\label{fig:osmclient}
 \end{figure}
@@ -59,17 +59,38 @@ Estas clases auxiliares se explican a continuación:
 \end{itemize}
 
 
-
-
 \section{J-ONOS Client}
 \label{sec:onosclient}
 
+J-ONOSClient es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con \ac{ONOS} (ver \ref{sec:onos}). Esta librería está basada en la representación de objetos que proveé Swagger (ver \ref{subsec:openapi}). Gracias a Swagger, se puede generar automáticamente un cliente que interactúe con \ac{ONOS} en cualquier lenguaje de programación.
+
+Este cliente generado proveé una representación de diferentes componentes, cada uno de ellos con una clase asociada que actúa como interfaz con \ac{ONOS} para controlar las interacciones que involucran a dicho componente. A continuación se explica cada uno de los componentes de \ac{ONOS}:
+
+\begin{itemize}
+	
+	\item \textbf{Host:} 
+	
+	\item \textbf{Device:}
+	
+	\item \textbf{Link:}
+	
+	\item \textbf{Port:}
+	
+	\item \textbf{Flow:}
+	
+	\item \textbf{Intent:}
+	
+\end{itemize}
+
+
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/ONOSClient}
+	\includegraphics[width=1\linewidth]{imagenes/ONOSClient}
 	\caption{Estructura de clases de ONOSClient}
 	\label{fig:onosclient}
 \end{figure}
+
+En la figura \ref{fig:onosclient} se puede apreciar un esquema de la jerarquía de clases. 
 
 
 \section{J-OpenStack Client}
@@ -77,7 +98,7 @@ Estas clases auxiliares se explican a continuación:
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/OpenStackClient}
+	\includegraphics[width=1\linewidth]{imagenes/OpenStackClient}
 	\caption{Estructura de clases de OpenStackClient}
 	\label{fig:openstackclient}
 \end{figure}
@@ -90,7 +111,7 @@ Para llevar a cabo este proyecto, era necesario integrar las APIs mencionadas an
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/nfvplugin_dashboard}
+	\includegraphics[width=1\linewidth]{imagenes/nfvplugin_dashboard}
 	\caption{Interfaz gráfica del Plugin NFV-Management}
 	\label{fig:nfvplugindash}
 \end{figure}

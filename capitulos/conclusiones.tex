@@ -1,3 +1,86 @@
 \chapter{Conclusiones}
 
+El objetivo inicialmente propuesto fue el desarrollo de un sistema de integración continua para la herramienta Net2Plan que permitiese detectar y solucionar errores de forma eficiente, así como realizar posteriormente un despliegue a GitHub para que cualquier persona interesada fuera capaz de descargar la última versión disponible fácilmente. 
+
+Para llevar este trabajo a cabo, se propuso evaluar dos populares gestores de integración continua, Jenkins y Travis, analizando cuál se adaptaba mejor a las necesidades requeridas. 
+
+Una vez realizados dos sistemas de integración continua, cada uno de ellos basado en un gestor, se realiza una comparación entre ambos en función de las necesidades para decidir cuál de ellos será implantado.
+
+\section{Comparación entre Jenkins y Travis}
+
+A continuación, se realiza una comparación entre ambos gestores en función de diferentes características, como la instalación o la configuración, entre otras:
+
+\begin{itemize}
+	\item Instalación.
+	
+	Travis tiene la ventaja de que, al estar alojado en la nube, no necesita un servidor privado para poder ser utilizado. Simplemente se necesita una cuenta de GitHub y conexión a Internet. 
+	
+	Jenkins, en cambio, necesita de un servidor privado corriendo Docker (ver sección \ref{Docker}) para funcionar.
+	
+	\item Configuración.
+	
+	Para configurar Travis se necesita crear en la raíz del repositorio un archivo llamado .travis.yml, en el que se van indicando los pasos a realizar (ver sección \ref{Travislc}).
+	
+	Para Jenkins, en cambio, se necesita crear una tarea para gestionar el repositorio. Dicha tarea tiene unos pasos específicos que hay que configurar mediante distintos \textit{plugins} (ver sección \ref{Jenkins}). En función de las necesidades, hay que instalar unos \textit{plugins} u otros.
+	%\clearpage
+	\item Detección de errores.
+	
+	Ambos gestores utilizan la dependencia \texttt{Surefire} de \textit{Maven} para realizar los tests. 
+	
+	La ventaja que tiene Jenkins respecto a Travis aquí es que permite crear \textit{reports} de los propios tests, y exportarlos al escritorio para leerlos detenidamente y ver más claramente donde se han producido los fallos.
+	
+	\item Despliegue a GitHub.
+	
+	Para realizar el despliegue en Travis, es suficiente con incluir en el archivo .travis.yml el paso \texttt{deploy} (ver sección \ref{Travisfile}).
+	
+	Para realizar el despliegue en Jenkins, se necesita un plugin llamado \textit{Jenkins Release Plugin}.
+	
+	La desventaja de Jenkins respecto a Travis en cuanto al despliegue es que se necesita de una cuenta en JIRA, plataforma privada creada por Attlasian para el seguimiento de proyectos de software, que es de pago.
+	
+	
+\end{itemize}
+
+A continuación se ve una tabla comparativa entre Jenkins y Travis que resume lo expuesto arriba:
+
+\vspace*{0.45in}
+
+
+\begin{table}[h!]
+	\centering
+	\resizebox{10cm}{!} {
+		\begin{tabular}{||c||c||c||}
+			\hline 
+			Características & Jenkins & Travis  \\ 
+			\hline 
+			Instalación &  & x\\ 
+			\hline 
+			Configuración & x & x \\ 
+			\hline 
+			Detección de errores & x &  \\ 
+			\hline 
+			Despliegue a GitHub &  & x \\ 
+			\hline 
+		\end{tabular} 
+	}
+	\caption{Comparación entre Jenkins y Travis}
+	\label{comparacion}
+\end{table}
+
+Finalmente, teniendo en cuenta ventajas y desventajas de cada gestor, se ha elegido el sistema de integración continua basado en Travis para implantar definitivamente en Net2Plan.
+
+\section{Fortalezas}
+
+Inicialmente, se pretendía llevar a cabo un sistema de integración continua que compilara Net2Plan mediante Maven, detectara posibles fallos, y, en caso de no haber fallos, publicara la última versión de la herramienta en GitHub.
+
+La principal fortaleza de este trabajo de fin de grado es que dicho hito se ha conseguido satisfactoriamente, cumpliendo las espectativas puestas al comienzo del trabajo.
+
+\section{Trabajo futuro y mejoras}
+
+Como propuestas de mejora y trabajo futuro, se proponen las siguientes:
+\begin{itemize}
+	\item Realizar un mayor número de tests para la herramienta Net2Plan mediante JUnit, para que la integración continua realice su cometido de forma eficiente.
+	\item Evaluar otros gestores de integración continua, como CodeShip o CircleCI, y ver posibles mejoras respecto a Jenkins y Travis.
+	\item Seccionar la \textit{build} en otras más pequeñas (una por módulo de Net2Plan). Únicamente se ejecutará la \textit{build} de un módulo cuando dicho módulo haya sufrido cambios.  
+\end{itemize}
+
 \cleardoublepage
