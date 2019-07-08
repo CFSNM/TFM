@@ -1,4 +1,5 @@
 \chapter{Desarrollo de Aplicaciones}
+\label{desarrollo}
 
 En este capítulo se hablará sobre las diferentes librerías que se han realizado en este proyecto, explicando detalladamente la estructura de cada una de ellas.
 
@@ -46,7 +47,7 @@ Estas clases auxiliares se explican a continuación:
 	
 	\item \textbf{VirtualLinkDescriptor:} Esta clase es la que define el componente \ac{VLD}. Proporciona un único atributo, que es una lista de conexiones en las que se indica los dos puertos que se conectan gracias a él.
 	
-	\item \textbf{VirtualDeploymentUnit:} Esta clase define el componente \ac{VDU}. Proveé diferentes atributos como la imagen que lo define y los recursos necesarios para su creación (Almacenamiento HD, número de CPUs y Memoria RAM).
+	\item \textbf{VirtualDeploymentUnit:} Esta clase define el componente \ac{VDU}. Proveé diferentes atributos como la imagen que lo define y los recursos necesarios para su creación (\ac{HD}, \ac{CPU} y \ac{RAM}).
 	
 	\item \textbf{VirtualNetworkFunctionDescriptor:} Esta clase es la que modela el componente \ac{VNFD}. Proporciona únicamente un atributo, que es la lista de \acp{VDU} que lo componen.
 		
@@ -163,7 +164,7 @@ Después de explicar los diferentes servicios, hay que mencionar la clase OpenSt
 \section{Net2Plan: NFV Management Plugin}
 \label{sec:nfvplugin}
 
-Para llevar a cabo este proyecto, era necesario integrar las APIs mencionadas anteriormente con una herramienta que tenga funcionalidad de planificación de redes. Por ello, se ha desarrollado una extensión de Net2Plan basada en el plugin Network Design.
+Para llevar a cabo este proyecto, era necesario integrar las APIs mencionadas anteriormente con una herramienta que tenga funcionalidad de planificación de redes. Por ello, se ha desarrollado una extensión de Net2Plan basada en el plugin Network Design para llevar a cabo la prueba de concepto (ver \ref{pruebaconcepto}). 
 
 
 \begin{figure}[!ht]
@@ -178,11 +179,30 @@ En la figura \ref{fig:nfvplugindash} se puede observar la interfaz gráfica del 
 \begin{itemize}
 	\item Arriba a la izquierda se encuentra el \textit{TopologyPanel}, que se encarga de dibujar la topología deseada. Esta funcionalidad es heredada del \textit{Plugin Network Design} de Net2Plan.
 	
-	\item Arriba a la derecha se encuentra el \textit{OSMPanel}, que se encarga de obtener información sobre los distintos NSD que se encuentran disponibles en OSM y mostrarla al usuario de una manera amigable, informándole de que recursos (HD, RAM, CPU) son necesarios para su instanciación en un VIM.
+	\item Arriba a la derecha se encuentra el \textit{OSMPanel}, que se encarga de obtener información sobre los distintos NSD que se encuentran disponibles en OSM y mostrarla al usuario de una manera amigable, informándole de que recursos (\ac{HD}, \ac{RAM}, \ac{CPU}) son necesarios para su instanciación en un VIM.
+	
+	Así mismo, también incluye botones para realizar la ejecución de la prueba de concepto, así como el borrar todos los \acp{VNF} instanciados en \ac{OSM}.
 	
 	\item Abajo a la izquierda se encuentra el \textit{FocusPanel}, que se encarga de mostrar información detallada de un elemento en concreto cuando se selecciona. Dicha funcionalidad es heredada del \textit{Plugin Network Design} de Net2Plan.
 	
-	\item Abajo a la derecha se encuentra el \textit{ServiceChainPanel}.
+	\item Abajo a la derecha se encuentra el \textit{ServiceChainPanel}, que se encarga de mostrar la fase en la que se encuentra el transcurso de la prueba de concepto. 
+	
+	Hay cinco fases: 
+	
+	\begin{itemize}
+		
+		\item La primera indica que se ha cargado la topología de \ac{ONOS} correctamente.
+		
+		\item La segunda indica que el algoritmo de \ac{NFV} se ha ejecutado correctamente.
+		
+		\item La tercera indica que los \acp{VNF} se han instanciado correctamente en \ac{OSM}.
+		
+		\item La cuarta muestra cuando OpenStack ha creado las máquinas virtuales asociadas a los \acp{VNF} instanciados.
+		
+		\item La quinta fase indica que se han instalado las reglas de flujo en \ac{ONOS} y la \textit{Service Chain} se satisface correctamente.
+		
+	\end{itemize}
+
 \end{itemize}
 
 

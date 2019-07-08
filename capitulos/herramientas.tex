@@ -1,4 +1,5 @@
 \chapter{Herramientas utilizadas}
+\label{herramientas}
 
 En este capítulo se va a hacer una descripción de cada una de las herramientas utilizadas en el proyecto, haciendo especial mención a Net2Plan, que es una herramienta cuya funcionalidad es la de emular y planificar una red de telecomunicación. Dicha herramienta constituye la base para el desarrollo de este proyecto, más concretamente de la prueba de concepto.
 
@@ -147,7 +148,7 @@ Para ayudar a explicar el funcionamiento de \ac{OSM}, la figura \ref{fig:osmarch
 	
 	\item \textbf{Conexión con \ac{VIM}:} \ac{OSM} permite la comunicación con múltiples tipos de \acp{VIM} (OpenStack, OpenVIM, VMWare y Amazon Web Services). Para ello, es necesaria conectividad \ac{IP} entre \ac{OSM} y el propio \ac{VIM}, ya que las órdenes enviadas por \ac{OSM} al \ac{VIM} para realizar operaciones son hechas mediante una \ac{REST}-\ac{API}.
 	
-	\item \textbf{Conexión \ac{VIM}-\ac{NFVI}:} \ac{NFVI} es el conjunto de recursos (RAM, CPU, HD, entre otros) que son utilizados para instanciar las diferentes máquinas virtuales. El \ac{VIM} actúa como un controlador de las diferentes \acp{NFVI} y gestiona las interacciones entre \ac{OSM} y ellas.
+	\item \textbf{Conexión \ac{VIM}-\ac{NFVI}:} \ac{NFVI} es el conjunto de recursos (\ac{RAM}, \ac{CPU}, \ac{HD}, entre otros) que son utilizados para instanciar las diferentes máquinas virtuales. El \ac{VIM} actúa como un controlador de las diferentes \acp{NFVI} y gestiona las interacciones entre \ac{OSM} y ellas.
 	
 	En estructuras de trabajo pequeñas, es habitual que un \ac{VIM} y su \ac{NFVI} estén en la misma máquina física, aunque para estructuras reales de trabajo, la \ac{NFVI} de un \ac{VIM} puede estar distribuida en diferentes máquinas físicas.
 	
