@@ -18,6 +18,17 @@ Una vez acabado el proyecto, cabe decir que la principal fortaleza de este Traba
 
 \section{Análisis de resultados}
 
+Una vez acabado el proyecto y habiendo obtenido resultados para su correspondiente análisis, se puede observar como, gracias a J-ONOSClient y a J-OpenStackClient, el plugin de Net2Plan puede obtener información exhaustiva sobre la red de transporte controlada por \ac{ONOS} y de los recursos internos de los \acp{VIM}, permitiendo utilizar dicha información como parámetros de entrada del algoritmo de planificación ejecutado por el \ac{LA-SCCE}, lo que conlleva unos resultados más realistas.
+
+En referencia a J-OSMClient, hay que mencionar que es el único cliente \textit{open-source} programado en Java que existe para establecer comunicación con \ac{OSM}. Aunque existe el cliente en Python desarrollado por la \ac{ETSI}, dicho cliente no permite utilizarse de manera gráfica, debido a su naturaleza de \ac{CLI}. 
+
+Por ello, la creación de J-OSMClient proporciona una amplio abanico de trabajo, permitiendo que \ac{OSM} sea gestionado por una aplicación externa.
+
+Para finalizar el análisis de resultados, hay que mencionar los resultados obtenidos al realizar la prueba de concepto. Una vez instanciados los \acp{VNF} correspondientes a la \textit{Service Chain} y habiendo instalado las reglas de flujo correspondientes a la ruta óptima obtenida en los \textit{switches}, se realizan una prueba de conexión enviando un ping entre el origen y el destino. 
+
+En la figuras \ref{fig:nfvservicechain} y \ref{fig:topo_onos} se puede observar como la ruta es la misma en ambos casos (en el plugin de Net2Plan y en \ac{ONOS}), y en la figura \ref{fig:onosflowrules} como las reglas de flujo aplicadas indican que han procesado un paquete, que corresponde al ping realizado anteriormente para validad la conectividad.
+
+
 \section{Líneas de trabajo futuro y mejoras}
 
 Aunque el objetivo de este proyecto se ha cumplido con creces, siempre se puede mejorar. Por ello, se proponen las siguientes líneas de trabajo futuro y mejoras:
