@@ -66,31 +66,34 @@ Para llevar a cabo la prueba de concepto, la arquitectura explicada en la secci�
 El \textit{testbed} montado se compone de cuatro \acp{PC} y dos \textit{switches}, uno para el plano de control y otro para el plano de datos:
 
 \begin{itemize}
-	\item \textbf{Mini\ac{PC}1:} Se encarga de alojar una instancia del controlador \ac{SDN} \ac{ONOS} y de emular la red de transporte gracias a Mininet.
+	\item \textbf{Mini\ac{PC}1:} Este \ac{PC} se encarga de alojar una instancia del controlador \ac{SDN} \ac{ONOS} y de emular la red de transporte gracias a Mininet.
 	
-	\item \textbf{Mini\ac{PC}2:} 
+	\item \textbf{Mini\ac{PC}2:} En este \ac{PC} se encuentra corriendo una instancia de OpenStack, que actúa como \ac{VIM} 1.
 	
-	\item \textbf{Mini\ac{PC}3:} 
+	\item \textbf{Mini\ac{PC}3:} En este \ac{PC} se encuentra corriendo una instancia de OpenStack, que actúa como \ac{VIM} 2.
 	
-	\item \textbf{\textit{Personal Laptop}:} 
+	\item \textbf{\textit{Personal Laptop}:} Este dispositivo actúa como entidad central del \textit{testbed}. En él se encuentra corriendo una instancia de \ac{OSM} y el plugin \textit{NFV Management} de Net2Plan.
 \end{itemize}
 
 
-A continuación se explican los diferentes pasos que se realizan para llevar a cabo la prueba de concepto y que APIs intervienen en cada uno de ellos:
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/nfvplugin_dashboard}
-	\caption{Interfaz gráfica del Plugin al inicio}
-	\label{fig:nfvproof_inicio}
-\end{figure}
+Una vez explicado el \textit{testbed}, se explican los diferentes pasos que se realizan para llevar a cabo la prueba de concepto y que \acp{API} intervienen en cada uno de ellos:
 
 \begin{itemize}
-	\item Paso 1. Haciendo click en el botón LOAD, Net2Plan recibe la información referente a la red de transporte de ONOS haciendo uso de ONOSClient, la información sobre los posibles VNFs a instanciar de ETSI-OSM haciendo uso de J-OSMClient y la información sobre cada VIM de OpenStack haciendo uso de OpenStackClient.
 	
-	\item Paso 2. El usuario define la Service Chain que quiere satisfacer (nodo origen, nodo destino, secuencia ordenada de VNFs a atravesar, latencia máxima y ancho de banda) a través de la interfaz gráfica del Plugin.
+	\item \textbf{Paso 1.} Una vez que \ac{ONOS}, \ac{OSM} y los \acp{VIM} estan listos y corriendo, se arranca el plugin de Net2Plan para comenzar con la demostración.
 	
-	\item Paso 3. Net2Plan recibe la información introducida por el usuario y la transfiere al LA-SCCE para que ejecute el algoritmo que devolverá como resultado una ruta de enlaces para la Service Chain y una serie de VNFs instanciadas en diferentes VIMs.
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=0.9\linewidth]{imagenes/nfvplugin_dashboard}
+		\caption{Interfaz gráfica del Plugin al inicio}
+		\label{fig:nfvproof_inicio}
+	\end{figure}
+	
+	\item \textbf{Paso 2.} Haciendo click en el botón LOAD, Net2Plan recibe la información referente a la red de transporte de \ac{ONOS} haciendo uso de J-ONOSClient, la información sobre los posibles \acp{VNF} a instanciar en \ac{OSM} haciendo uso de J-OSMClient y la información sobre cada \ac{VIM} de OpenStack haciendo uso de J-OpenStackClient.
+	
+	\item \textbf{Paso 3.} El usuario define la \textit{Service Chain} que se quiere satisfacer (nodo origen, nodo destino, secuencia ordenada de VNFs a atravesar, latencia máxima y ancho de banda) a través de la interfaz gráfica del Plugin.
+	
+	\item \textbf{Paso 4.} Net2Plan recibe la información introducida por el usuario y la transfiere al \ac{LA-SCCE} para que ejecute el algoritmo que devolverá como resultado una ruta de enlaces para la \textit{Service Chain} y el \ac{VIM} donde cada \ac{VNF} debe ser instanciada.
 	
 		\begin{figure}[!ht]
 		\centering
@@ -99,36 +102,38 @@ A continuación se explican los diferentes pasos que se realizan para llevar a c
 		\label{fig:nfvservicechain}
 	\end{figure}
 	
-	\item Paso 4. Net2Plan envía la orden a ETSI-OSM haciendo uso de J-OSMClient de instanciar las VNFs en los VIMs que el LA-SCCE obtuvo como óptimos.
+	\item \textbf{Paso 5.} Net2Plan envía la orden a \ac{OSM} haciendo uso de J-OSMClient de instanciar los distintos \acp{VNF} en los \ac{VIM} que el \ac{LA-SCCE} obtuvo como óptimos.
 	
 	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=0.9\linewidth]{imagenes/osm_vnfs}
-		\caption{Interfaz gráfica de OSM con los VNFs instanciados}
+		\caption{Interfaz gráfica de \ac{OSM} con los \acp{VNF} instanciados}
 		\label{fig:osmvnfs}
 	\end{figure}
 	
 	
-	\item Paso 5. ETSI-OSM envia órdenes a los diferentes VIMs (OpenStack) para que alojen las diferentes máquinas virtuales correspondientes a los VNFs. La comunicacion entre OSM y OpenStack es transparente al usuario.
+	\item \textbf{Paso 6.} \ac{OSM} envia órdenes a los diferentes \acp{VIM} para que alojen las diferentes máquinas virtuales correspondientes a los \acp{VNF}. La comunicacion entre \ac{OSM} y OpenStack es transparente al usuario.
 	
-	\item Paso 6. Net2Plan envía la orden a ONOS, haciendo uso de ONOSClient, con diferentes reglas de flujo para establecer en los diferentes switches de la red de transporte, todo según la ruta óptima obtenida por el LA-SCCE.
+	\item \textbf{Paso 7.} Net2Plan envía la orden a \ac{ONOS}, haciendo uso de J-ONOSClient, con diferentes reglas de flujo para establecer en los diferentes \textit{switches} de la red de transporte, todo según la ruta óptima obtenida por el \ac{LA-SCCE}.
 	
 	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=0.9\linewidth]{imagenes/topo_onos}
-		\caption{Interfaz gráfica de ONOS con las reglas de flujo establecidas}
+		\caption{Interfaz gráfica de \ac{ONOS} con las reglas de flujo establecidas}
 		\label{fig:topo_onos}
 	\end{figure}
 
-	\item Paso 7. Una vez establecidos las reglas de flujo mediante OpenFlow, se realiza una prueba de conexión para asegurar que la Service Chain está establecida.
+	\item \textbf{Paso 8.} Una vez establecidas las reglas de flujo en los diferentes \textit{switches} mediante OpenFlow, se realiza una prueba de conexión para asegurar que la \textit{Service Chain} está establecida y se satisface correctamente.
 	
 	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=0.9\linewidth]{imagenes/onos_flowrules}
-		\caption{Prueba de conectividad en la GUI de ONOS}
+		\caption{Prueba de conectividad en la \ac{GUI} de \ac{ONOS}}
 		\label{fig:onosflowrules}
 	\end{figure}
 
 
 \end{itemize}
+
+Una vez realizada la prueba de concepto, se puede observar que ha sido exitosa, ya que tanto los diferentes \acp{VNF} han sido instanciados correctamente y las reglas de flujo se han instalado en los \textit{switches} Openflow también de manera exitosa.
 
