@@ -18,15 +18,17 @@ Una vez acabado el proyecto, cabe decir que la principal fortaleza de este Traba
 
 \section{Análisis de resultados}
 
-\section{Trabajo futuro y mejoras}
+\section{Líneas de trabajo futuro y mejoras}
 
-Como propuestas de mejora y trabajo futuro, se proponen las siguientes:
+Aunque el objetivo de este proyecto se ha cumplido con creces, siempre se puede mejorar. Por ello, se proponen las siguientes líneas de trabajo futuro y mejoras:
 
 \begin{itemize}
 	
 	\item Emular una red de transporte multicapa (\ac{IP} sobre \ac{WDM}) para conseguir un escenario más realista. Para ello, evaluar herramientas como LINC-OE\cite{lincoebib} o incluso utilizar agentes basados en modelos \ac{YANG}.
 	
-	\item Complementar la prueba de concepto con herramientas que sirvan para monitorizar el estado interno de los \acp{VIM}.
+	\item Complementar la prueba de concepto con herramientas que sirvan para monitorizar el estado interno de los \acp{VIM} para obtener información interna con más nivel de detalle.
+	
+	\item Actualmente, J-ONOSClient y J-OpenStackClient se encuentran dentro del código del plugin \textit{NFV Management}, y este se encuentra bajo un repositorio Git privado. Sería útil exportar ambos clientes a GitHub para que estuvieran disponibles para utilizar en cualquier otra herramienta para otros escenarios.
 	
 \end{itemize}
 
