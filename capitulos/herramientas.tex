@@ -3,7 +3,7 @@
 
 En este capítulo se va a hacer una descripción de cada una de las herramientas utilizadas en el proyecto, haciendo especial mención a Net2Plan, que es una herramienta cuya funcionalidad es la de emular y planificar una red de telecomunicación. Dicha herramienta constituye la base para el desarrollo de este proyecto, más concretamente de la prueba de concepto.
 
-Además de Net2Plan, se han utilizado otras herramientas para complementar la funcionalidad de Net2Plan y proveerle diferentes funcionalidad enmarcadas en las tecnologías \ac{SDN} y \ac{NFV}. Dichas herramientas son Mininet, para emular redes de telecomunicación; ONOS, un controlador \ac{SDN}; \ac{OSM}, un gestor y orquestador \ac{NFV}; y OpenStack, una herramienta para emular una infraestructura IT.
+Además de Net2Plan, se han utilizado otras herramientas para complementar la funcionalidad de Net2Plan y permitirle emular escenarios basados en las tecnologías \ac{SDN} y \ac{NFV}. Dichas herramientas son Mininet, para emular redes de telecomunicación; ONOS, un controlador \ac{SDN}; \ac{OSM}, un gestor y orquestador \ac{NFV}; y OpenStack, una herramienta para emular una infraestructura IT.
 
 Todas estas herramientas operan en sintonía para llevar a cabo una prueba de concepto exitosa.
 
@@ -109,7 +109,7 @@ Mediante la colaboración entre OpenAPI, que establece un modelo de \acp{API} co
 \section{OSM}
 \label{sec:osm}
 
-\ac{OSM}\cite{osmbib} es un software \textit{open-source} cuya función principal es la orquestación de servicios de red avanzados en infraestructuras \ac{NFV} heterogéneas. Surge como iniciativa del \ac{ETSI} para crear una arquitectura \ac{NFV} común para los operadores de red.
+\ac{OSM}\cite{osmbib} es un software \textit{open-source} cuya función principal es la orquestación de servicios de red avanzados en infraestructuras \ac{NFV} heterogéneas. Surge como iniciativa del \ac{ETSI}\cite{etsibib} para crear una arquitectura \ac{NFV} común para los operadores de red.
 
 \ac{OSM} trabaja con una serie de componentes/elementos que ayudan a definir su arquitectura:
 
@@ -178,14 +178,18 @@ En la figura \ref{fig:osmclientpythonexample} se puede ver un pequeño ejemplo d
 
 OpenStack\cite{openstackbib} es un proyecto basado en la nube que proporciona un \textit{datacenter} para controlar y gestionar grandes cantidades de recursos de computación, almacenamiento y red. Para facilitar la gestión de recursos, OpenStack provee al usuario una interfaz gráfica a la vez que también exporta una \ac{REST}-\ac{API} para permitir conectividad con aplicaciones externas.
 
+OpenStack está compuesto de diferentes servicios o bloques, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura global. La principl característica de dichos servicios es que cada uno de ellos es accesible de forma indepdendiente.
+
+\clearpage
+
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/openstack_arch}
+	\includegraphics[width=1.1\linewidth]{imagenes/openstack_arch}
 	\caption{Arquitectura de OpenStack. Fuente:\cite{openstackbib}}
 	\label{fig:openstackarch}
 \end{figure}
 
-Está compuesto de diferentes servicios o bloques, encargándose cada uno de ellos de una funcionalidad concreta dentro de la arquitectura, como se puede apreciar en la figura \ref{fig:openstackarch}. La principal característica de estos servicios es que son accesibles de forma independiente. Los servicios principales de OpenStack son los siguientes:
+En la figura \ref{fig:openstackarch} se puede apreciar la arquitectura de OpenStack en la que operan los diferentes servicios. Dichos servicios se explican a continuación:
 
 \begin{itemize}
 	\item \textbf{Keystone:}  Este servicio controla la identificación de los diferentes usuarios que se conecten a la infraestructura de OpenStack, y el acceso a según que aplicaciones de los mismos.
@@ -194,13 +198,13 @@ Está compuesto de diferentes servicios o bloques, encargándose cada uno de ell
 	
 	\item \textbf{Nova:} Este servicio está considerado el motor de OpenStack. Es el encargado de desplegar y administrar las diferentes máquinas virtuales instanciadas y otros servicios que se necesiten.
 	
-	\item \textbf{Neutron:} Este servicio es el encargado de que cada componente desplegado en OpenStack se comunique con los demas y estén interrelacionados.
+	\item \textbf{Neutron:} Este servicio es el encargado de proporcionar servicios de red entre los diferentes dispositivos. Permite crear y gestionar redes y subredes.
 	
 	\item \textbf{Glance:} Este servicio se encarga de gestionar las diferentes imágenes que se usan en la infraestructura.
 	
 	\item \textbf{Cinder:} Este servicio se centra en el almacenamiento. Facilita el acceso al contenido alojado en las unidades de disco que se encuentren en la infraestructura.
 	
-	\item \textbf{Swift:} Este servicio es el encargado de almacenar los diferentes archivos del sistema, asegurar su integridad y replicarlos por los diferentes discos de la infraestructura, para hacer más dinámicas la accesibilidad y la disponibilidad.
+	\item \textbf{Swift:} Este servicio es el encargado de almacenar los diferentes archivos del sistema, asegurar su integridad y replicarlos por los diferentes volúmenes de la infraestructura, para hacer más dinámicas la accesibilidad y la disponibilidad.
 \end{itemize}
 
 \subsection{OpenStack4Java}

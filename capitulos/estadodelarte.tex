@@ -37,16 +37,8 @@ Una vez identificadas las limitaciones de redes actuales, hay que identificar lo
 
 \subsection{Arquitectura SDN}
 
-Las redes definidas por \textit{software} constan de una arquitectura de red específica, compuesta por distintos componentes \textit{hardware} y \textit{software} que interactúan entre sí, como se puede ver en la figura \ref{fig:arquitecturasdn}.
- 
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_sdn}
-	\caption{Arquitectura SDN. Fuente:\cite{sdnbib}}
-	\label{fig:arquitecturasdn}
-\end{figure}
+Las redes definidas por \textit{software} constan de una arquitectura de red específica, compuesta por distintos componentes \textit{hardware} y \textit{software} que interactúan entre sí. Dichos componentes se explican a continuación:
 
-Los diferentes elementos que componen la arquitectura \ac{SDN} son los siguientes:
 
 \begin{itemize}
 	\item \textbf{Controlador \ac{SDN}:} Es el cerebro de la red \ac{SDN}. Forma el núcleo de la arquitectura \ac{SDN} comunicándose con los \textit{switches} a través de la \textbf{Interfaz Sur} (\ac{SBI}) y con las distintas aplicaciones a través de la \textbf{Interfaz Norte} (\ac{NBI}).
@@ -55,10 +47,21 @@ Los diferentes elementos que componen la arquitectura \ac{SDN} son los siguiente
 	
 	\item \textbf{Interfaz Norte (\ac{NBI}):} Es la interfaz que conecta al controlador \ac{SDN} con el plano de control. Facilita el proceso de automatización de la red mediante la comunicación del controlador con las diferentes aplicaciones. Para permitir dicha comunicación con las aplicaciones, la interfaz norte exporta una \ac{API} del tipo \ac{REST}.
 	
-	\item \textbf{Agentes y \textit{Drivers}:} Para establecer la comunicación entre el controlador y los dispositivos mediante la interfaz sur y para la comunicación entre el controlador y las aplicaciones mediante la interfaz norte,es necesario un par agente-\textit{driver}. El \textit{driver} se encuentra en el controlador, mientras que el agente se encuentra en el dispositivo. Se encargan de realizar la comunicación en el plano de datos, realizando la conversión del lenguaje del controlador al del dispositivo, y viceversa.
-	
 	\item \textbf{Aplicaciones \ac{SDN}:} Son programas que se conectan al controlador \ac{SDN} mediante la interfaz norte. Gracias a su lógica de aplicaciones, desarrollan un próposito concreto y transfieren datos u órdenes al controlador \ac{SDN}.
+	
+	\item \textbf{Agentes y \textit{Drivers}:} Para establecer la comunicación entre el controlador y los dispositivos mediante la interfaz sur y para la comunicación entre el controlador y las aplicaciones mediante la interfaz norte, es necesario un par agente-\textit{driver}. 
+	
+	Mientras que en la \ac{NBI} el driver se encuentra en la aplicación y el agente en el controlador, en la \ac{SBI}, el driver se encuentra en el controlador y el agente en el dispositivo. Se encargan de realizar la comunicación entre la aplicación y el controlador en la \ac{NBI} y entre el controlador y los dispositivos de red en la \ac{SBI}, realizando las conversiones de lenguaje necesarias.
 \end{itemize}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_sdn}
+	\caption{Arquitectura SDN. Fuente:\cite{sdnbib}}
+	\label{fig:arquitecturasdn}
+\end{figure}
+
+En la figura \ref{fig:arquitecturasdn} se pueden apreciar una visión general de la arquitectura \ac{SDN} mostrando la conectividad entre los diferentes componentes explicados anteriormente.
 
 
 \subsection{OpenFlow}
@@ -119,7 +122,7 @@ La virtualización de funciones de red consta de una arquitectura específica, c
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.75\linewidth]{imagenes/arquitectura_nfv}
-	\caption{Arquitectura NFV}
+	\caption{Arquitectura NFV. Fuente:\cite{nfvbib}}
 	\label{fig:arquitecturanfv}
 \end{figure}
 
@@ -157,7 +160,7 @@ Puede parecer que ambas tecnologías tienen objetivos totalmente diferentes, per
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.8\linewidth]{imagenes/servicechaining}
-	\caption{Ejemplo de \textit{Service Chaining}}
+	\caption{Ejemplo de \textit{Service Chaining}. Fuente:\cite{servicechainingbib}}
 	\label{fig:servicechaining}
 \end{figure}
 
@@ -187,15 +190,15 @@ Para conseguir los propósitos mencionados anteriormente, existen numerosas herr
 Dichas herramientas forman un gran conjunto heterogéneo, siendo desarrollada cada una de ellas para uno o más propósitos:
 
 \begin{itemize}
-	\item Para sacar el máximo rendimiento a la infraestructura de una red, existen herramientas de virtualización como \textbf{OpenStack} (ver \ref{sec:openstack}) o \textbf{Docker}, para proveer a las aplicaciones de una abstracción e independencia. Este tipo de herramientas se enmarcan dentro de la tecnología \textbf{\ac{NFV}} (ver \ref{sec:nfv}).
+	\item Para sacar el máximo rendimiento a la infraestructura de una red, existen herramientas de virtualización como \textbf{OpenStack}\cite{openstackbib} o \textbf{Docker}\cite{dockerbib}, para proveer a las aplicaciones de una abstracción e independencia. Este tipo de herramientas se enmarcan dentro de la tecnología \textbf{\ac{NFV}} (ver \ref{sec:nfv}).
 	
-	\item Para agilizar el envío y procesamiento del tráfico de una red, existen herramientas que permiten emular el comportamiento de diversos dispositivos hardware a través de la virtualización, como \textbf{OpenVSwitch} o \textbf{Mininet} (ver \ref{sec:mininet}). Gracias a este tipo de herramientas, se puede sustituir un \textit{Switch} clásico por un pequeño software que hace las funciones de un \textit{Switch} de una manera más eficiente.
+	\item Para agilizar el envío y procesamiento del tráfico de una red, existen herramientas que permiten emular el comportamiento de diversos dispositivos hardware a través de la virtualización, como \textbf{OpenVSwitch}\cite{openvswitchbib} o \textbf{Mininet}\cite{mininetbib}. Gracias a este tipo de herramientas, se puede sustituir un \textit{Switch} clásico por un pequeño software que hace las mismas funciones que uno tradicional.
 	
-	\item La gestión de los dispositivos se ha realizado de forma manual, dispositivo a dispositivo. Gracias a herramientas software como \textbf{Cacti} o \textbf{Nagios}, la forma de gestionar las redes de telecomunicación ha dado un giro de 180 grados. Utilizando estas herramientas, el usuario puede gestionar la red desde un terminal de manera remota, gracias al protocolo \ac{SNMP}.
+	\item La gestión de los dispositivos se ha realizado de forma manual, dispositivo a dispositivo. Gracias a herramientas software como \textbf{Cacti}\cite{cactibib} o \textbf{Nagios}\cite{nagiosbib}, la forma de gestionar las redes de telecomunicación ha dado un giro de 180 grados. Utilizando estas herramientas, el usuario puede gestionar la red desde un terminal de manera remota, gracias al protocolo \ac{SNMP}.
 	
 	\item Para acelerar y automatizar la configuración de los dispositivos de una red de telecomunicación, existen herramientas enmarcadas en la tecnología \textit{\ac{SDN}} (ver \ref{sec:sdn}). Un ejemplo de estas herramientas es el controlador \ac{SDN} \ac{ONOS} (ver \ref{sec:onos}).
 	
-	\item Para reducir los costes de operación de una red, existen herramientas open-source que ayudan a planificar una red de telecomunicación de forma óptima. La más conocida de estas herramientas es \textbf{Net2Plan} (ver \ref{sec:net2plan}), una herramienta de planificación de redes programada en Java.
+	\item Para reducir los costes de operación de una red, existen herramientas open-source que ayudan a planificar una red de telecomunicación de forma óptima. La más conocida de estas herramientas es \textbf{Net2Plan}\cite{net2planbib}, una herramienta de planificación de redes programada en Java.
 \end{itemize}
 
 

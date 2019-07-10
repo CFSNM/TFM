@@ -14,7 +14,8 @@ Cuando el plugin estuvo totalmente desarrollado, se diseño una prueba de concep
 
 Inicialmente, se pretendía desarrollar un conjunto de \acp{API} para poder diseñar un entorno heterogéneo donde las tecnologías \ac{SDN} y \ac{NFV} cumplieran un papel fundamental en él, mediante diferentes herramientas que siguen dichas tecnologías operando en total sintonía.
 
-Una vez acabado el proyecto, cabe decir que la principal fortaleza de este Trabajo de Fin de Máster es que los diferentes objetivos propuestos al inicio se han conseguido satisfactoriamente, cumpliendo las expectativas puestas al comiendo del mismo.
+Una vez acabado el proyecto, cabe decir que la principal fortaleza de este Trabajo de Fin de Máster es la creación de clientes \textit{open-source} que permiten tener interfaces de comunicación con distintos módulos \ac{SDN}-\ac{NFV} para proporcionar optimización a entornos de red heterogéneos, permitiendo reducir la latencia en el establecimiento de una \textit{Service Chain}, algo básico en el contexto de 5G.
+
 
 \section{Análisis de resultados}
 
@@ -23,10 +24,6 @@ Una vez acabado el proyecto y habiendo obtenido resultados para su correspondien
 En referencia a J-OSMClient, hay que mencionar que es el único cliente \textit{open-source} programado en Java que existe para establecer comunicación con \ac{OSM}. Aunque existe el cliente en Python desarrollado por la \ac{ETSI}, dicho cliente no permite utilizarse de manera gráfica, debido a su naturaleza de \ac{CLI}. 
 
 Por ello, la creación de J-OSMClient proporciona una amplio abanico de trabajo, permitiendo que \ac{OSM} sea gestionado por una aplicación externa.
-
-Para finalizar el análisis de resultados, hay que mencionar los resultados obtenidos al realizar la prueba de concepto. Una vez instanciados los \acp{VNF} correspondientes a la \textit{Service Chain} y habiendo instalado las reglas de flujo correspondientes a la ruta óptima obtenida en los \textit{switches}, se realizan una prueba de conexión enviando un ping entre el origen y el destino. 
-
-En la figuras \ref{fig:nfvservicechain} y \ref{fig:topo_onos} se puede observar como la ruta es la misma en ambos casos (en el plugin de Net2Plan y en \ac{ONOS}), y en la figura \ref{fig:onosflowrules} como las reglas de flujo aplicadas indican que han procesado un paquete, que corresponde al ping realizado anteriormente para validad la conectividad.
 
 
 \section{Líneas de trabajo futuro y mejoras}
