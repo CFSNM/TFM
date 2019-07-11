@@ -63,7 +63,7 @@ Estas clases auxiliares se explican a continuación:
 \section{J-ONOS Client}
 \label{sec:onosclient}
 
-J-ONOSClient\cite{onosjavadocbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con \ac{ONOS} (ver \ref{sec:onos}). Esta librería está basada en la representación de objetos que proveé Swagger (ver \ref{subsec:openapi}). Gracias a Swagger, se puede generar de forma semi automática un cliente que interactúe con \ac{ONOS} en cualquier lenguaje de programación.
+J-ONOSClient\cite{onosjavadocbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con \ac{ONOS} (ver \ref{sec:onos}). Esta librería está basada en la representación de objetos que proveé Swagger (ver \ref{subsec:openapi}). Gracias a Swagger, se ha generado un cliente que interactúe con \ac{ONOS} en cualquier lenguaje de programación.
 
 Este cliente generado proveé una representación de diferentes componentes, cada uno de ellos con una clase asociada que actúa como interfaz con \ac{ONOS} para controlar las interacciones que involucran a dicho componente. A continuación se explica cada uno de los componentes mencionados anteriormente:
 
@@ -91,17 +91,19 @@ Este cliente generado proveé una representación de diferentes componentes, cad
 	\label{fig:onosclient}
 \end{figure}
 
-En la figura \ref{fig:onosclient} se puede apreciar un esquema de la jerarquía de clases. Se puede observar como cada componente tiene su propia \ac{API}.
+En la figura \ref{fig:onosclient} se puede apreciar un esquema de la jerarquía de clases. Se puede observar como cada componente tiene su propia \ac{API} y todas ellas son utilizadas por la clase ONOSClient.
 
-La clase ONOSClient es la clase principal del cliente que actúa como interfaz entre el usuario y \ac{ONOS}. Dicha clase interactúa con la \ac{REST}-\ac{API} de \ac{ONOS} mediante las \acp{API} de los diferentes componentes.
+ONOSClient es la clase principal del cliente que actúa como interfaz entre el usuario y \ac{ONOS} interactuando con la \ac{REST}-\ac{API} de \ac{ONOS} mediante las \acp{API} de los diferentes componentes.
 
-Como ejemplo, si el cliente quiere obtener información sobre un \textit{device} en concreto, realizará una llamada a la clase DevicesApi, que internamente realizara una petición \ac{HTTP} GET a una \ac{URL} determinada para obtener la información buscada. La propia clase realizará una conversión de \ac{JSON} al objeto \textit{device} para proporcionar un mejor manejo de datos al usuario.
+Dicha clase es necesaria, ya que Swagger genera varias \acp{API}, cada una de ellas para controlar las interacciones que involucran a un componente específico, pero no permite relacionar los componentes entre sí, de manera que, por ejemplo, para replicar una topología completa con todos los componentes, sin la clase ONOSClient sería imposible agruparlos.
+
+Como ejemplo, si el cliente quiere obtener información sobre un \textit{device} en concreto, ONOSClient realizará una llamada a la clase DevicesApi, que internamente realizara una petición \ac{HTTP} GET a una \ac{URL} determinada para obtener la información buscada. La propia \ac{API} realizará una conversión de \ac{JSON} al objeto \textit{device} para proporcionar un mejor manejo de datos al usuario.
 
 
 \section{J-OpenStack Client}
 \label{sec:openstackclient}
 
-J-OpenStackClient\cite{openstack4jjavadocbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con OpenStack (ver \ref{sec:openstack}). Esta librería está basada en la librería \textit{open-source} OpenStack4Java (ver \ref{subsec:openstack4j}).
+J-OpenStackClient\cite{openstack4jjavadocbib} es una librería programada en Java cuya funcionalidad es la de proporcionar un cliente \ac{REST} para interactuar con OpenStack (ver \ref{sec:openstack}). Esta librería es un \textit{wrapper} de la librería \textit{open-source} OpenStack4Java (ver \ref{subsec:openstack4j}).
 
 
 \begin{figure}[!ht]
@@ -113,15 +115,19 @@ J-OpenStackClient\cite{openstack4jjavadocbib} es una librería programada en Jav
 
 Cada uno de los servicios de OpenStack tiene una representación en este cliente, como se puede apreciar en la jerarquía de clases mostrada en la figura \ref{fig:openstackclient}. A su vez, cada servicio gobierna una serie de clases que modelan los diferentes componentes internos de OpenStack. 
 
+Toda estas funcionalidades de los diferentes servicios son adquiridas de OpenStack4Java. El principal trabajo en este cliente es el de generar una clase central que, utilizando las clases asociadas a los diferentes servicios, permita al usuario controlar las interacciones entre ellos y sus componentes de una manera amigable y sencilla.
+
 A continuación se realiza una explicación de la jerarquía de clases perteneciente a J-OpenStackClient:
 
 \begin{itemize}
 	
-	\item \textbf{Identity:} Esta clase abstracta es la que modela el servicio KeyStone de OpenStack. Proporciona acceso al resto de servicios de OpenStack mediante autenticación por usuario-contraseña, gracias a la clase OSClientV3.
+	\item \textbf{OpenStackClient:} Es la clase principal de J-OpenStackClient. Actúa como interfaz entre el usuario y las diferentes \acp{API} que controlan a su vez las interacciones con los diferentes componentes.
+	
+	\item \textbf{Identity:} Esta clase abstracta es la que modela el servicio KeyStone de OpenStack. Proporciona acceso al resto de servicios de OpenStack mediante autenticación por usuario-contraseña, gracias a laS clases OSClienteV2, la cual se encuentra deprecada y no se usa en las versiones actuales de OpenStack, y OSClientV3.
 	
 	\begin{figure}[!ht]
 		\centering
-		\includegraphics[width=1\linewidth]{imagenes/authOSClientV3}
+		\includegraphics[width=0.8\linewidth]{imagenes/authOSClientV3}
 		\caption{Autenticación mediante OSClientV3. Fuente:\cite{openstack4jbib}}
 		\label{fig:authosclientv3}
 	\end{figure}
@@ -155,11 +161,10 @@ A continuación se realiza una explicación de la jerarquía de clases perteneci
 		
 		\end{itemize}
 	
+	\item \textbf{OpenStackUtils:} Es una clase auxiliar que complementa a OpenStackClient. Proporciona métodos amigables para obtener atributos de los diferentes componentes de OpenStack que de forma normal sería tedioso el obtenerlos.
+	
+	
 \end{itemize}
-
-Después de explicar los diferentes servicios, hay que mencionar la clase OpenStackClient, que es la clase principal del cliente que actúa como interfaz entre el usuario final y OpenStack, y OpenStackUtils, que proporciona métodos auxiliares al cliente para trabajar con los componentes internos.
-
-\clearpage
 
 \section{Net2Plan: NFV Management Plugin}
 \label{sec:nfvplugin}
