@@ -43,7 +43,7 @@ Las redes definidas por \textit{software} constan de una arquitectura de red esp
 \begin{itemize}
 	\item \textbf{Controlador \ac{SDN}:} Es el cerebro de la red \ac{SDN}. Forma el núcleo de la arquitectura \ac{SDN} comunicándose con los \textit{switches} a través de la \textbf{Interfaz Sur} (\ac{SBI}) y con las distintas aplicaciones a través de la \textbf{Interfaz Norte} (\ac{NBI}).
 	
-	\item \textbf{Interfaz Sur:} Es la interfaz que conecta al controlador \ac{SDN} con el plano de datos. Facilita la configuración de la red, transfiriendo dichas configuraciones a los dispositivos de la red. El protocolo más utilizado en esta interfaz es \textbf{OpenFlow} (ver \ref{subsec:openflow}).
+	\item \textbf{Interfaz Sur (\ac{SBI}):} Es la interfaz que conecta al controlador \ac{SDN} con el plano de datos. Facilita la configuración de la red, transfiriendo dichas configuraciones a los dispositivos de la red. El protocolo más utilizado en esta interfaz es \textbf{OpenFlow} (ver \ref{subsec:openflow}).
 	
 	\item \textbf{Interfaz Norte (\ac{NBI}):} Es la interfaz que conecta al controlador \ac{SDN} con el plano de control. Facilita el proceso de automatización de la red mediante la comunicación del controlador con las diferentes aplicaciones. Para permitir dicha comunicación con las aplicaciones, la interfaz norte exporta una \ac{API} del tipo \ac{REST}.
 	
